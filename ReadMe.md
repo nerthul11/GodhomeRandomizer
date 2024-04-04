@@ -1,6 +1,6 @@
 # Godhome Randomizer
 
-A Randomizer add-on for Godhome elements.
+A Randomizer add-on for Godhome checks.
 
 ## Description
 
