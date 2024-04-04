@@ -1,0 +1,962 @@
+[
+  {
+    "$type": "GodhomeRandomizer.IC.BindingLocation, GodhomeRandomizer",
+    "name": "Pantheon_Master-Nail_Binding",
+    "sceneName": "GG_Atrium",
+    "pantheonID": 1,
+    "bindingType": "Nail",
+    "tags": [
+      {
+        "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+        "Properties": {
+          "ModSource": "GodhomeRandomizer",
+          "PinSprite": {
+            "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+              "Key": "Nail"
+          },
+          "SceneNames": "GG_Waterways",
+          "MapLocations": {
+            "$type": "System.ValueTuple`3[[System.String, mscorlib],[System.Single, mscorlib],[System.Single, mscorlib]][], mscorlib",
+            "$values": [
+              {
+                "Item1": "GG_Waterways",
+                "Item2": -3.0,
+                "Item3": 0.5
+              }
+            ]
+          }
+        },
+        "Message": "RandoSupplementalMetadata",
+        "Loaded": true
+      }
+    ]
+  },
+  {
+    "$type": "GodhomeRandomizer.IC.BindingLocation, GodhomeRandomizer",
+    "name": "Pantheon_Master-Shell_Binding",
+    "sceneName": "GG_Atrium",
+    "pantheonID": 1,
+    "bindingType": "Shell",
+    "tags": [
+      {
+        "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+        "Properties": {
+          "ModSource": "GodhomeRandomizer",
+          "PinSprite": {
+            "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+              "Key": "Shell"
+          },
+          "SceneNames": "GG_Waterways",
+          "MapLocations": {
+            "$type": "System.ValueTuple`3[[System.String, mscorlib],[System.Single, mscorlib],[System.Single, mscorlib]][], mscorlib",
+            "$values": [
+              {
+                "Item1": "GG_Waterways",
+                "Item2": -2.75,
+                "Item3": 0.5
+              }
+            ]
+          }
+        },
+        "Message": "RandoSupplementalMetadata",
+        "Loaded": true
+      }
+    ]
+  },
+  {
+    "$type": "GodhomeRandomizer.IC.BindingLocation, GodhomeRandomizer",
+    "name": "Pantheon_Master-Charms_Binding",
+    "sceneName": "GG_Atrium",
+    "pantheonID": 1,
+    "bindingType": "Charms",
+    "tags": [
+      {
+        "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+        "Properties": {
+          "ModSource": "GodhomeRandomizer",
+          "PinSprite": {
+            "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+              "Key": "Charms"
+          },
+          "SceneNames": "GG_Waterways",
+          "MapLocations": {
+            "$type": "System.ValueTuple`3[[System.String, mscorlib],[System.Single, mscorlib],[System.Single, mscorlib]][], mscorlib",
+            "$values": [
+              {
+                "Item1": "GG_Waterways",
+                "Item2": -2.5,
+                "Item3": 0.5
+              }
+            ]
+          }
+        },
+        "Message": "RandoSupplementalMetadata",
+        "Loaded": true
+      }
+    ]
+  },
+  {
+    "$type": "GodhomeRandomizer.IC.BindingLocation, GodhomeRandomizer",
+    "name": "Pantheon_Master-Soul_Binding",
+    "sceneName": "GG_Atrium",
+    "pantheonID": 1,
+    "bindingType": "Soul",
+    "tags": [
+      {
+        "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+        "Properties": {
+          "ModSource": "GodhomeRandomizer",
+          "PinSprite": {
+            "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+              "Key": "Soul"
+          },
+          "SceneNames": "GG_Waterways",
+          "MapLocations": {
+            "$type": "System.ValueTuple`3[[System.String, mscorlib],[System.Single, mscorlib],[System.Single, mscorlib]][], mscorlib",
+            "$values": [
+              {
+                "Item1": "GG_Waterways",
+                "Item2": -2.25,
+                "Item3": 0.5
+              }
+            ]
+          }
+        },
+        "Message": "RandoSupplementalMetadata",
+        "Loaded": true
+      }
+    ]
+  },
+  {
+    "$type": "GodhomeRandomizer.IC.BindingLocation, GodhomeRandomizer",
+    "name": "Pantheon_Master-All_Bindings",
+    "sceneName": "GG_Atrium",
+    "pantheonID": 1,
+    "bindingType": "AllAtOnce",
+    "tags": [
+      {
+        "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+        "Properties": {
+          "ModSource": "GodhomeRandomizer",
+          "PinSprite": {
+            "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+              "Key": "AllAtOnce"
+          },
+          "SceneNames": "GG_Waterways",
+          "MapLocations": {
+            "$type": "System.ValueTuple`3[[System.String, mscorlib],[System.Single, mscorlib],[System.Single, mscorlib]][], mscorlib",
+            "$values": [
+              {
+                "Item1": "GG_Waterways",
+                "Item2": -2.75,
+                "Item3": 0.75
+              }
+            ]
+          }
+        },
+        "Message": "RandoSupplementalMetadata",
+        "Loaded": true
+      }
+    ]
+  },
+  {
+    "$type": "GodhomeRandomizer.IC.BindingLocation, GodhomeRandomizer",
+    "name": "Pantheon_Master-Hitless",
+    "sceneName": "GG_Atrium",
+    "pantheonID": 1,
+    "bindingType": "Hitless",
+    "tags": [
+      {
+        "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+        "Properties": {
+          "ModSource": "GodhomeRandomizer",
+          "PinSprite": {
+            "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+              "Key": "Hitless"
+          },
+          "SceneNames": "GG_Waterways",
+          "MapLocations": {
+            "$type": "System.ValueTuple`3[[System.String, mscorlib],[System.Single, mscorlib],[System.Single, mscorlib]][], mscorlib",
+            "$values": [
+              {
+                "Item1": "GG_Waterways",
+                "Item2": -2.25,
+                "Item3": 0.75
+              }
+            ]
+          }
+        },
+        "Message": "RandoSupplementalMetadata",
+        "Loaded": true
+      }
+    ]
+  },
+  {
+    "$type": "GodhomeRandomizer.IC.BindingLocation, GodhomeRandomizer",
+    "name": "Pantheon_Artist-Nail_Binding",
+    "sceneName": "GG_Atrium",
+    "pantheonID": 2,
+    "bindingType": "Nail",
+    "tags": [
+      {
+        "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+        "Properties": {
+          "ModSource": "GodhomeRandomizer",
+          "PinSprite": {
+            "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+              "Key": "Nail"
+          },
+          "SceneNames": "GG_Waterways",
+          "MapLocations": {
+            "$type": "System.ValueTuple`3[[System.String, mscorlib],[System.Single, mscorlib],[System.Single, mscorlib]][], mscorlib",
+            "$values": [
+              {
+                "Item1": "GG_Waterways",
+                "Item2": -2.0,
+                "Item3": 0.5
+              }
+            ]
+          }
+        },
+        "Message": "RandoSupplementalMetadata",
+        "Loaded": true
+      }
+    ]
+  },
+  {
+    "$type": "GodhomeRandomizer.IC.BindingLocation, GodhomeRandomizer",
+    "name": "Pantheon_Artist-Shell_Binding",
+    "sceneName": "GG_Atrium",
+    "pantheonID": 2,
+    "bindingType": "Shell",
+    "tags": [
+      {
+        "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+        "Properties": {
+          "ModSource": "GodhomeRandomizer",
+          "PinSprite": {
+            "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+              "Key": "Shell"
+          },
+          "SceneNames": "GG_Waterways",
+          "MapLocations": {
+            "$type": "System.ValueTuple`3[[System.String, mscorlib],[System.Single, mscorlib],[System.Single, mscorlib]][], mscorlib",
+            "$values": [
+              {
+                "Item1": "GG_Waterways",
+                "Item2": -1.75,
+                "Item3": 0.5
+              }
+            ]
+          }
+        },
+        "Message": "RandoSupplementalMetadata",
+        "Loaded": true
+      }
+    ]
+  },
+  {
+    "$type": "GodhomeRandomizer.IC.BindingLocation, GodhomeRandomizer",
+    "name": "Pantheon_Artist-Charms_Binding",
+    "sceneName": "GG_Atrium",
+    "pantheonID": 2,
+    "bindingType": "Charms",
+    "tags": [
+      {
+        "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+        "Properties": {
+          "ModSource": "GodhomeRandomizer",
+          "PinSprite": {
+            "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+              "Key": "Charms"
+          },
+          "SceneNames": "GG_Waterways",
+          "MapLocations": {
+            "$type": "System.ValueTuple`3[[System.String, mscorlib],[System.Single, mscorlib],[System.Single, mscorlib]][], mscorlib",
+            "$values": [
+              {
+                "Item1": "GG_Waterways",
+                "Item2": -1.5,
+                "Item3": 0.5
+              }
+            ]
+          }
+        },
+        "Message": "RandoSupplementalMetadata",
+        "Loaded": true
+      }
+    ]
+  },
+  {
+    "$type": "GodhomeRandomizer.IC.BindingLocation, GodhomeRandomizer",
+    "name": "Pantheon_Artist-Soul_Binding",
+    "sceneName": "GG_Atrium",
+    "pantheonID": 2,
+    "bindingType": "Soul",
+    "tags": [
+      {
+        "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+        "Properties": {
+          "ModSource": "GodhomeRandomizer",
+          "PinSprite": {
+            "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+              "Key": "Soul"
+          },
+          "SceneNames": "GG_Waterways",
+          "MapLocations": {
+            "$type": "System.ValueTuple`3[[System.String, mscorlib],[System.Single, mscorlib],[System.Single, mscorlib]][], mscorlib",
+            "$values": [
+              {
+                "Item1": "GG_Waterways",
+                "Item2": -1.25,
+                "Item3": 0.5
+              }
+            ]
+          }
+        },
+        "Message": "RandoSupplementalMetadata",
+        "Loaded": true
+      }
+    ]
+  },
+  {
+    "$type": "GodhomeRandomizer.IC.BindingLocation, GodhomeRandomizer",
+    "name": "Pantheon_Artist-All_Bindings",
+    "sceneName": "GG_Atrium",
+    "pantheonID": 2,
+    "bindingType": "AllAtOnce",
+    "tags": [
+      {
+        "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+        "Properties": {
+          "ModSource": "GodhomeRandomizer",
+          "PinSprite": {
+            "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+              "Key": "AllAtOnce"
+          },
+          "SceneNames": "GG_Waterways",
+          "MapLocations": {
+            "$type": "System.ValueTuple`3[[System.String, mscorlib],[System.Single, mscorlib],[System.Single, mscorlib]][], mscorlib",
+            "$values": [
+              {
+                "Item1": "GG_Waterways",
+                "Item2": -1.75,
+                "Item3": 0.75
+              }
+            ]
+          }
+        },
+        "Message": "RandoSupplementalMetadata",
+        "Loaded": true
+      }
+    ]
+  },
+  {
+    "$type": "GodhomeRandomizer.IC.BindingLocation, GodhomeRandomizer",
+    "name": "Pantheon_Artist-Hitless",
+    "sceneName": "GG_Atrium",
+    "pantheonID": 2,
+    "bindingType": "Hitless",
+    "tags": [
+      {
+        "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+        "Properties": {
+          "ModSource": "GodhomeRandomizer",
+          "PinSprite": {
+            "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+              "Key": "Hitless"
+          },
+          "SceneNames": "GG_Waterways",
+          "MapLocations": {
+            "$type": "System.ValueTuple`3[[System.String, mscorlib],[System.Single, mscorlib],[System.Single, mscorlib]][], mscorlib",
+            "$values": [
+              {
+                "Item1": "GG_Waterways",
+                "Item2": -1.25,
+                "Item3": 0.75
+              }
+            ]
+          }
+        },
+        "Message": "RandoSupplementalMetadata",
+        "Loaded": true
+      }
+    ]
+  },
+  {
+    "$type": "GodhomeRandomizer.IC.BindingLocation, GodhomeRandomizer",
+    "name": "Pantheon_Sage-Nail_Binding",
+    "sceneName": "GG_Atrium",
+    "pantheonID": 3,
+    "bindingType": "Nail",
+    "tags": [
+      {
+        "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+        "Properties": {
+          "ModSource": "GodhomeRandomizer",
+          "PinSprite": {
+            "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+              "Key": "Nail"
+          },
+          "SceneNames": "GG_Waterways",
+          "MapLocations": {
+            "$type": "System.ValueTuple`3[[System.String, mscorlib],[System.Single, mscorlib],[System.Single, mscorlib]][], mscorlib",
+            "$values": [
+              {
+                "Item1": "GG_Waterways",
+                "Item2": -1.0,
+                "Item3": 0.5
+              }
+            ]
+          }
+        },
+        "Message": "RandoSupplementalMetadata",
+        "Loaded": true
+      }
+    ]
+  },
+  {
+    "$type": "GodhomeRandomizer.IC.BindingLocation, GodhomeRandomizer",
+    "name": "Pantheon_Sage-Shell_Binding",
+    "sceneName": "GG_Atrium",
+    "pantheonID": 3,
+    "bindingType": "Shell",
+    "tags": [
+      {
+        "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+        "Properties": {
+          "ModSource": "GodhomeRandomizer",
+          "PinSprite": {
+            "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+              "Key": "Shell"
+          },
+          "SceneNames": "GG_Waterways",
+          "MapLocations": {
+            "$type": "System.ValueTuple`3[[System.String, mscorlib],[System.Single, mscorlib],[System.Single, mscorlib]][], mscorlib",
+            "$values": [
+              {
+                "Item1": "GG_Waterways",
+                "Item2": -0.75,
+                "Item3": 0.5
+              }
+            ]
+          }
+        },
+        "Message": "RandoSupplementalMetadata",
+        "Loaded": true
+      }
+    ]
+  },
+  {
+    "$type": "GodhomeRandomizer.IC.BindingLocation, GodhomeRandomizer",
+    "name": "Pantheon_Sage-Charms_Binding",
+    "sceneName": "GG_Atrium",
+    "pantheonID": 3,
+    "bindingType": "Charms",
+    "tags": [
+      {
+        "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+        "Properties": {
+          "ModSource": "GodhomeRandomizer",
+          "PinSprite": {
+            "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+              "Key": "Charms"
+          },
+          "SceneNames": "GG_Waterways",
+          "MapLocations": {
+            "$type": "System.ValueTuple`3[[System.String, mscorlib],[System.Single, mscorlib],[System.Single, mscorlib]][], mscorlib",
+            "$values": [
+              {
+                "Item1": "GG_Waterways",
+                "Item2": -0.5,
+                "Item3": 0.5
+              }
+            ]
+          }
+        },
+        "Message": "RandoSupplementalMetadata",
+        "Loaded": true
+      }
+    ]
+  },
+  {
+    "$type": "GodhomeRandomizer.IC.BindingLocation, GodhomeRandomizer",
+    "name": "Pantheon_Sage-Soul_Binding",
+    "sceneName": "GG_Atrium",
+    "pantheonID": 3,
+    "bindingType": "Soul",
+    "tags": [
+      {
+        "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+        "Properties": {
+          "ModSource": "GodhomeRandomizer",
+          "PinSprite": {
+            "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+              "Key": "Soul"
+          },
+          "SceneNames": "GG_Waterways",
+          "MapLocations": {
+            "$type": "System.ValueTuple`3[[System.String, mscorlib],[System.Single, mscorlib],[System.Single, mscorlib]][], mscorlib",
+            "$values": [
+              {
+                "Item1": "GG_Waterways",
+                "Item2": -0.25,
+                "Item3": 0.5
+              }
+            ]
+          }
+        },
+        "Message": "RandoSupplementalMetadata",
+        "Loaded": true
+      }
+    ]
+  },
+  {
+    "$type": "GodhomeRandomizer.IC.BindingLocation, GodhomeRandomizer",
+    "name": "Pantheon_Sage-All_Bindings",
+    "sceneName": "GG_Atrium",
+    "pantheonID": 3,
+    "bindingType": "AllAtOnce",
+    "tags": [
+      {
+        "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+        "Properties": {
+          "ModSource": "GodhomeRandomizer",
+          "PinSprite": {
+            "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+              "Key": "AllAtOnce"
+          },
+          "SceneNames": "GG_Waterways",
+          "MapLocations": {
+            "$type": "System.ValueTuple`3[[System.String, mscorlib],[System.Single, mscorlib],[System.Single, mscorlib]][], mscorlib",
+            "$values": [
+              {
+                "Item1": "GG_Waterways",
+                "Item2": -0.75,
+                "Item3": 0.75
+              }
+            ]
+          }
+        },
+        "Message": "RandoSupplementalMetadata",
+        "Loaded": true
+      }
+    ]
+  },
+  {
+    "$type": "GodhomeRandomizer.IC.BindingLocation, GodhomeRandomizer",
+    "name": "Pantheon_Sage-Hitless",
+    "sceneName": "GG_Atrium",
+    "pantheonID": 3,
+    "bindingType": "Hitless",
+    "tags": [
+      {
+        "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+        "Properties": {
+          "ModSource": "GodhomeRandomizer",
+          "PinSprite": {
+            "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+              "Key": "Hitless"
+          },
+          "SceneNames": "GG_Waterways",
+          "MapLocations": {
+            "$type": "System.ValueTuple`3[[System.String, mscorlib],[System.Single, mscorlib],[System.Single, mscorlib]][], mscorlib",
+            "$values": [
+              {
+                "Item1": "GG_Waterways",
+                "Item2": -0.25,
+                "Item3": 0.75
+              }
+            ]
+          }
+        },
+        "Message": "RandoSupplementalMetadata",
+        "Loaded": true
+      }
+    ]
+  },
+  {
+    "$type": "GodhomeRandomizer.IC.BindingLocation, GodhomeRandomizer",
+    "name": "Pantheon_Knight-Nail_Binding",
+    "sceneName": "GG_Atrium",
+    "pantheonID": 4,
+    "bindingType": "Nail",
+    "tags": [
+      {
+        "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+        "Properties": {
+          "ModSource": "GodhomeRandomizer",
+          "PinSprite": {
+            "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+              "Key": "Nail"
+          },
+          "SceneNames": "GG_Waterways",
+          "MapLocations": {
+            "$type": "System.ValueTuple`3[[System.String, mscorlib],[System.Single, mscorlib],[System.Single, mscorlib]][], mscorlib",
+            "$values": [
+              {
+                "Item1": "GG_Waterways",
+                "Item2": 0.0,
+                "Item3": 0.5
+              }
+            ]
+          }
+        },
+        "Message": "RandoSupplementalMetadata",
+        "Loaded": true
+      }
+    ]
+  },
+  {
+    "$type": "GodhomeRandomizer.IC.BindingLocation, GodhomeRandomizer",
+    "name": "Pantheon_Knight-Shell_Binding",
+    "sceneName": "GG_Atrium",
+    "pantheonID": 4,
+    "bindingType": "Shell",
+    "tags": [
+      {
+        "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+        "Properties": {
+          "ModSource": "GodhomeRandomizer",
+          "PinSprite": {
+            "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+              "Key": "Shell"
+          },
+          "SceneNames": "GG_Waterways",
+          "MapLocations": {
+            "$type": "System.ValueTuple`3[[System.String, mscorlib],[System.Single, mscorlib],[System.Single, mscorlib]][], mscorlib",
+            "$values": [
+              {
+                "Item1": "GG_Waterways",
+                "Item2": 0.25,
+                "Item3": 0.5
+              }
+            ]
+          }
+        },
+        "Message": "RandoSupplementalMetadata",
+        "Loaded": true
+      }
+    ]
+  },
+  {
+    "$type": "GodhomeRandomizer.IC.BindingLocation, GodhomeRandomizer",
+    "name": "Pantheon_Knight-Charms_Binding",
+    "sceneName": "GG_Atrium",
+    "pantheonID": 4,
+    "bindingType": "Charms",
+    "tags": [
+      {
+        "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+        "Properties": {
+          "ModSource": "GodhomeRandomizer",
+          "PinSprite": {
+            "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+              "Key": "Charms"
+          },
+          "SceneNames": "GG_Waterways",
+          "MapLocations": {
+            "$type": "System.ValueTuple`3[[System.String, mscorlib],[System.Single, mscorlib],[System.Single, mscorlib]][], mscorlib",
+            "$values": [
+              {
+                "Item1": "GG_Waterways",
+                "Item2": 0.5,
+                "Item3": 0.5
+              }
+            ]
+          }
+        },
+        "Message": "RandoSupplementalMetadata",
+        "Loaded": true
+      }
+    ]
+  },
+  {
+    "$type": "GodhomeRandomizer.IC.BindingLocation, GodhomeRandomizer",
+    "name": "Pantheon_Knight-Soul_Binding",
+    "sceneName": "GG_Atrium",
+    "pantheonID": 4,
+    "bindingType": "Soul",
+    "tags": [
+      {
+        "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+        "Properties": {
+          "ModSource": "GodhomeRandomizer",
+          "PinSprite": {
+            "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+              "Key": "Soul"
+          },
+          "SceneNames": "GG_Waterways",
+          "MapLocations": {
+            "$type": "System.ValueTuple`3[[System.String, mscorlib],[System.Single, mscorlib],[System.Single, mscorlib]][], mscorlib",
+            "$values": [
+              {
+                "Item1": "GG_Waterways",
+                "Item2": 0.75,
+                "Item3": 0.5
+              }
+            ]
+          }
+        },
+        "Message": "RandoSupplementalMetadata",
+        "Loaded": true
+      }
+    ]
+  },
+  {
+    "$type": "GodhomeRandomizer.IC.BindingLocation, GodhomeRandomizer",
+    "name": "Pantheon_Knight-All_Bindings",
+    "sceneName": "GG_Atrium",
+    "pantheonID": 4,
+    "bindingType": "AllAtOnce",
+    "tags": [
+      {
+        "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+        "Properties": {
+          "ModSource": "GodhomeRandomizer",
+          "PinSprite": {
+            "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+              "Key": "AllAtOnce"
+          },
+          "SceneNames": "GG_Waterways",
+          "MapLocations": {
+            "$type": "System.ValueTuple`3[[System.String, mscorlib],[System.Single, mscorlib],[System.Single, mscorlib]][], mscorlib",
+            "$values": [
+              {
+                "Item1": "GG_Waterways",
+                "Item2": 0.25,
+                "Item3": 0.75
+              }
+            ]
+          }
+        },
+        "Message": "RandoSupplementalMetadata",
+        "Loaded": true
+      }
+    ]
+  },
+  {
+    "$type": "GodhomeRandomizer.IC.BindingLocation, GodhomeRandomizer",
+    "name": "Pantheon_Knight-Hitless",
+    "sceneName": "GG_Atrium",
+    "pantheonID": 4,
+    "bindingType": "Hitless",
+    "tags": [
+      {
+        "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+        "Properties": {
+          "ModSource": "GodhomeRandomizer",
+          "PinSprite": {
+            "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+              "Key": "Hitless"
+          },
+          "SceneNames": "GG_Waterways",
+          "MapLocations": {
+            "$type": "System.ValueTuple`3[[System.String, mscorlib],[System.Single, mscorlib],[System.Single, mscorlib]][], mscorlib",
+            "$values": [
+              {
+                "Item1": "GG_Waterways",
+                "Item2": 0.75,
+                "Item3": 0.75
+              }
+            ]
+          }
+        },
+        "Message": "RandoSupplementalMetadata",
+        "Loaded": true
+      }
+    ]
+  },
+  {
+    "$type": "GodhomeRandomizer.IC.BindingLocation, GodhomeRandomizer",
+    "name": "Pantheon_Hallownest-Nail_Binding",
+    "sceneName": "GG_Atrium_Roof",
+    "pantheonID": 5,
+    "bindingType": "Nail",
+    "tags": [
+      {
+        "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+        "Properties": {
+          "ModSource": "GodhomeRandomizer",
+          "PinSprite": {
+            "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+              "Key": "Nail"
+          },
+          "SceneNames": "GG_Waterways",
+          "MapLocations": {
+            "$type": "System.ValueTuple`3[[System.String, mscorlib],[System.Single, mscorlib],[System.Single, mscorlib]][], mscorlib",
+            "$values": [
+              {
+                "Item1": "GG_Waterways",
+                "Item2": 1.0,
+                "Item3": 0.5
+              }
+            ]
+          }
+        },
+        "Message": "RandoSupplementalMetadata",
+        "Loaded": true
+      }
+    ]
+  },
+  {
+    "$type": "GodhomeRandomizer.IC.BindingLocation, GodhomeRandomizer",
+    "name": "Pantheon_Hallownest-Shell_Binding",
+    "sceneName": "GG_Atrium_Roof",
+    "pantheonID": 5,
+    "bindingType": "Shell",
+    "tags": [
+      {
+        "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+        "Properties": {
+          "ModSource": "GodhomeRandomizer",
+          "PinSprite": {
+            "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+              "Key": "Shell"
+          },
+          "SceneNames": "GG_Waterways",
+          "MapLocations": {
+            "$type": "System.ValueTuple`3[[System.String, mscorlib],[System.Single, mscorlib],[System.Single, mscorlib]][], mscorlib",
+            "$values": [
+              {
+                "Item1": "GG_Waterways",
+                "Item2": 1.25,
+                "Item3": 0.5
+              }
+            ]
+          }
+        },
+        "Message": "RandoSupplementalMetadata",
+        "Loaded": true
+      }
+    ]
+  },
+  {
+    "$type": "GodhomeRandomizer.IC.BindingLocation, GodhomeRandomizer",
+    "name": "Pantheon_Hallownest-Charms_Binding",
+    "sceneName": "GG_Atrium_Roof",
+    "pantheonID": 5,
+    "bindingType": "Charms",
+    "tags": [
+      {
+        "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+        "Properties": {
+          "ModSource": "GodhomeRandomizer",
+          "PinSprite": {
+            "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+              "Key": "Charms"
+          },
+          "SceneNames": "GG_Waterways",
+          "MapLocations": {
+            "$type": "System.ValueTuple`3[[System.String, mscorlib],[System.Single, mscorlib],[System.Single, mscorlib]][], mscorlib",
+            "$values": [
+              {
+                "Item1": "GG_Waterways",
+                "Item2": 1.5,
+                "Item3": 0.5
+              }
+            ]
+          }
+        },
+        "Message": "RandoSupplementalMetadata",
+        "Loaded": true
+      }
+    ]
+  },
+  {
+    "$type": "GodhomeRandomizer.IC.BindingLocation, GodhomeRandomizer",
+    "name": "Pantheon_Hallownest-Soul_Binding",
+    "sceneName": "GG_Atrium_Roof",
+    "pantheonID": 5,
+    "bindingType": "Soul",
+    "tags": [
+      {
+        "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+        "Properties": {
+          "ModSource": "GodhomeRandomizer",
+          "PinSprite": {
+            "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+              "Key": "Soul"
+          },
+          "SceneNames": "GG_Waterways",
+          "MapLocations": {
+            "$type": "System.ValueTuple`3[[System.String, mscorlib],[System.Single, mscorlib],[System.Single, mscorlib]][], mscorlib",
+            "$values": [
+              {
+                "Item1": "GG_Waterways",
+                "Item2": 1.75,
+                "Item3": 0.5
+              }
+            ]
+          }
+        },
+        "Message": "RandoSupplementalMetadata",
+        "Loaded": true
+      }
+    ]
+  },
+  {
+    "$type": "GodhomeRandomizer.IC.BindingLocation, GodhomeRandomizer",
+    "name": "Pantheon_Hallownest-All_Bindings",
+    "sceneName": "GG_Atrium_Roof",
+    "pantheonID": 5,
+    "bindingType": "AllAtOnce",
+    "tags": [
+      {
+        "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+        "Properties": {
+          "ModSource": "GodhomeRandomizer",
+          "PinSprite": {
+            "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+              "Key": "AllAtOnce"
+          },
+          "SceneNames": "GG_Waterways",
+          "MapLocations": {
+            "$type": "System.ValueTuple`3[[System.String, mscorlib],[System.Single, mscorlib],[System.Single, mscorlib]][], mscorlib",
+            "$values": [
+              {
+                "Item1": "GG_Waterways",
+                "Item2": 1.25,
+                "Item3": 0.75
+              }
+            ]
+          }
+        },
+        "Message": "RandoSupplementalMetadata",
+        "Loaded": true
+      }
+    ]
+  },
+  {
+    "$type": "GodhomeRandomizer.IC.BindingLocation, GodhomeRandomizer",
+    "name": "Pantheon_Hallownest-Hitless",
+    "sceneName": "GG_Atrium_Roof",
+    "pantheonID": 5,
+    "bindingType": "Hitless",
+    "tags": [
+      {
+        "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+        "Properties": {
+          "ModSource": "GodhomeRandomizer",
+          "PinSprite": {
+            "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+              "Key": "Hitless"
+          },
+          "SceneNames": "GG_Waterways",
+          "MapLocations": {
+            "$type": "System.ValueTuple`3[[System.String, mscorlib],[System.Single, mscorlib],[System.Single, mscorlib]][], mscorlib",
+            "$values": [
+              {
+                "Item1": "GG_Waterways",
+                "Item2": 1.75,
+                "Item3": 0.75
+              }
+            ]
+          }
+        },
+        "Message": "RandoSupplementalMetadata",
+        "Loaded": true
+      }
+    ]
+  }
+]

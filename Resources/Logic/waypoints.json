@@ -1,0 +1,112 @@
+[
+    {
+        "name": "Defeated_Pantheon_1",
+        "logic": "GG_Atrium + ((Defeated_Gruz_Mother + Defeated_False_Knight + Defeated_Massive_Moss_Charger + Defeated_Hornet_1 + Defeated_Gorb + Defeated_Dung_Defender + Defeated_Soul_Warrior + Defeated_Brooding_Mawlek) | (PANTHEON_KEY_1 ? FALSE) + COMBAT[Pantheon_1])",
+        "Stateless": true
+    },
+    {
+        "name": "Defeated_Pantheon_2",
+        "logic": "GG_Atrium + ((Defeated_Xero + Defeated_Crystal_Guardian + Defeated_Soul_Master + Defeated_Colosseum_2 + Defeated_Mantis_Lords + Defeated_Marmu + Defeated_Nosk + Defeated_Flukemarm + Defeated_Broken_Vessel) | (PANTHEON_KEY_2 ? FALSE) + COMBAT[Pantheon_2])",
+        "Stateless": true
+    },
+    {
+        "name": "Defeated_Pantheon_3",
+        "logic": "GG_Atrium + ((Defeated_Hive_Knight + Defeated_Elder_Hu + Defeated_Collector + Defeated_Colosseum_2 + Defeated_Grimm + Defeated_Galien + Defeated_Uumuu + Defeated_Hornet_2) | (PANTHEON_KEY_3 ? FALSE) + COMBAT[Pantheon_3])",
+        "Stateless": true
+    },
+    {
+        "name": "Opened_Pantheon_4",
+        "logic": "GG_Atrium + (Defeated_Pantheon_1 + Defeated_Pantheon_2 + Defeated_Pantheon_3 | (PANTHEON_KEY_4 ? FALSE))",
+        "Stateless": true
+    },
+    {
+        "name": "Defeated_Pantheon_4",
+        "logic": "GG_Atrium + Opened_Pantheon_4 + ((Defeated_Enraged_Guardian + Defeated_Broken_Vessel + Defeated_No_Eyes + Defeated_Traitor_Lord + Defeated_Dung_Defender + Defeated_False_Knight + Defeated_Markoth + Defeated_Watcher_Knights + Defeated_Soul_Master) | (PANTHEON_KEY_4 ? FALSE) + COMBAT[Pantheon_4])",
+        "Stateless": true
+    },
+    {
+        "name": "Defeated_Pantheon_5",
+        "logic": "GG_Atrium_Roof + WINGS + ANYCLAW + ((Defeated_Pantheon_1 + Defeated_Pantheon_2 + Defeated_Pantheon_3 + Defeated_Pantheon_4 + COMBAT[Radiance]) | (PANTHEON_KEY_5 ? FALSE) + COMBAT[Pantheon_5])",
+        "Stateless": true
+    },
+    {
+        "name": "Defeated_Vengefly_King",
+        "logic": "*Boss_Geo-Vengefly_King",
+        "Stateless": true
+    },
+    {
+        "name": "Defeated_Massive_Moss_Charger",
+        "logic": "*Boss_Geo-Massive_Moss_Charger",
+        "Stateless": true
+    },
+    {
+        "name": "Defeated_Oblobbles",
+        "logic": "*Defeated_Colosseum_2",
+        "Stateless": true
+    },
+    {
+        "name": "Defeated_God_Tamer",
+        "logic": "Room_Colosseum_01[left1] + Can_Replenish_Geo + (ANYCLAW | (SPICYCOMBATSKIPS + WINGS)) + COMBAT[Colosseum_3] + (READ ? TRUE) + (COLO_KEY_3 ? TRUE)",
+        "Stateless": true
+    },
+    {
+        "name": "Defeated_Nightmare_King",
+        "logic": "Grimm_Main_Tent[left1] + Grimmchild + FLAMES>8 + DREAMNAIL + COMBAT[Nightmare_King]",
+        "Stateless": true
+    },
+    {
+        "name": "Defeated_Pure_Vessel",
+        "logic": "Defeated_Pantheon_4",
+        "Stateless": true
+    },
+    {
+        "name": "Defeated_Radiance",
+        "logic": "Defeated_Pantheon_5",
+        "Stateless": true
+    },
+    {
+        "name": "Defeated_Sly",
+        "logic": "Defeated_Pantheon_3",
+        "Stateless": true
+    },
+    {
+        "name": "Defeated_Nailmaster_Brothers",
+        "logic": "Defeated_Pantheon_1",
+        "Stateless": true
+    },
+    {
+        "name": "Defeated_Soul_Warrior",
+        "logic": "Defeated_Sanctum_Warrior | Defeated_Elegant_Warrior | Defeated_God_Tamer",
+        "Stateless": true
+    },
+    {
+        "name": "Defeated_Paintmaster_Sheo",
+        "logic": "Defeated_Pantheon_2",
+        "Stateless": true
+    },
+    {
+        "name": "Defeated_Winged_Nosk",
+        "logic": "Defeated_Pantheon_5",
+        "Stateless": true
+    },
+    {
+        "name": "Defeated_Sisters_of_Battle",
+        "logic": "Defeated_Pantheon_5",
+        "Stateless": true
+    },
+    {
+        "name": "Attuned_Combat",
+        "logic": "NAILCOMBAT + SPELLS | SPICYCOMBATSKIPS",
+        "Stateless": true
+    },
+    {
+        "name": "Ascended_Combat",
+        "logic": "NAILCOMBAT + SPELLS>1 + QUAKE + (FULLDASH | ANYDASH + MILDCOMBATSKIPS) | SPICYCOMBATSKIPS",
+        "Stateless": true
+    },
+    {
+        "name": "Radiant_Combat",
+        "logic":  "NAILCOMBAT + QUAKE>1 + (FULLSHADOWDASH | ANYSHADOWDASH + MILDCOMBATSKIPS) | SPICYCOMBATSKIPS",
+        "Stateless": true
+    }
+]
