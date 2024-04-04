@@ -13,6 +13,8 @@ using System.IO;
 using System.Reflection;
 using System.Linq;
 using MenuChanger.MenuElements;
+using System;
+using RandomizerCore.StringLogic;
 
 
 namespace GodhomeRandomizer.Manager
@@ -238,16 +240,26 @@ namespace GodhomeRandomizer.Manager
                     "Elder_Hu", "Galien", "Markoth", "Marmu", "No_Eyes", "Xero", "Gorb",
                     "Radiance", "Soul_Warrior", "Paintmaster_Sheo"
                 ];
+                bool regularBossIncluded = lmb.LogicLookup.TryGetValue("Defeated_Any_Gruz_Mother", out _);
+                bool pantheonBossIncluded = lmb.LogicLookup.TryGetValue("Defeated_Any_Pure_Vessel", out _);
                 foreach (string entry in entries)
                 {
-                    lmb.DoLogicEdit(new($"Defeated_Any_{entry}", $"ORIG | *Bronze_Mark-{entry}"));
+                    bool entryIncluded = lmb.LogicLookup.TryGetValue($"Defeated_Any_{entry}", out _);
+                    if (entryIncluded)
+                        lmb.DoLogicEdit(new($"Defeated_Any_{entry}", $"ORIG | *Bronze_Mark-{entry}"));
                 }
-                lmb.DoLogicEdit(new("Defeated_Any_Hornet", "ORIG | *Bronze_Mark-Hornet_1"));
-                lmb.DoLogicEdit(new("Defeated_Any_Oblobble", "ORIG | *Bronze_Mark-Oblobbles"));
-                lmb.DoLogicEdit(new("Defeated_Any_The_Collector", "ORIG | *Bronze_Mark-Collector"));
-                lmb.DoLogicEdit(new("Defeated_Any_Watcher_Knight", "ORIG | *Bronze_Mark-Watcher_Knights"));
-                lmb.DoLogicEdit(new("Defeated_Any_Great_Nailsage_Sly", "ORIG | *Bronze_Mark-Sly"));
-                lmb.DoLogicEdit(new("Defeated_Any_Nailmasters_Oro_And_Mato", "ORIG | *Bronze_Mark-Nailmaster_Brothers"));
+                if (regularBossIncluded)
+                {
+                    lmb.DoLogicEdit(new("Defeated_Any_Hornet", "ORIG | *Bronze_Mark-Hornet_1"));
+                    lmb.DoLogicEdit(new("Defeated_Any_Oblobble", "ORIG | *Bronze_Mark-Oblobbles"));
+                    lmb.DoLogicEdit(new("Defeated_Any_The_Collector", "ORIG | *Bronze_Mark-Collector"));
+                    lmb.DoLogicEdit(new("Defeated_Any_Watcher_Knight", "ORIG | *Bronze_Mark-Watcher_Knights"));
+                }
+                if (pantheonBossIncluded)
+                {
+                    lmb.DoLogicEdit(new("Defeated_Any_Great_Nailsage_Sly", "ORIG | *Bronze_Mark-Sly"));
+                    lmb.DoLogicEdit(new("Defeated_Any_Nailmasters_Oro_And_Mato", "ORIG | *Bronze_Mark-Nailmaster_Brothers"));
+                }
             }
 
             // Add HOG mark requirements to Void Idol logic.
@@ -292,7 +304,8 @@ namespace GodhomeRandomizer.Manager
             {
                 int multiplier = (int)panthSettings.PantheonsIncluded;
                 int bindCount = (panthSettings.Nail ? 1 : 0) + (panthSettings.Shell ? 1 : 0) + (panthSettings.Charms ? 1 : 0) + (panthSettings.Soul ? 1 : 0);
-                if (multiplier * bindCount > 0)
+                bool weatheredMask = lmb.LogicLookup.TryGetValue("Journal_Entry-Weathered_Mask", out _);
+                if (multiplier * bindCount > 0 && weatheredMask)
                     lmb.DoLogicEdit(new("Journal_Entry-Weathered_Mask", $"ORIG + Pantheon_Bindings > {(multiplier * bindCount) - 1}"));
             }
         }

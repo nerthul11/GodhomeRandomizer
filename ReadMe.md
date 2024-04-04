@@ -20,10 +20,7 @@ Ever got the feeling that doing all 5 pantheons with every single binding was ju
 
 This allows you to randomize the obtention status of the Pantheon Bindings (Nail/Shell/Charms/Soul) both individually and all at once, and also the status of a hitless Pantheon run.
 
-NOTE: To obtain Godhome Lifeblood you need two things.
-- Getting a binding item.
-- Complete its corresponding Pantheon, with or without bindings.
-- Getting the "All Bindings" check doesn't add to the lifeblood counter.
+__NOTE:__ To obtain Godhome Lifeblood you need to get the individual binding item (or location if vanilla). Getting the "All Bindings" check doesn't add to the lifeblood counter.
 
 All this can add up to a whopping total of __206__ new items and locations to the Randomization pool!
 

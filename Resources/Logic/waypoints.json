@@ -25,6 +25,16 @@
         "Stateless": true
     },
     {
+        "name": "Hit_Pantheon_5_Unlock_Orb",
+        "logic": "GG_Atrium + WINGS + ANYCLAW + ((VOIDHEART + Defeated_Pantheon_1 + Defeated_Pantheon_2 + Defeated_Pantheon_3 + Defeated_Pantheon_4) | (PANTHEON_KEY_5 ? FALSE))",
+        "Stateless": true
+    },
+    {
+        "name": "GG_Atrium_Roof",
+        "logic": "GG_Atrium + Hit_Pantheon_5_Unlock_Orb + LEFTCLAW",
+        "Stateless": false
+    },
+    {
         "name": "Defeated_Pantheon_5",
         "logic": "GG_Atrium_Roof + WINGS + ANYCLAW + ((Defeated_Pantheon_1 + Defeated_Pantheon_2 + Defeated_Pantheon_3 + Defeated_Pantheon_4 + COMBAT[Radiance]) | (PANTHEON_KEY_5 ? FALSE) + COMBAT[Pantheon_5])",
         "Stateless": true

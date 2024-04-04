@@ -9,7 +9,7 @@ namespace GodhomeRandomizer
     public class GodhomeRandomizer : Mod, ILocalSettings<LocalSettings>, IGlobalSettings<GlobalSettings>
     {
         new public string GetName() => "GodhomeRandomizer";
-        public override string GetVersion() => "2.0.0.0";
+        public override string GetVersion() => "2.0.0.1";
 
         private static GodhomeRandomizer _instance;
         public GodhomeRandomizer() : base()
@@ -36,11 +36,6 @@ namespace GodhomeRandomizer
             {
                 Log("Initializing");
                 GodhomeManager.Hook();
-                if (LS.RandomizeStatueAccess == AccessMode.AllUnlocked)
-                {
-                    Log("Always true");
-                    On.BossScene.IsUnlocked += AlwaysTrue;
-                }
                 if (ModHooks.GetMod("RandoSettingsManager") is Mod)
                 {
                     RSM_Interop.Hook();
@@ -48,13 +43,7 @@ namespace GodhomeRandomizer
                 Log("Initialized");
             }
         }
-        private static bool AlwaysTrue(On.BossScene.orig_IsUnlocked orig, BossScene self, BossSceneCheckSource source)
-        {
-            if (GameManager.instance.sceneName == SceneNames.GG_Workshop || GodhomeManager.SaveSettings.ApplyAccessToPantheons)
-                return true;
-            else
-                return orig(self, source);
-        }
+
         public void OnLoadGlobal(GlobalSettings s) => GS = s;
         public GlobalSettings OnSaveGlobal() => GS;
         public void OnLoadLocal(LocalSettings s) => LS = s;
