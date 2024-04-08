@@ -62,6 +62,11 @@ jobs:
         run: |
           wget https://github.com/homothetyhk/RandomizerMod/releases/latest/download/RandomizerMod.zip -O RandomizerMod.zip
           unzip -o RandomizerMod.zip -d References
+
+      - name: Fetch Satchel
+        run: |
+          wget https://github.com/PrashantMohta/Satchel/releases/latest/download/Satchel.zip -O Satchel.zip
+          unzip -o Satchel.zip -d References
           
       - name: Setup MSBuild
         run: sudo apt-get install -y nuget mono-devel mono-xbuild
