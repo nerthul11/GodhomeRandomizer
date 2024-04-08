@@ -32,6 +32,7 @@ namespace GodhomeRandomizer.Manager
             SaveSettings.RandomizeStatueAccess = hogSettings.RandomizeStatueAccess;
             SaveSettings.ApplyAccessToPantheons = panthSettings.ApplyAccessToPantheons;
             SaveSettings.PantheonsIncluded = panthSettings.PantheonsIncluded;
+            SaveSettings.Completion = panthSettings.Completion;
             SaveSettings.Nail = panthSettings.Nail;
             SaveSettings.Shell = panthSettings.Shell;
             SaveSettings.Charms = panthSettings.Charms;

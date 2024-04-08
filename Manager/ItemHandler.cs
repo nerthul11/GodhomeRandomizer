@@ -7,6 +7,9 @@ using System.IO;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Linq;
+using ItemChanger.UIDefs;
+using ItemChanger.Tags;
+using System.Runtime.InteropServices;
 using System;
 
 namespace GodhomeRandomizer.Manager {
@@ -18,7 +21,7 @@ namespace GodhomeRandomizer.Manager {
             if (GodhomeManager.GlobalSettings.Enabled)
             {
                 RequestBuilder.OnUpdate.Subscribe(100f, AddHOGObjects);
-                RequestBuilder.OnUpdate.Subscribe(100f, AddBindingObjects);
+                RequestBuilder.OnUpdate.Subscribe(100f, AddPantheonObjects);
             }            
         }
 
@@ -51,14 +54,47 @@ namespace GodhomeRandomizer.Manager {
             List<BindingLocation> locationListB = jsonSerializer.Deserialize<List<BindingLocation>>(new JsonTextReader(locationReaderB));
             foreach (BindingLocation location in locationListB)
                 Finder.DefineCustomLocation(location);
+
+            LifebloodItem lifebloodItem = new()
+            {
+                name = "Godhome_Lifeblood",
+                UIDef = new MsgUIDef {
+                    name = new BoxedString("Godhome Lifeblood"),
+                    shopDesc = new BoxedString("It sparks with the lifeblood of attuned beings."),
+                    sprite = new GodhomeSprite("Lifeblood")
+                }
+            };
+            Finder.DefineCustomItem(lifebloodItem);
+            LifebloodLocation lifebloodLocation = new()
+            {
+                name = "Godhome_Lifeblood",
+                sceneName = "GG_Blue_Room",
+                flingType = FlingType.DirectDeposit,
+                tags = [LifebloodTag()]
+
+            };
+            Finder.DefineCustomLocation(lifebloodLocation);
         }
 
-        private static void AddBindingObjects(RequestBuilder builder)
+        private static Tag LifebloodTag()
+        {
+            InteropTag tag = new();
+            tag.Properties["ModSource"] = "GodhomeRandomizer";
+            tag.Properties["PinSprite"] = new GodhomeSprite("Lifeblood");
+            tag.Properties["VanillaItem"] = "Godhome_Lifeblood";
+            tag.Properties["MapLocations"] = new (string, float, float)[] {("GG_Waterways", 0.3f, 0.3f)};
+            tag.Message = "RandoSupplementalMetadata";
+            return tag;
+        }
+
+        private static void AddPantheonObjects(RequestBuilder builder)
         {
             Assembly assembly = Assembly.GetExecutingAssembly();
             JsonSerializer jsonSerializer = new() {TypeNameHandling = TypeNameHandling.Auto};
             GodhomeRandomizerSettings.Panth settings = GodhomeManager.GlobalSettings.Pantheons;
             List<string> availableSettings = [];
+            if (settings.Completion == true)
+                availableSettings.Add("Complete");
             if (settings.Nail == true || settings.AllAtOnce == true)
                 availableSettings.Add("Nail");
             if (settings.Shell == true || settings.AllAtOnce == true)
@@ -90,6 +126,13 @@ namespace GodhomeRandomizer.Manager {
             {
                 if (location.pantheonID <= settings.PantheonsIncluded && availableSettings.Contains(location.bindingType))
                     builder.AddLocationByName(location.name);
+            }
+
+            // Add lifeblood if available
+            if (settings.Lifeblood)
+            {
+                builder.AddItemByName("Godhome_Lifeblood");
+                builder.AddLocationByName("Godhome_Lifeblood");
             }
         }
 

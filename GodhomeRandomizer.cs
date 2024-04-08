@@ -9,7 +9,7 @@ namespace GodhomeRandomizer
     public class GodhomeRandomizer : Mod, ILocalSettings<LocalSettings>, IGlobalSettings<GlobalSettings>
     {
         new public string GetName() => "GodhomeRandomizer";
-        public override string GetVersion() => "2.0.0.1";
+        public override string GetVersion() => "2.0.1.0";
 
         private static GodhomeRandomizer _instance;
         public GodhomeRandomizer() : base()
@@ -81,6 +81,8 @@ namespace GodhomeRandomizer
                 pantheon.SetVariable(bindingType, true);
                 
             LocalSettings settings = GodhomeManager.SaveSettings;
+            if (settings.Completion)
+                orig.completed = pantheon.Complete;
             if (settings.Nail)
                 orig.boundNail = pantheon.Nail;
             if (settings.Shell)

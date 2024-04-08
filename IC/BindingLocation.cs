@@ -99,6 +99,7 @@ namespace GodhomeRandomizer.IC
             string activeBindings = bindings.ToString();
             GodhomeManager.SaveSettings.CurrentPantheon = int.Parse(playerData[playerData.Length-1].ToString());
             PantheonBindings settings = GodhomeManager.SaveSettings.CurrentPantheonRun;
+            settings.SetVariable("Complete", true);
             settings.SetVariable("Nail", activeBindings.Contains("Nail"));
             settings.SetVariable("Shell", activeBindings.Contains("Shell"));
             settings.SetVariable("Charms", activeBindings.Contains("Charms"));

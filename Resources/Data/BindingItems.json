@@ -1,4 +1,35 @@
-[    
+[
+    {
+        "$type": "GodhomeRandomizer.IC.BindingItem, GodhomeRandomizer",
+        "name": "Pantheon_Master-Completion",
+        "pantheonID": 1,
+        "bindingType": "Complete",
+        "UIDef": {
+            "$type": "ItemChanger.UIDefs.MsgUIDef, ItemChanger",
+            "name": {
+                "$type": "ItemChanger.BoxedString, ItemChanger",
+                "Value": "Pantheon of the Master - Completion"
+              },
+            "shopDesc": {
+                "$type": "ItemChanger.BoxedString, ItemChanger",
+                "Value": "You are the Hollow Knight."
+            },
+            "sprite": {
+                "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+                "Key": "Complete"
+            }
+        },
+        "tags": [
+            {
+              "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+              "Properties": {
+                "ModSource": "GodhomeRandomizer",
+                "PoolGroup": "Bindings"
+              }
+            }
+          ],
+        "obtainState": "Unobtained"
+    },
     {
         "$type": "GodhomeRandomizer.IC.BindingItem, GodhomeRandomizer",
         "name": "Pantheon_Master-Nail_Binding",
@@ -172,6 +203,37 @@
           "sprite": {
               "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "Hitless"
+          }
+      },
+      "tags": [
+          {
+            "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+            "Properties": {
+              "ModSource": "GodhomeRandomizer",
+              "PoolGroup": "Bindings"
+            }
+          }
+        ],
+      "obtainState": "Unobtained"
+    },
+    {
+      "$type": "GodhomeRandomizer.IC.BindingItem, GodhomeRandomizer",
+      "name": "Pantheon_Artist-Completion",
+      "pantheonID": 2,
+      "bindingType": "Complete",
+      "UIDef": {
+          "$type": "ItemChanger.UIDefs.MsgUIDef, ItemChanger",
+          "name": {
+              "$type": "ItemChanger.BoxedString, ItemChanger",
+              "Value": "Pantheon of the Artist - Completion"
+            },
+          "shopDesc": {
+              "$type": "ItemChanger.BoxedString, ItemChanger",
+              "Value": "You are the Hollow Knight."
+          },
+          "sprite": {
+              "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+              "Key": "Complete"
           }
       },
       "tags": [
@@ -373,6 +435,37 @@
     },
     {
       "$type": "GodhomeRandomizer.IC.BindingItem, GodhomeRandomizer",
+      "name": "Pantheon_Sage-Completion",
+      "pantheonID": 3,
+      "bindingType": "Complete",
+      "UIDef": {
+          "$type": "ItemChanger.UIDefs.MsgUIDef, ItemChanger",
+          "name": {
+              "$type": "ItemChanger.BoxedString, ItemChanger",
+              "Value": "Pantheon of the Sage - Completion"
+            },
+          "shopDesc": {
+              "$type": "ItemChanger.BoxedString, ItemChanger",
+              "Value": "You are the Hollow Knight."
+          },
+          "sprite": {
+              "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+              "Key": "Complete"
+          }
+      },
+      "tags": [
+          {
+            "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+            "Properties": {
+              "ModSource": "GodhomeRandomizer",
+              "PoolGroup": "Bindings"
+            }
+          }
+        ],
+      "obtainState": "Unobtained"
+    },
+    {
+      "$type": "GodhomeRandomizer.IC.BindingItem, GodhomeRandomizer",
       "name": "Pantheon_Sage-Nail_Binding",
       "pantheonID": 3,
       "bindingType": "Nail",
@@ -559,6 +652,37 @@
     },
     {
       "$type": "GodhomeRandomizer.IC.BindingItem, GodhomeRandomizer",
+      "name": "Pantheon_Knight-Completion",
+      "pantheonID": 4,
+      "bindingType": "Complete",
+      "UIDef": {
+          "$type": "ItemChanger.UIDefs.MsgUIDef, ItemChanger",
+          "name": {
+              "$type": "ItemChanger.BoxedString, ItemChanger",
+              "Value": "Pantheon of the Knight - Completion"
+            },
+          "shopDesc": {
+              "$type": "ItemChanger.BoxedString, ItemChanger",
+              "Value": "You are the Hollow Knight."
+          },
+          "sprite": {
+              "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+              "Key": "Complete"
+          }
+      },
+      "tags": [
+          {
+            "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+            "Properties": {
+              "ModSource": "GodhomeRandomizer",
+              "PoolGroup": "Bindings"
+            }
+          }
+        ],
+      "obtainState": "Unobtained"
+    },
+    {
+      "$type": "GodhomeRandomizer.IC.BindingItem, GodhomeRandomizer",
       "name": "Pantheon_Knight-Nail_Binding",
       "pantheonID": 4,
       "bindingType": "Nail",
@@ -730,6 +854,37 @@
           "sprite": {
               "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "Hitless"
+          }
+      },
+      "tags": [
+          {
+            "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+            "Properties": {
+              "ModSource": "GodhomeRandomizer",
+              "PoolGroup": "Bindings"
+            }
+          }
+        ],
+      "obtainState": "Unobtained"
+    },
+    {
+      "$type": "GodhomeRandomizer.IC.BindingItem, GodhomeRandomizer",
+      "name": "Pantheon_Hallownest-Completion",
+      "pantheonID": 5,
+      "bindingType": "Complete",
+      "UIDef": {
+          "$type": "ItemChanger.UIDefs.MsgUIDef, ItemChanger",
+          "name": {
+              "$type": "ItemChanger.BoxedString, ItemChanger",
+              "Value": "Pantheon of Hallownest - Completion"
+            },
+          "shopDesc": {
+              "$type": "ItemChanger.BoxedString, ItemChanger",
+              "Value": "You are the Hollow Knight."
+          },
+          "sprite": {
+              "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+              "Key": "Complete"
           }
       },
       "tags": [

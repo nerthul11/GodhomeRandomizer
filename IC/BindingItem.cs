@@ -1,7 +1,5 @@
-using GodhomeRandomizer.Manager;
 using GodhomeRandomizer.Settings;
 using ItemChanger;
-using System;
 
 namespace GodhomeRandomizer.IC
 {

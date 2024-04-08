@@ -64,11 +64,13 @@ namespace GodhomeRandomizer.Settings
                 pantheonElementFactory.ElementLookup["PantheonsIncluded"]
             ]);
             VerticalItemPanel bindLeftSettingHolder = new(ghPage, Vector2.zero, 60, false, [
+                pantheonElementFactory.ElementLookup["Completion"],
                 pantheonElementFactory.ElementLookup["Nail"],
                 pantheonElementFactory.ElementLookup["Charms"],
                 pantheonElementFactory.ElementLookup["AllAtOnce"]
             ]);
             VerticalItemPanel bindRightSettingHolder = new(ghPage, Vector2.zero, 60, false, [
+                pantheonElementFactory.ElementLookup["Lifeblood"],
                 pantheonElementFactory.ElementLookup["Shell"],
                 pantheonElementFactory.ElementLookup["Soul"],
                 pantheonElementFactory.ElementLookup["Hitless"]

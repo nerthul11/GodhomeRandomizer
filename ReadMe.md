@@ -20,9 +20,13 @@ Ever got the feeling that doing all 5 pantheons with every single binding was ju
 
 This allows you to randomize the obtention status of the Pantheon Bindings (Nail/Shell/Charms/Soul) both individually and all at once, and also the status of a hitless Pantheon run.
 
-__NOTE:__ To obtain Godhome Lifeblood you need to get the individual binding item (or location if vanilla). Getting the "All Bindings" check doesn't add to the lifeblood counter.
+__NOTE:__ To obtain Godhome Lifeblood and Weathered Mask you need to get the individual binding item (or location if vanilla). Getting the "All Bindings" check doesn't add to the completion counter.
 
-All this can add up to a whopping total of __206__ new items and locations to the Randomization pool!
+### Lifeblood
+
+The mysterious blue room that contains a giant lifeblood cocoon can also be randomized. If you obtain the item, lifeseeds will spawn on Godhome's resting rooms. The room itself will now grant a random item instead of that bonification.
+
+All this can add up to a whopping total of __212__ new items and locations to the Randomization pool!
 
 ## Settings:
 - Enabled --> Boolean to define if the connection should be active or not.
@@ -34,6 +38,8 @@ All this can add up to a whopping total of __206__ new items and locations to th
 ### Pantheons
 - Apply access to Pantheon --> Defines if the access rules provided to Hall of Gods should also apply to Pantheons or leave it vanilla.
 - Pantheons included --> Defines the top Pantheon to randomize. IE, if "Sage" is selected, Pantheons 1, 2 and 3 will be added to the pool.
+- Completed: Checks if a Pantheon is completed or not.
+- Lifeblood: Randomizes the blue room reward.
 - Bindings:
     - Nail --> Checks if the nail binding is randomized or not.
     - Shell --> Checks if the shell binding is randomized or not.

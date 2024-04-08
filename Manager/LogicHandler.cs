@@ -12,9 +12,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Linq;
-using MenuChanger.MenuElements;
-using System;
-using RandomizerCore.StringLogic;
 
 
 namespace GodhomeRandomizer.Manager
@@ -26,14 +23,13 @@ namespace GodhomeRandomizer.Manager
             GodhomeRandomizerSettings settings = GodhomeManager.GlobalSettings;
             if (settings.Enabled)
             {
-                RCData.RuntimeLogicOverride.Subscribe(0f, AddHOGLogic);
-                RCData.RuntimeLogicOverride.Subscribe(0f, AddBindingLogic);
+                RCData.RuntimeLogicOverride.Subscribe(1f, AddHOGLogic);
+                RCData.RuntimeLogicOverride.Subscribe(1f, AddPantheonLogic);
                 if (ModHooks.GetMod("LostArtifacts") is Mod)
-                    RCData.RuntimeLogicOverride.Subscribe(1f, EditLostArtifacts);
+                    RCData.RuntimeLogicOverride.Subscribe(2f, EditLostArtifacts);
                 if (ModHooks.GetMod("TheRealJournalRando") is Mod)
                     RCData.RuntimeLogicOverride.Subscribe(11f, EditTRJR);
-                if (settings.Pantheons.ApplyAccessToPantheons)
-                    RCData.RuntimeLogicOverride.Subscribe(1024f, EditPantheonAccessLogic);
+                RCData.RuntimeLogicOverride.Subscribe(2048f, EditPantheonAccessLogic);
             }
         }
 
@@ -85,6 +81,12 @@ namespace GodhomeRandomizer.Manager
                     if (dependency is not null)
                         lmb.DoLogicEdit(new($"Bronze_Mark-{boss}", $"ORIG + Defeated_{dependency}"));
                 }
+                if (settings.RandomizeStatueAccess == AccessMode.AllUnlocked)
+                {
+                    lmb.DoLogicEdit(new($"Bronze_Mark-{boss}", $"{position}_STATUE + Attuned_Combat + COMBAT[{boss}]"));
+                    if (item.isDreamBoss)
+                        lmb.DoLogicEdit(new($"Bronze_Mark-{boss}", $"ORIG + DREAMNAIL"));
+                }
 
                 // Silver mark logic
                 lmb.AddLogicDef(new($"Silver_Mark-{boss}", $"{position}_STATUE + Ascended_Combat + GG_{boss}>0 + COMBAT[{boss}]"));
@@ -99,10 +101,16 @@ namespace GodhomeRandomizer.Manager
                     if (dependency is not null)
                         lmb.DoLogicEdit(new($"Silver_Mark-{boss}", $"ORIG + Defeated_{dependency}"));                        
                 }
+                if (settings.RandomizeStatueAccess == AccessMode.AllUnlocked)
+                {
+                    lmb.DoLogicEdit(new($"Silver_Mark-{boss}", $"{position}_STATUE + Ascended_Combat + COMBAT[{boss}]"));
+                    if (item.isDreamBoss)
+                        lmb.DoLogicEdit(new($"Silver_Mark-{boss}", $"ORIG + DREAMNAIL"));
+                }
 
                 // Gold mark logic
                 lmb.AddLogicDef(new($"Gold_Mark-{boss}", $"{position}_STATUE + Radiant_Combat + GG_{boss}>{1 + req} + COMBAT[{boss}]"));
-                if (dependency is not null)
+                if (dependency is not null && settings.RandomizeStatueAccess < AccessMode.AllUnlocked)
                     lmb.DoLogicEdit(new($"Gold_Mark-{boss}", $"ORIG + GG_{dependency}>0"));
                 if (item.isDreamBoss)
                     lmb.DoLogicEdit(new($"Gold_Mark-{boss}", $"ORIG + DREAMNAIL"));
@@ -116,27 +124,61 @@ namespace GodhomeRandomizer.Manager
             }
         }
 
-        private static void AddBindingLogic(GenerationSettings gs, LogicManagerBuilder lmb)
+        private static void AddPantheonLogic(GenerationSettings gs, LogicManagerBuilder lmb)
         {
+            // Add logic term
+            GodhomeRandomizerSettings.Panth settings = GodhomeManager.GlobalSettings.Pantheons;
+            lmb.GetOrAddTerm($"Pantheon_Bindings", TermType.Int);
+            if (settings.Completion)
+            {
+                if (settings.PantheonsIncluded >= PantheonLimitMode.Master)
+                    lmb.GetOrAddTerm($"PANTHEON_COMPLETION_1");
+                if (settings.PantheonsIncluded >= PantheonLimitMode.Artist)
+                    lmb.GetOrAddTerm($"PANTHEON_COMPLETION_2");
+                if (settings.PantheonsIncluded >= PantheonLimitMode.Sage)
+                    lmb.GetOrAddTerm($"PANTHEON_COMPLETION_3");
+                if (settings.PantheonsIncluded >= PantheonLimitMode.Knight)
+                    lmb.GetOrAddTerm($"PANTHEON_COMPLETION_4");
+                if (settings.PantheonsIncluded >= PantheonLimitMode.Hallownest)
+                    lmb.GetOrAddTerm($"PANTHEON_COMPLETION_5");
+            }
+
             // Read item definitions
             Assembly assembly = Assembly.GetExecutingAssembly();
             JsonSerializer jsonSerializer = new() {TypeNameHandling = TypeNameHandling.Auto};
             using Stream itemStream = assembly.GetManifestResourceStream("GodhomeRandomizer.Resources.Data.BindingItems.json");
             StreamReader itemReader = new(itemStream);
             List<BindingItem> itemList = jsonSerializer.Deserialize<List<BindingItem>>(new JsonTextReader(itemReader));
-            lmb.GetOrAddTerm($"Pantheon_Bindings", TermType.Int);
+            
             foreach (BindingItem item in itemList)
             {
-                lmb.AddItem(new StringItemTemplate(item.name, "Pantheon_Bindings++"));
+                
                 lmb.AddLogicDef(new(item.name, $"Defeated_Pantheon_{(int)item.pantheonID}"));
                 if (item.bindingType == "Hitless" || item.bindingType == "AllAtOnce")
                 {
+                    lmb.AddItem(new EmptyItem(item.name));
                     lmb.DoLogicEdit(new(item.name, "ORIG + Radiant_Combat"));
+                }
+                else if (item.bindingType != "Complete")
+                {
+                    lmb.AddItem(new StringItemTemplate(item.name, "Pantheon_Bindings++"));
+                    lmb.DoLogicEdit(new(item.name, "ORIG + Ascended_Combat"));
                 }
                 else
                 {
-                    lmb.DoLogicEdit(new(item.name, "ORIG + Ascended_Combat"));
+                    lmb.AddItem(new BoolItem(item.name, lmb.GetTerm($"PANTHEON_COMPLETION_{(int)item.pantheonID}")));
                 }
+            }
+
+            // Add lifeblood logic
+            lmb.AddItem(new EmptyItem("Godhome_Lifeblood"));
+            lmb.AddLogicDef(new("Godhome_Lifeblood", "GG_Blue_Room + DREAMNAIL"));
+            
+            int multiplier = (int)settings.PantheonsIncluded;
+            int bindCount = (settings.Nail ? 1 : 0) + (settings.Shell ? 1 : 0) + (settings.Charms ? 1 : 0) + (settings.Soul ? 1 : 0);
+            if (multiplier * bindCount > 12)
+            {
+                lmb.DoLogicEdit(new("GG_Blue_Room", $"ORIG + Pantheon_Bindings>{multiplier * bindCount - 13}"));
             }
         }
 
@@ -152,10 +194,10 @@ namespace GodhomeRandomizer.Manager
 
             if (settings.RandomizeStatueAccess == AccessMode.AllUnlocked)
             {
-                lmb.DoLogicEdit(new("Defeated_Pantheon_1", "GG_Atrium + PANTHEON_KEY_1 ? TRUE + COMBAT[Pantheon_1]"));
-                lmb.DoLogicEdit(new("Defeated_Pantheon_2", "GG_Atrium + PANTHEON_KEY_2 ? TRUE + COMBAT[Pantheon_2]"));
-                lmb.DoLogicEdit(new("Defeated_Pantheon_3", "GG_Atrium + PANTHEON_KEY_3 ? TRUE + COMBAT[Pantheon_3]"));
-                lmb.DoLogicEdit(new("Defeated_Pantheon_4", "GG_Atrium + PANTHEON_KEY_4 ? TRUE + COMBAT[Pantheon_4]"));
+                lmb.DoLogicEdit(new("Opened_Pantheon_1", "GG_Atrium + PANTHEON_KEY_1 ? TRUE"));
+                lmb.DoLogicEdit(new("Opened_Pantheon_2", "GG_Atrium + PANTHEON_KEY_2 ? TRUE"));
+                lmb.DoLogicEdit(new("Opened_Pantheon_3", "GG_Atrium + PANTHEON_KEY_3 ? TRUE"));
+                lmb.DoLogicEdit(new("Opened_Pantheon_4", "GG_Atrium + (PANTHEON_COMPLETION_1 ? Defeated_Pantheon_1 + PANTHEON_COMPLETION_2 ? Defeated_Pantheon_2 + PANTHEON_COMPLETION_3 ? Defeated_Pantheon_3 | (PANTHEON_KEY_4 ? FALSE))"));
             }
             if (settings.RandomizeStatueAccess == AccessMode.Randomized)
             {
@@ -171,7 +213,7 @@ namespace GodhomeRandomizer.Manager
                             bossLogic += $" + GG_{boss}>0";
                     }
                 }
-                lmb.DoLogicEdit(new("Defeated_Pantheon_1", $"GG_Atrium + (({bossLogic}) | (PANTHEON_KEY_1 ? FALSE)) + COMBAT[Pantheon_1]"));
+                lmb.DoLogicEdit(new("Opened_Pantheon_2", $"GG_Atrium + (({bossLogic}) | (PANTHEON_KEY_2 ? FALSE))"));
                 
                 bossLogic = "";
                 foreach (StatueItem item in itemList)
@@ -185,7 +227,7 @@ namespace GodhomeRandomizer.Manager
                             bossLogic += $" + GG_{boss}>0";
                     }
                 }
-                lmb.DoLogicEdit(new("Defeated_Pantheon_2", $"GG_Atrium + (({bossLogic}) | (PANTHEON_KEY_2 ? FALSE)) + COMBAT[Pantheon_2]"));
+                lmb.DoLogicEdit(new("Opened_Pantheon_1", $"GG_Atrium + (({bossLogic}) | (PANTHEON_KEY_1 ? FALSE))"));
                 
                 bossLogic = "";
                 foreach (StatueItem item in itemList)

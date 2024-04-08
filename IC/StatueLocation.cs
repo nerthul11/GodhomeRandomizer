@@ -23,6 +23,7 @@ namespace GodhomeRandomizer.IC
         {
             On.BossScene.IsUnlocked -= UnlockCheck;
             On.BossStatue.SetPlaqueState -= GrantUnlockItem;
+            On.BossChallengeUI.LoadBoss_int_bool -= StoreBossLevel;
             On.BossSceneController.Awake -= GrantCombatItem;
             On.BossStatue.UpdateDetails -= GetDetails;
         }
@@ -31,6 +32,7 @@ namespace GodhomeRandomizer.IC
         {
             On.BossScene.IsUnlocked += UnlockCheck;
             On.BossStatue.SetPlaqueState += GrantUnlockItem;
+            On.BossChallengeUI.LoadBoss_int_bool += StoreBossLevel;
             On.BossSceneController.Awake += GrantCombatItem;
             On.BossStatue.UpdateDetails += GetDetails;
         }
@@ -94,8 +96,12 @@ namespace GodhomeRandomizer.IC
 
         private void GrantCombatItem(On.BossSceneController.orig_Awake orig, BossSceneController self)
         {
+            string scene = self.gameObject.scene.name;
             bool isPantheon = GodhomeRandomizer.Instance.LS.CurrentPantheon > 0;
-            if ((int)statueTier == self.BossLevel && battleScene == self.gameObject.scene.name && !isPantheon)
+            bool levelValidation = (int)statueTier <= GodhomeRandomizer.Instance.LS.CurrentBossLevel;
+            bool exceptions = battleScene.Contains("Nosk_Hornet") || battleScene.Contains("Mantis_Lords");
+            bool sceneValidation = (exceptions && battleScene == scene) || scene.Contains(battleScene);
+            if (!isPantheon && levelValidation && sceneValidation)
             {
                 self.OnBossesDead += delegate ()
                 {
@@ -112,6 +118,12 @@ namespace GodhomeRandomizer.IC
                 self.OnBossSceneComplete += self.DoDreamReturn;  
             };
             orig(self);
+        }
+
+        private void StoreBossLevel(On.BossChallengeUI.orig_LoadBoss_int_bool orig, BossChallengeUI self, int level, bool doHideAnim)
+        {
+            GodhomeRandomizer.Instance.LS.CurrentBossLevel = level;
+            orig(self, level, doHideAnim);
         }
     }
 }

@@ -12,6 +12,7 @@ namespace GodhomeRandomizer.Settings
         public TierLimitMode RandomizeTiers { get; set; }
         public bool ApplyAccessToPantheons { get; set; }
         public PantheonLimitMode PantheonsIncluded { get; set; } = PantheonLimitMode.None;
+        public bool Completion { get; set; } = false;
         public bool Nail { get; set; } = false;
         public bool Shell { get; set; } = false;
         public bool Charms { get; set; } = false;
@@ -21,6 +22,7 @@ namespace GodhomeRandomizer.Settings
         public HallOfGodsCompletion HallOfGodsCompletion { get; set; } = new();
         public PantheonCompletion PantheonCompletion { get; set; } = new();
         public int CurrentPantheon { get; set; } = 0;
+        public int CurrentBossLevel { get; set; } = 0;
         public PantheonBindings CurrentPantheonRun { get; set; } = new();   
     }
 
@@ -88,6 +90,7 @@ namespace GodhomeRandomizer.Settings
 
     public class PantheonBindings
     {
+        public bool Complete { get; set; }
         public bool Nail { get; set; }
         public bool Shell { get; set; }
         public bool Charms { get; set; }
