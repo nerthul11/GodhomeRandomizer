@@ -1,6 +1,7 @@
 using System.Linq;
 using ItemChanger;
 using ItemChanger.Locations;
+using ItemChanger.Tags;
 using ItemChanger.Util;
 using Satchel;
 
@@ -8,6 +9,24 @@ namespace GodhomeRandomizer.IC
 {    
     public class LifebloodLocation : AutoLocation
     {
+        public LifebloodLocation()
+        {
+            name = "Godhome_Lifeblood";
+            sceneName = "GG_Blue_Room";
+            flingType = FlingType.DirectDeposit;
+            tags = [LifebloodTag()];
+        }
+
+        private static Tag LifebloodTag()
+        {
+            InteropTag tag = new();
+            tag.Properties["ModSource"] = "GodhomeRandomizer";
+            tag.Properties["PinSprite"] = new GodhomeSprite("Lifeblood");
+            tag.Properties["VanillaItem"] = "Godhome_Lifeblood";
+            tag.Properties["MapLocations"] = new (string, float, float)[] {("GG_Waterways", 0.3f, 0.3f)};
+            tag.Message = "RandoSupplementalMetadata";
+            return tag;
+        }
 
         protected override void OnUnload()
         {
@@ -23,7 +42,7 @@ namespace GodhomeRandomizer.IC
 
         private void ForceCocoon(On.DeactivateIfPlayerdataTrue.orig_OnEnable orig, DeactivateIfPlayerdataTrue self)
         {
-            if (!Placement.AllObtained())
+            if (self.gameObject.name == "gg_blue_core" && !Placement.AllObtained())
                 return;
             orig(self);
         }

@@ -89,7 +89,7 @@ namespace GodhomeRandomizer.IC
                 {
                     BossStatue.Completion completion = PlayerData.instance.GetVariable<BossStatue.Completion>(statueStateName);
                     return completion.isUnlocked;
-                }   
+                }
             }
             return orig(self, source);
         }

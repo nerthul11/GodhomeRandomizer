@@ -11,8 +11,8 @@ namespace GodhomeRandomizer.Manager
         public static LocalSettings SaveSettings => GodhomeRandomizer.Instance.LS;
         public static void Hook()
         {
-            ItemHandler.Hook();
             LogicHandler.Hook();
+            ItemHandler.Hook();
             ConnectionMenu.Hook();
             SettingsLog.AfterLogSettings += AddFileSettings;
         }
