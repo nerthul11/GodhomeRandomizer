@@ -134,15 +134,15 @@ namespace GodhomeRandomizer.Manager
             if (settings.Completion)
             {
                 if (settings.PantheonsIncluded >= PantheonLimitMode.Master)
-                    lmb.GetOrAddTerm($"PANTHEON_COMPLETION_1");
+                    lmb.AddItem(new BoolItem("Pantheon_Master-Completion", lmb.GetOrAddTerm($"PANTHEON_COMPLETION_1")));
                 if (settings.PantheonsIncluded >= PantheonLimitMode.Artist)
-                    lmb.GetOrAddTerm($"PANTHEON_COMPLETION_2");
+                    lmb.AddItem(new BoolItem("Pantheon_Artist-Completion", lmb.GetOrAddTerm($"PANTHEON_COMPLETION_2")));
                 if (settings.PantheonsIncluded >= PantheonLimitMode.Sage)
-                    lmb.GetOrAddTerm($"PANTHEON_COMPLETION_3");
+                    lmb.AddItem(new BoolItem("Pantheon_Sage-Completion", lmb.GetOrAddTerm($"PANTHEON_COMPLETION_3")));
                 if (settings.PantheonsIncluded >= PantheonLimitMode.Knight)
-                    lmb.GetOrAddTerm($"PANTHEON_COMPLETION_4");
+                    lmb.AddItem(new BoolItem("Pantheon_Knight-Completion", lmb.GetOrAddTerm($"PANTHEON_COMPLETION_4")));
                 if (settings.PantheonsIncluded >= PantheonLimitMode.Hallownest)
-                    lmb.GetOrAddTerm($"PANTHEON_COMPLETION_5");
+                    lmb.AddItem(new BoolItem("Pantheon_Hallownest-Completion", lmb.GetOrAddTerm($"PANTHEON_COMPLETION_5")));
             }
 
             // Read item definitions
@@ -164,10 +164,6 @@ namespace GodhomeRandomizer.Manager
                 {
                     lmb.AddItem(new StringItemTemplate(item.name, "Pantheon_Bindings++"));
                     lmb.DoLogicEdit(new(item.name, "ORIG + Ascended_Combat"));
-                }
-                else if (settings.Completion)
-                {
-                    lmb.AddItem(new BoolItem(item.name, lmb.GetTerm($"PANTHEON_COMPLETION_{(int)item.pantheonID}")));
                 }
             }
 
