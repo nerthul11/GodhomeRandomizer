@@ -213,7 +213,7 @@ namespace GodhomeRandomizer.Manager
                             bossLogic += $" + GG_{boss}>0";
                     }
                 }
-                lmb.DoLogicEdit(new("Opened_Pantheon_2", $"GG_Atrium + (({bossLogic}) | (PANTHEON_KEY_2 ? FALSE))"));
+                lmb.DoLogicEdit(new("Opened_Pantheon_1", $"GG_Atrium + (({bossLogic}) | (PANTHEON_KEY_1 ? FALSE))"));
                 
                 bossLogic = "";
                 foreach (StatueItem item in itemList)
@@ -227,7 +227,7 @@ namespace GodhomeRandomizer.Manager
                             bossLogic += $" + GG_{boss}>0";
                     }
                 }
-                lmb.DoLogicEdit(new("Opened_Pantheon_1", $"GG_Atrium + (({bossLogic}) | (PANTHEON_KEY_1 ? FALSE))"));
+                lmb.DoLogicEdit(new("Opened_Pantheon_2", $"GG_Atrium + (({bossLogic}) | (PANTHEON_KEY_2 ? FALSE))"));
                 
                 bossLogic = "";
                 foreach (StatueItem item in itemList)
@@ -241,7 +241,7 @@ namespace GodhomeRandomizer.Manager
                             bossLogic += $" + GG_{boss}>0";
                     }
                 }
-                lmb.DoLogicEdit(new("Defeated_Pantheon_3", $"GG_Atrium + (({bossLogic}) | (PANTHEON_KEY_3 ? FALSE)) + COMBAT[Pantheon_3]"));
+                lmb.DoLogicEdit(new("Opened_Pantheon_3", $"GG_Atrium + (({bossLogic}) | (PANTHEON_KEY_3 ? FALSE)) + COMBAT[Pantheon_3]"));
                 
                 bossLogic = "";
                 foreach (StatueItem item in itemList)
@@ -255,7 +255,7 @@ namespace GodhomeRandomizer.Manager
                             bossLogic += $" + GG_{boss}>0";
                     }
                 }
-                lmb.DoLogicEdit(new("Defeated_Pantheon_4", $"GG_Atrium + Opened_Pantheon_4 + (({bossLogic}) | (PANTHEON_KEY_4 ? FALSE)) + COMBAT[Pantheon_4]"));
+                lmb.DoLogicEdit(new("Opened_Pantheon_4", $"GG_Atrium + Opened_Pantheon_4 + (({bossLogic}) | (PANTHEON_KEY_4 ? FALSE)) + COMBAT[Pantheon_4]"));
             }
         }
         private static void EditTRJR(GenerationSettings gs, LogicManagerBuilder lmb)

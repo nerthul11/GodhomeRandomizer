@@ -1,7 +1,7 @@
 [
     {
         "name": "GG_Atrium_Roof",
-        "logic": "GG_Atrium + PANTHEON_COMPLETION_4 ? TRUE + Defeated_Pantheon_4 + LEFTCLAW",
+        "logic": "GG_Atrium + PANTHEON_COMPLETION_4 ? TRUE + Opened_Pantheon_4 + LEFTCLAW",
         "Stateless": false
     },
     {
@@ -136,7 +136,7 @@
     },
     {
         "name": "Radiant_Combat",
-        "logic":  "NAILCOMBAT + QUAKE>1 | (CURSED + SPELLS>1) + (FULLSHADOWDASH | ANYSHADOWDASH + MILDCOMBATSKIPS) | SPICYCOMBATSKIPS",
+        "logic":  "NAILCOMBAT + QUAKE>1 | (CURSED + QUAKE) + (FULLSHADOWDASH | ANYSHADOWDASH + MILDCOMBATSKIPS) | SPICYCOMBATSKIPS",
         "Stateless": true
     }
 ]

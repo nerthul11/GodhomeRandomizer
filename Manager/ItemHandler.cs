@@ -7,6 +7,8 @@ using System.IO;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Linq;
+using System;
+using RandomizerMod.RandomizerData;
 
 namespace GodhomeRandomizer.Manager {
     internal static class ItemHandler
@@ -14,8 +16,16 @@ namespace GodhomeRandomizer.Manager {
         internal static void Hook()
         {
             DefineObjects();
+            RequestBuilder.OnUpdate.Subscribe(-100f, AddGodhomeTransitions);
             RequestBuilder.OnUpdate.Subscribe(100f, AddHOGObjects);
             RequestBuilder.OnUpdate.Subscribe(100f, AddPantheonObjects);
+        }
+
+        private static void AddGodhomeTransitions(RequestBuilder rb)
+        {
+            if (!GodhomeManager.GlobalSettings.Enabled)
+                return;
+            
         }
 
         public static void DefineObjects()
