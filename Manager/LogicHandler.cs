@@ -21,24 +21,25 @@ namespace GodhomeRandomizer.Manager
         public static void Hook()
         {
             RCData.RuntimeLogicOverride.Subscribe(1f, AddHOGLogic);
-            RCData.RuntimeLogicOverride.Subscribe(1f, AddPantheonLogic);
             if (ModHooks.GetMod("LostArtifacts") is Mod)
                 RCData.RuntimeLogicOverride.Subscribe(2f, EditLostArtifacts);
             if (ModHooks.GetMod("TheRealJournalRando") is Mod)
                 RCData.RuntimeLogicOverride.Subscribe(11f, EditTRJR);
-            RCData.RuntimeLogicOverride.Subscribe(2048f, EditPantheonAccessLogic);
+            // Pantheon logic to be added after ExtraRando
+            RCData.RuntimeLogicOverride.Subscribe(2048f, AddPantheonLogic);
+            RCData.RuntimeLogicOverride.Subscribe(4096f, EditPantheonAccessLogic);
         }
 
         private static void AddHOGLogic(GenerationSettings gs, LogicManagerBuilder lmb)
         {
             if (!GodhomeManager.GlobalSettings.Enabled)
                 return;
-            
-            JsonLogicFormat fmt = new();
+
             // Add macros and waypoints.
+            JsonLogicFormat fmt = new();
             lmb.DeserializeFile(LogicFileType.Macros, fmt, typeof(GodhomeRandomizer).Assembly.GetManifestResourceStream($"GodhomeRandomizer.Resources.Logic.macros.json"));
             lmb.DeserializeFile(LogicFileType.Waypoints, fmt, typeof(GodhomeRandomizer).Assembly.GetManifestResourceStream($"GodhomeRandomizer.Resources.Logic.waypoints.json"));
-
+  
             // Read item definitions
             Assembly assembly = Assembly.GetExecutingAssembly();
             JsonSerializer jsonSerializer = new() {TypeNameHandling = TypeNameHandling.Auto};
@@ -127,7 +128,7 @@ namespace GodhomeRandomizer.Manager
         {
             if (!GodhomeManager.GlobalSettings.Enabled)
                 return;
-            
+                      
             // Add logic term
             GodhomeRandomizerSettings.Panth settings = GodhomeManager.GlobalSettings.Pantheons;
             lmb.GetOrAddTerm($"Pantheon_Bindings", TermType.Int);
@@ -163,7 +164,7 @@ namespace GodhomeRandomizer.Manager
                 else if (item.bindingType != "Complete")
                 {
                     lmb.AddItem(new StringItemTemplate(item.name, "Pantheon_Bindings++"));
-                    lmb.DoLogicEdit(new(item.name, "ORIG + Ascended_Combat"));
+                    lmb.DoLogicEdit(new(item.name, "ORIG + Radiant_Combat"));
                 }
             }
 
@@ -181,7 +182,7 @@ namespace GodhomeRandomizer.Manager
 
         private static void EditPantheonAccessLogic(GenerationSettings gs, LogicManagerBuilder lmb)
         {
-            if (!GodhomeManager.GlobalSettings.Enabled)
+            if (!GodhomeManager.GlobalSettings.Enabled || !GodhomeManager.GlobalSettings.Pantheons.ApplyAccessToPantheons)
                 return;
             
             Assembly assembly = Assembly.GetExecutingAssembly();
@@ -201,61 +202,25 @@ namespace GodhomeRandomizer.Manager
             }
             if (settings.RandomizeStatueAccess == AccessMode.Randomized)
             {
-                string bossLogic = "";
-                foreach (StatueItem item in itemList)
+                foreach (int panthID in Enumerable.Range(1, 4))
                 {
-                    if (item.pantheonID == 1)
+                    string bossLogic = "";
+                    foreach (StatueItem item in itemList)
                     {
-                        string boss = item.name.Split('-').Last();
-                        if (bossLogic == "")
-                            bossLogic += $"GG_{boss}>0";
-                        else
-                            bossLogic += $" + GG_{boss}>0";
+                        if (item.pantheonID == panthID)
+                        {
+                            string boss = item.name.Split('-').Last();
+                            if (bossLogic == "")
+                                bossLogic += $"GG_{boss}>0";
+                            else
+                                bossLogic += $" + GG_{boss}>0";
+                        }
                     }
+                    if (panthID < 4)
+                        lmb.DoLogicEdit(new($"Opened_Pantheon_{panthID}", $"GG_Atrium + ({bossLogic} | (PANTHEON_KEY_{panthID} ? FALSE))"));
+                    else
+                        lmb.DoLogicEdit(new($"Opened_Pantheon_{panthID}", $"GG_Atrium + (PANTHEON_COMPLETION_1 ? Defeated_Pantheon_1 + PANTHEON_COMPLETION_2 ? Defeated_Pantheon_2 + PANTHEON_COMPLETION_3 ? Defeated_Pantheon_3 + {bossLogic} | (PANTHEON_KEY_{panthID} ? FALSE))"));
                 }
-                lmb.DoLogicEdit(new("Opened_Pantheon_1", $"GG_Atrium + (({bossLogic}) | (PANTHEON_KEY_1 ? FALSE))"));
-                
-                bossLogic = "";
-                foreach (StatueItem item in itemList)
-                {
-                    if (item.pantheonID == 2)
-                    {
-                        string boss = item.name.Split('-').Last();
-                        if (bossLogic == "")
-                            bossLogic += $"GG_{boss}>0";
-                        else
-                            bossLogic += $" + GG_{boss}>0";
-                    }
-                }
-                lmb.DoLogicEdit(new("Opened_Pantheon_2", $"GG_Atrium + (({bossLogic}) | (PANTHEON_KEY_2 ? FALSE))"));
-                
-                bossLogic = "";
-                foreach (StatueItem item in itemList)
-                {
-                    if (item.pantheonID == 3)
-                    {
-                        string boss = item.name.Split('-').Last();
-                        if (bossLogic == "")
-                            bossLogic += $"GG_{boss}>0";
-                        else
-                            bossLogic += $" + GG_{boss}>0";
-                    }
-                }
-                lmb.DoLogicEdit(new("Opened_Pantheon_3", $"GG_Atrium + (({bossLogic}) | (PANTHEON_KEY_3 ? FALSE)) + COMBAT[Pantheon_3]"));
-                
-                bossLogic = "";
-                foreach (StatueItem item in itemList)
-                {
-                    if (item.pantheonID == 4)
-                    {
-                        string boss = item.name.Split('-').Last();
-                        if (bossLogic == "")
-                            bossLogic += $"GG_{boss}>0";
-                        else
-                            bossLogic += $" + GG_{boss}>0";
-                    }
-                }
-                lmb.DoLogicEdit(new("Opened_Pantheon_4", $"GG_Atrium + Opened_Pantheon_4 + (({bossLogic}) | (PANTHEON_KEY_4 ? FALSE)) + COMBAT[Pantheon_4]"));
             }
         }
         private static void EditTRJR(GenerationSettings gs, LogicManagerBuilder lmb)
@@ -281,11 +246,12 @@ namespace GodhomeRandomizer.Manager
                     "Massive_Moss_Charger", "Mantis_Lords", "Grey_Prince_Zote", "Broken_Vessel",
                     "Nosk", "Flukemarm", "Soul_Master", "God_Tamer", "Crystal_Guardian",
                     "Uumuu", "Dung_Defender", "White_Defender", "Hive_Knight",
-                    "Traitor_Lord", "Grimm", "Nightmare_King", "Pure_Vessel",
+                    "Traitor_Lord", "Grimm", "Pure_Vessel",
                     "Elder_Hu", "Galien", "Markoth", "Marmu", "No_Eyes", "Xero", "Gorb",
                     "Radiance", "Soul_Warrior", "Paintmaster_Sheo"
                 ];
                 bool regularEntriesIncluded = lmb.LogicLookup.TryGetValue("Defeated_Any_Folly", out _);
+                bool bonusEntriesIncluded = lmb.LogicLookup.TryGetValue("Defeated_Any_Volatile_Zoteling", out _);
                 bool regularBossIncluded = lmb.LogicLookup.TryGetValue("Defeated_Any_Gruz_Mother", out _);
                 bool pantheonBossIncluded = lmb.LogicLookup.TryGetValue("Defeated_Any_Pure_Vessel", out _);
                 foreach (string entry in entries)
@@ -303,6 +269,12 @@ namespace GodhomeRandomizer.Manager
                     lmb.DoLogicEdit(new("Defeated_Any_Sharp_Baldur", "ORIG | *Silver_Mark-Collector"));
                     lmb.DoLogicEdit(new("Defeated_Any_Primal_Aspid", "ORIG | *Silver_Mark-Collector"));
                     lmb.DoLogicEdit(new("Defeated_Any_Folly", "ORIG | *Silver_Mark-Soul_Warrior"));
+                }
+                if (bonusEntriesIncluded)
+                {
+                    lmb.DoLogicEdit(new("Defeated_Any_Winged_Zoteling", "ORIG | *Bronze_Mark-Grey_Prince_Zote"));
+                    lmb.DoLogicEdit(new("Defeated_Any_Hopping_Zoteling", "ORIG | *Bronze_Mark-Grey_Prince_Zote"));
+                    lmb.DoLogicEdit(new("Defeated_Any_Volatile_Zoteling", "ORIG | *Bronze_Mark-Grey_Prince_Zote"));
                 }
                 if (regularBossIncluded)
                 {
@@ -329,6 +301,8 @@ namespace GodhomeRandomizer.Manager
                 }
                 lmb.DoMacroEdit(new("ATTUNED_IDOL", bossLogic));
                 lmb.DoLogicEdit(new("Journal_Entry-Void_Idol_1", "ATTUNED_IDOL"));
+                lmb.DoLogicEdit(new("Journal_Entry-Void_Idol_2", "ATTUNED_IDOL"));
+                lmb.DoLogicEdit(new("Journal_Entry-Void_Idol_3", "ATTUNED_IDOL"));     
             
                 if (hogSettings.RandomizeTiers > TierLimitMode.ExcludeAscended)
                 {
@@ -338,12 +312,10 @@ namespace GodhomeRandomizer.Manager
                         bossLogic += $" + GG_{boss}>{req + 1}";
                     }
                     lmb.DoMacroEdit(new("ASCENDED_IDOL", bossLogic));
-                    lmb.DoLogicEdit(new("Journal_Entry-Void_Idol_2", "ASCENDED_IDOL"));                
+                    lmb.DoLogicEdit(new("Journal_Entry-Void_Idol_2", "ASCENDED_IDOL"));
+                    lmb.DoLogicEdit(new("Journal_Entry-Void_Idol_3", "ASCENDED_IDOL"));                
                 }
                 else
-                {
-                    lmb.DoLogicEdit(new("Journal_Entry-Void_Idol_2", "ATTUNED_IDOL"));
-                }
                 if (hogSettings.RandomizeTiers == TierLimitMode.IncludeAll)
                 {
                     foreach (StatueItem item in itemList)
@@ -354,10 +326,9 @@ namespace GodhomeRandomizer.Manager
                     lmb.DoMacroEdit(new("RADIANT_IDOL", bossLogic));
                     lmb.DoLogicEdit(new("Journal_Entry-Void_Idol_3", "RADIANT_IDOL"));
                 }
-                else
-                {
-                    lmb.DoLogicEdit(new("Journal_Entry-Void_Idol_3", "ATTUNED_IDOL"));
-                }
+
+                // Override GG_Atrium_Roof's definition to fit Godhome Rando requirements
+                lmb.DoLogicEdit(new("GG_Atrium_Roof", "GG_Atrium + LEFTCLAW + PANTHEON_COMPLETION_1 ? Defeated_Pantheon_1 + PANTHEON_COMPLETION_2 ? Defeated_Pantheon_2 + PANTHEON_COMPLETION_3 ? Defeated_Pantheon_3 + PANTHEON_COMPLETION_4 ? Defeated_Pantheon_4"));
             }
 
             

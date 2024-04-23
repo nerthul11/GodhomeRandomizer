@@ -104,6 +104,8 @@ namespace GodhomeRandomizer.Settings
         public void Apply(GodhomeRandomizerSettings settings)
         {
             topLevelElementFactory.SetMenuValues(settings);
+            hogElementFactory.SetMenuValues(settings.HallOfGods);
+            pantheonElementFactory.SetMenuValues(settings.Pantheons);           
         }
     }
 }

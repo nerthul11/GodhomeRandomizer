@@ -1,12 +1,12 @@
 [
     {
         "name": "GG_Atrium_Roof",
-        "logic": "GG_Atrium + PANTHEON_COMPLETION_4 ? TRUE + Opened_Pantheon_4 + LEFTCLAW",
+        "logic": "GG_Atrium + LEFTCLAW + PANTHEON_COMPLETION_1 ? Defeated_Pantheon_1 + PANTHEON_COMPLETION_2 ? Defeated_Pantheon_2 + PANTHEON_COMPLETION_3 ? Defeated_Pantheon_3 + PANTHEON_COMPLETION_4 ? Defeated_Pantheon_4",
         "Stateless": false
     },
     {
         "name": "GG_Blue_Room",
-        "logic": "GG_Atrium + Ascended_Combat + Defeated_Pantheon_1 + Defeated_Pantheon_2 + Defeated_Pantheon_3",
+        "logic": "GG_Atrium + Radiant_Combat + Defeated_Pantheon_1 + Defeated_Pantheon_2 + Defeated_Pantheon_3",
         "Stateless": true
     },
     {
@@ -16,7 +16,7 @@
     },
     {
         "name": "Defeated_Pantheon_1",
-        "logic": "GG_Atrium + Opened_Pantheon_1 + COMBAT[Pantheon_1]",
+        "logic": "GG_Atrium + Opened_Pantheon_1 + (FOCUS | SPICYCOMBATSKIPS) + COMBAT[Nailmaster_Brothers]",
         "Stateless": true
     },
     {
@@ -26,7 +26,7 @@
     },
     {
         "name": "Defeated_Pantheon_2",
-        "logic": "GG_Atrium + Opened_Pantheon_2 + COMBAT[Pantheon_2]",
+        "logic": "GG_Atrium + Opened_Pantheon_2 + (FOCUS | SPICYCOMBATSKIPS) + COMBAT[Paintmaster_Sheo]",
         "Stateless": true
     },
     {
@@ -36,7 +36,7 @@
     },
     {
         "name": "Defeated_Pantheon_3",
-        "logic": "GG_Atrium + Opened_Pantheon_3 + COMBAT[Pantheon_3]",
+        "logic": "GG_Atrium + Opened_Pantheon_3 + (FOCUS | SPICYCOMBATSKIPS) + COMBAT[Sly]",
         "Stateless": true
     },
     {
@@ -46,7 +46,7 @@
     },
     {
         "name": "Defeated_Pantheon_4",
-        "logic": "GG_Atrium + Opened_Pantheon_4 + COMBAT[Pantheon_4]",
+        "logic": "GG_Atrium + Opened_Pantheon_4 + (FOCUS | SPICYCOMBATSKIPS) + COMBAT[Pure_Vessel]",
         "Stateless": true
     },
     {
@@ -56,7 +56,7 @@
     },
     {
         "name": "Defeated_Pantheon_5",
-        "logic": "GG_Atrium_Roof + Opened_Pantheon_5 + COMBAT[Pantheon_5]",
+        "logic": "GG_Atrium_Roof + Opened_Pantheon_5 + COMBAT[Radiance]",
         "Stateless": true
     },
     {

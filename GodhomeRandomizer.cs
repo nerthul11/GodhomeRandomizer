@@ -1,6 +1,5 @@
 ﻿using GodhomeRandomizer.Manager;
 using GodhomeRandomizer.Settings;
-using ItemChanger;
 using Modding;
 using System;
 
@@ -9,7 +8,7 @@ namespace GodhomeRandomizer
     public class GodhomeRandomizer : Mod, ILocalSettings<LocalSettings>, IGlobalSettings<GlobalSettings>
     {
         new public string GetName() => "GodhomeRandomizer";
-        public override string GetVersion() => "2.1.1.1";
+        public override string GetVersion() => "2.1.2.0";
 
         private static GodhomeRandomizer _instance;
         public GodhomeRandomizer() : base()

@@ -45,7 +45,7 @@ All this can add up to a whopping total of __212__ new items and locations to th
     - Shell --> Checks if the shell binding is randomized or not.
     - Charms --> Checks if the charms binding is randomized or not.
     - Soul --> Checks if the soul binding is randomized or not.
-    - AllAtOnce --> Randomizes all bindings at once. NOTE: Acquiring this doesn't provide the individual bindings.
+    - AllAtOnce --> Randomizes all bindings at once. NOTE: Acquiring this doesn't provide the individual bindings for the blue room/weathered mask access.
     - Hitless --> Randomizes the wondrous talent of doing a hitless run.
 
 ## Dependencies:
@@ -61,10 +61,11 @@ All this can add up to a whopping total of __212__ new items and locations to th
 - RandoSettingsManager
 - TheRealJournalRando: This mod has quite a few interactions with TRJR:
     - Since access to boss fights can be altered, the logic now contemplates the option of beating them through Hall of Gods to obtain their journal entries.
+    - This also applies for regular entries that are summoned by bosses (IE: Folly from Soul Warrior or Zotelings).
     - Access to the Weathered Mask Journal Entry may be affected if bindings are randomized, so the logic gets adjusted.
     - Access to the Void Idol Journal Entry now checks for this mod's statue marks for each tier.
 
 ## Known issues
 
 - The "All unlocked" setting fails when paired with "Vanilla" Hall of Gods tier limit and the access mode is set to vanilla, so, don't use them together as it will not behave as intended and can make a seed impossible.
-- If every single other Randomizer settings are vanilla AND statue access is randomized, there could be unreachable location issues.
+- If every single other Randomizer and connection setting except statue access mode is vanilla, the generation of a seed will fail.
