@@ -80,7 +80,7 @@ namespace GodhomeRandomizer.IC
 
         private bool UnlockCheck(On.BossScene.orig_IsUnlocked orig, BossScene self, BossSceneCheckSource source)
         {
-            if (GameManager.instance.sceneName == SceneNames.GG_Workshop || GodhomeManager.SaveSettings.ApplyAccessToPantheons)
+            if (GameManager.instance.sceneName == SceneNames.GG_Workshop || (GodhomeManager.SaveSettings.ApplyAccessToPantheons && GameManager.instance.sceneName == SceneNames.GG_Atrium))
             {
                 if (GodhomeManager.SaveSettings.RandomizeStatueAccess == AccessMode.AllUnlocked)
                     return true;
