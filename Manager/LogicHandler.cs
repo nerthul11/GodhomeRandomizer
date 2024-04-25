@@ -244,7 +244,7 @@ namespace GodhomeRandomizer.Manager
                 string[] entries = [
                     "Gruz_Mother", "Vengefly_King", "Brooding_Mawlek", "False_Knight",
                     "Massive_Moss_Charger", "Mantis_Lords", "Grey_Prince_Zote", "Broken_Vessel",
-                    "Nosk", "Flukemarm", "Soul_Master", "God_Tamer", "Crystal_Guardian",
+                    "Nosk", "Flukemarm", "Soul_Master", "God_Tamer",
                     "Uumuu", "Dung_Defender", "White_Defender", "Hive_Knight",
                     "Traitor_Lord", "Grimm", "Pure_Vessel",
                     "Elder_Hu", "Galien", "Markoth", "Marmu", "No_Eyes", "Xero", "Gorb",
