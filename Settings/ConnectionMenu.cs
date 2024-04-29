@@ -45,14 +45,16 @@ namespace GodhomeRandomizer.Settings
             topLevelElementFactory = new(ghPage, GodhomeManager.GlobalSettings);
             hogElementFactory = new(ghPage, GodhomeManager.GlobalSettings.HallOfGods);
             pantheonElementFactory = new(ghPage, GodhomeManager.GlobalSettings.Pantheons);
-            VerticalItemPanel topLevelPanel = new(ghPage, new Vector2(0, 400), 180, true);
+            VerticalItemPanel topLevelPanel = new(ghPage, new Vector2(0, 400), 75, true);
+            VerticalItemPanel itemPanel = new(ghPage, new Vector2(0, 400), 240, false);
             
             // Define HOG Parameters
             topLevelElementFactory.ElementLookup["Enabled"].SelfChanged += EnableSwitch;
             MenuLabel hogLabel = new(ghPage, "Hall of Gods Randomizer");
             VerticalItemPanel hogSettingHolder = new(ghPage, Vector2.zero, 55, false, [
                 hogElementFactory.ElementLookup["RandomizeTiers"],
-                hogElementFactory.ElementLookup["RandomizeStatueAccess"]
+                hogElementFactory.ElementLookup["RandomizeStatueAccess"],
+                hogElementFactory.ElementLookup["RandomizeOrdeal"],
             ]);
             hogSettingHolder.Insert(0, hogLabel);
 
@@ -79,10 +81,11 @@ namespace GodhomeRandomizer.Settings
             panthSettingHolder.Insert(0, panthLabel);
 
             // Define top level
+            itemPanel.Add(hogSettingHolder);
+            itemPanel.Add(panthSettingHolder);
+            itemPanel.Add(bindSettingHolder);
             topLevelPanel.Add(topLevelElementFactory.ElementLookup["Enabled"]);
-            topLevelPanel.Add(hogSettingHolder);
-            topLevelPanel.Add(panthSettingHolder);
-            topLevelPanel.Add(bindSettingHolder);
+            topLevelPanel.Add(itemPanel);
             topLevelPanel.ResetNavigation();
             topLevelPanel.SymSetNeighbor(Neighbor.Down, ghPage.backButton);
             pageRootButton = new SmallButton(connectionPage, "Godhome Randomizer");

@@ -6,7 +6,7 @@
     },
     {
         "name": "GG_Blue_Room",
-        "logic": "GG_Atrium + Radiant_Combat + Defeated_Pantheon_1 + Defeated_Pantheon_2 + Defeated_Pantheon_3",
+        "logic": "GG_Atrium + Radiant_Combat + Defeated_Pantheon_1 + Defeated_Pantheon_2 + Defeated_Pantheon_3 + Defeated_Pantheon_4 + Defeated_Pantheon_5",
         "Stateless": true
     },
     {

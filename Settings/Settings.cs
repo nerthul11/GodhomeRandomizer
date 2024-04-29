@@ -10,6 +10,7 @@ namespace GodhomeRandomizer.Settings
     {
         public AccessMode RandomizeStatueAccess { get; set; }
         public TierLimitMode RandomizeTiers { get; set; }
+        public bool RandomizeOrdeal { get; set; }
         public bool ApplyAccessToPantheons { get; set; }
         public PantheonLimitMode PantheonsIncluded { get; set; } = PantheonLimitMode.None;
         public bool Completion { get; set; } = false;

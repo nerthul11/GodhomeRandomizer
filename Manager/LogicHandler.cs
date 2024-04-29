@@ -122,6 +122,10 @@ namespace GodhomeRandomizer.Manager
                         lmb.DoLogicEdit(new($"Gold_Mark-{boss}", $"ORIG + Defeated_{dependency}"));
                 }
             }
+
+            // Eternal Ordeal logic
+            lmb.AddItem(new EmptyItem("Eternal_Ordeal"));
+            lmb.AddLogicDef(new("Eternal_Ordeal", "GG_Workshop + (BOSS | SPICYCOMBATSKIPS) + UPWALLBREAK + RIGHTCLAW + WINGS + (LEFTSUPERDASH | LEFTSHARPSHADOW)"));
         }
 
         private static void AddPantheonLogic(GenerationSettings gs, LogicManagerBuilder lmb)

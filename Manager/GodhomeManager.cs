@@ -29,6 +29,7 @@ namespace GodhomeRandomizer.Manager
             GodhomeRandomizerSettings.Panth panthSettings = GlobalSettings.Pantheons;
             SaveSettings.RandomizeTiers = hogSettings.RandomizeTiers;
             SaveSettings.RandomizeStatueAccess = hogSettings.RandomizeStatueAccess;
+            SaveSettings.RandomizeOrdeal = hogSettings.RandomizeOrdeal;
             SaveSettings.ApplyAccessToPantheons = panthSettings.ApplyAccessToPantheons;
             SaveSettings.PantheonsIncluded = panthSettings.PantheonsIncluded;
             SaveSettings.Completion = panthSettings.Completion;

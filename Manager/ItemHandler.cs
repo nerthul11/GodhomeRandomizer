@@ -50,6 +50,9 @@ namespace GodhomeRandomizer.Manager {
 
             Finder.DefineCustomItem(new LifebloodItem());
             Finder.DefineCustomLocation(new LifebloodLocation());
+
+            Finder.DefineCustomItem(new OrdealItem());
+            Finder.DefineCustomLocation(new OrdealLocation());
         }
         private static void AddPantheonObjects(RequestBuilder builder)
         {
@@ -152,6 +155,13 @@ namespace GodhomeRandomizer.Manager {
 
                 foreach (StatueLocation location in locationList)
                     builder.AddLocationByName(location.name);
+                
+                // Add Eternal Ordeal if available
+                if (settings.RandomizeOrdeal)
+                {
+                    builder.AddItemByName("Eternal_Ordeal");
+                    builder.AddLocationByName("Eternal_Ordeal");
+                }
             }
         }
     }

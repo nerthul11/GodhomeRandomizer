@@ -8,15 +8,17 @@ A Randomizer add-on for Godhome checks.
 
 This mod will randomize up to four locations for each Hall of Gods Boss based on their tier:
 - Unlock --> An item is granted when interacting with a statue for the first time.
-- Attuned --> An item is granted when defeating the Attuned version.
-- Ascended --> An item is granted when defeating the Ascended version.
+- Attuned --> An item is granted when defeating any version.
+- Ascended --> An item is granted when defeating the Ascended or Radiant version.
 - Radiant --> An item is granted when defeating the Radiant version.
 
-The Statue_Mark items will improve the statue's state for each boss by 1, meaning you'll unlock the statue and then get the Attuned, Ascended and Radiant marks in progressive order. The amount of copies of this item will depend on the mod settings. Randomizing the statue access will add one copy, while randomizing the tier limits will add up to three extra copies, matching the four location types.
+The Statue Mark items will improve the statue's state for each boss by 1, meaning you'll unlock the statue and then get the Attuned, Ascended and Radiant marks in progressive order. The amount of copies of this item present in the playthrough will depend on the mod settings. Randomizing the statue access will add one copy, while randomizing the tier limits will add up to three extra copies, matching the four location types.
+
+The ordeal location will grant an item instead of turning Zote's statue into gold and unlocking the Eternal Ordeal menu. The ordeal item will only turn the statue into gold. If you never completed the Eternal Ordeal, doing this with the mod available will not provide the secret menu reward.
 
 ### Pantheons
 
-Ever got the feeling that doing all 5 pantheons with every single binding was just too painful for them to just grant you one single journal entry? Well, they will still be as painful, but now we can have checks added to that. Bonus points if for some reason you decide you want to play with All Bindings and manage to do it Hitless.
+Ever got the feeling that doing all 5 pantheons with every single binding was just too painful for them to just grant you one single journal entry? Well, they will still be as painful, but now we can have checks added to that. Bonus points if for some reason you decide you hate yourself and want to play with All Bindings and Hitless options.
 
 This allows you to randomize the obtention status of the Pantheon Bindings (Nail/Shell/Charms/Soul) both individually and all at once, and also the status of a hitless Pantheon run.
 
@@ -34,6 +36,7 @@ All this can add up to a whopping total of __212__ new items and locations to th
 ### Hall of Gods
 - Randomize access --> Defines if statue access is vanilla, randomized or if all of them are unlocked by default. This last option will likely force you to fight Godhome bosses earlier in the progression.
 - Limit --> Options: IncludeAll, ExcludeRadiant, ExcludeAscended, Vanilla. Defines which locations should be randomized and contain items and which should remain vanilla. Excluding Ascended also Excludes Radiant entries.
+- Randomize Ordeal --> This adds the Glorious Invincible Fearless Sensual Mysterious Enchanting Vigorous Diligent Overwhelming Gorgeous Passionate Terryfing Beautiful Powerful Life Ender Mighty Zote's ordeal to the pool.
 
 ### Pantheons
 - Apply access to Pantheon --> Defines if the access rules provided to Hall of Gods should also apply to Pantheons or leave it vanilla.
@@ -50,7 +53,7 @@ All this can add up to a whopping total of __212__ new items and locations to th
 
 ## Dependencies:
 - ItemChanger
-- KorzUtils (for the moment, might remove in future patches if I get a better understanding of sprite rendering)
+- KorzUtils
 - MenuChanger
 - Randomizer 4
 - RandomizerCore
