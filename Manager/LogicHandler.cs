@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Linq;
+using System;
 
 
 namespace GodhomeRandomizer.Manager
@@ -25,6 +26,8 @@ namespace GodhomeRandomizer.Manager
                 RCData.RuntimeLogicOverride.Subscribe(2f, EditLostArtifacts);
             if (ModHooks.GetMod("TheRealJournalRando") is Mod)
                 RCData.RuntimeLogicOverride.Subscribe(11f, EditTRJR);
+            if (ModHooks.GetMod("RandoPlus") is Mod)
+                RCData.RuntimeLogicOverride.Subscribe(51f, EditRandoPlus);
             // Pantheon logic to be added after ExtraRando
             RCData.RuntimeLogicOverride.Subscribe(2048f, AddPantheonLogic);
             RCData.RuntimeLogicOverride.Subscribe(4096f, EditPantheonAccessLogic);
@@ -165,7 +168,7 @@ namespace GodhomeRandomizer.Manager
                     lmb.AddItem(new EmptyItem(item.name));
                     lmb.DoLogicEdit(new(item.name, "ORIG + Radiant_Combat"));
                 }
-                else if (item.bindingType != "Complete")
+                else if (item.bindingType != "Completion")
                 {
                     lmb.AddItem(new StringItemTemplate(item.name, "Pantheon_Bindings++"));
                     lmb.DoLogicEdit(new(item.name, "ORIG + Radiant_Combat"));
@@ -335,8 +338,6 @@ namespace GodhomeRandomizer.Manager
                 lmb.DoLogicEdit(new("GG_Atrium_Roof", "GG_Atrium + LEFTCLAW + PANTHEON_COMPLETION_1 ? Defeated_Pantheon_1 + PANTHEON_COMPLETION_2 ? Defeated_Pantheon_2 + PANTHEON_COMPLETION_3 ? Defeated_Pantheon_3 + PANTHEON_COMPLETION_4 ? Defeated_Pantheon_4"));
             }
 
-            
-
             // Add bindings requirement to Weathered Mask entry
             GodhomeRandomizerSettings.Panth panthSettings = GodhomeRandomizer.Instance.GS.Settings.Pantheons;
             if (panthSettings.PantheonsIncluded > PantheonLimitMode.None)
@@ -374,6 +375,21 @@ namespace GodhomeRandomizer.Manager
                 }
                 lmb.DoMacroEdit(new("ATTUNED_IDOL", logic));
                 lmb.DoLogicEdit(new("AttunedJewel", "ATTUNED_IDOL"));
+            }
+        }
+
+        private static void EditRandoPlus(GenerationSettings gs, LogicManagerBuilder lmb)
+        {
+            try
+            {
+                lmb.GetTerm("NAILUPGRADE");
+                lmb.DoLogicEdit(new("Nail_Upgradable_1", "NAILUPGRADE>0"));
+                lmb.DoLogicEdit(new("Nail_Upgradable_2", "NAILUPGRADE>1"));
+                lmb.DoLogicEdit(new("Nail_Upgradable_3", "NAILUPGRADE>2"));
+                lmb.DoLogicEdit(new("Nail_Upgradable_4", "NAILUPGRADE>3"));
+            }
+            catch (KeyNotFoundException)
+            {
             }
         }
     }

@@ -3,7 +3,7 @@
         "$type": "GodhomeRandomizer.IC.BindingItem, GodhomeRandomizer",
         "name": "Pantheon_Master-Completion",
         "pantheonID": 1,
-        "bindingType": "Complete",
+        "bindingType": "Completion",
         "UIDef": {
             "$type": "ItemChanger.UIDefs.MsgUIDef, ItemChanger",
             "name": {
@@ -22,9 +22,14 @@
         "tags": [
             {
               "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+              "Message": "RandoSupplementalMetadata",
               "Properties": {
                 "ModSource": "GodhomeRandomizer",
-                "PoolGroup": "Bindings"
+                "PoolGroup": "Pantheon Marks",
+                "PinSprite": {
+                  "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+                  "Key": "Complete"
+                }
               }
             }
           ],
@@ -51,14 +56,19 @@
             }
         },
         "tags": [
-            {
-              "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
-              "Properties": {
-                "ModSource": "GodhomeRandomizer",
-                "PoolGroup": "Bindings"
+          {
+            "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+            "Message": "RandoSupplementalMetadata",
+            "Properties": {
+              "ModSource": "GodhomeRandomizer",
+              "PoolGroup": "Pantheon Marks",
+              "PinSprite": {
+                "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+                "Key": "Nail"
               }
             }
-          ],
+          }
+        ],
         "obtainState": "Unobtained"
     },
     {
@@ -82,14 +92,19 @@
           }
       },
       "tags": [
-          {
-            "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
-            "Properties": {
-              "ModSource": "GodhomeRandomizer",
-              "PoolGroup": "Bindings"
+        {
+          "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+          "Message": "RandoSupplementalMetadata",
+          "Properties": {
+            "ModSource": "GodhomeRandomizer",
+            "PoolGroup": "Pantheon Marks",
+            "PinSprite": {
+              "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+              "Key": "Shell"
             }
           }
-        ],
+        }
+      ],
       "obtainState": "Unobtained"
     },
     {
@@ -113,14 +128,19 @@
           }
       },
       "tags": [
-          {
-            "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
-            "Properties": {
-              "ModSource": "GodhomeRandomizer",
-              "PoolGroup": "Bindings"
+        {
+          "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+          "Message": "RandoSupplementalMetadata",
+          "Properties": {
+            "ModSource": "GodhomeRandomizer",
+            "PoolGroup": "Pantheon Marks",
+            "PinSprite": {
+              "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+              "Key": "Charms"
             }
           }
-        ],
+        }
+      ],
       "obtainState": "Unobtained"
     },
     {
@@ -144,14 +164,19 @@
           }
       },
       "tags": [
-          {
-            "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
-            "Properties": {
-              "ModSource": "GodhomeRandomizer",
-              "PoolGroup": "Bindings"
+        {
+          "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+          "Message": "RandoSupplementalMetadata",
+          "Properties": {
+            "ModSource": "GodhomeRandomizer",
+            "PoolGroup": "Pantheon Marks",
+            "PinSprite": {
+              "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+              "Key": "Soul"
             }
           }
-        ],
+        }
+      ],
       "obtainState": "Unobtained"
     },
     {
@@ -175,14 +200,19 @@
           }
       },
       "tags": [
-          {
-            "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
-            "Properties": {
-              "ModSource": "GodhomeRandomizer",
-              "PoolGroup": "Bindings"
+        {
+          "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+          "Message": "RandoSupplementalMetadata",
+          "Properties": {
+            "ModSource": "GodhomeRandomizer",
+            "PoolGroup": "Pantheon Marks",
+            "PinSprite": {
+              "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+              "Key": "AllAtOnce"
             }
           }
-        ],
+        }
+      ],
       "obtainState": "Unobtained"
     },
     {
@@ -206,21 +236,26 @@
           }
       },
       "tags": [
-          {
-            "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
-            "Properties": {
-              "ModSource": "GodhomeRandomizer",
-              "PoolGroup": "Bindings"
+        {
+          "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+          "Message": "RandoSupplementalMetadata",
+          "Properties": {
+            "ModSource": "GodhomeRandomizer",
+            "PoolGroup": "Pantheon Marks",
+            "PinSprite": {
+              "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+              "Key": "Hitless"
             }
           }
-        ],
+        }
+      ],
       "obtainState": "Unobtained"
     },
     {
       "$type": "GodhomeRandomizer.IC.BindingItem, GodhomeRandomizer",
       "name": "Pantheon_Artist-Completion",
       "pantheonID": 2,
-      "bindingType": "Complete",
+      "bindingType": "Completion",
       "UIDef": {
           "$type": "ItemChanger.UIDefs.MsgUIDef, ItemChanger",
           "name": {
@@ -237,14 +272,19 @@
           }
       },
       "tags": [
-          {
-            "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
-            "Properties": {
-              "ModSource": "GodhomeRandomizer",
-              "PoolGroup": "Bindings"
+        {
+          "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+          "Message": "RandoSupplementalMetadata",
+          "Properties": {
+            "ModSource": "GodhomeRandomizer",
+            "PoolGroup": "Pantheon Marks",
+            "PinSprite": {
+              "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+              "Key": "Complete"
             }
           }
-        ],
+        }
+      ],
       "obtainState": "Unobtained"
     },
     {
@@ -268,14 +308,19 @@
           }
       },
       "tags": [
-          {
-            "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
-            "Properties": {
-              "ModSource": "GodhomeRandomizer",
-              "PoolGroup": "Bindings"
+        {
+          "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+          "Message": "RandoSupplementalMetadata",
+          "Properties": {
+            "ModSource": "GodhomeRandomizer",
+            "PoolGroup": "Pantheon Marks",
+            "PinSprite": {
+              "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+              "Key": "Nail"
             }
           }
-        ],
+        }
+      ],
       "obtainState": "Unobtained"
   },
   {
@@ -299,14 +344,19 @@
         }
     },
     "tags": [
-        {
-          "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
-          "Properties": {
-            "ModSource": "GodhomeRandomizer",
-            "PoolGroup": "Bindings"
+      {
+        "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+        "Message": "RandoSupplementalMetadata",
+        "Properties": {
+          "ModSource": "GodhomeRandomizer",
+          "PoolGroup": "Pantheon Marks",
+          "PinSprite": {
+            "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+            "Key": "Shell"
           }
         }
-      ],
+      }
+    ],
     "obtainState": "Unobtained"
   },
   {
@@ -330,14 +380,19 @@
         }
     },
     "tags": [
-        {
-          "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
-          "Properties": {
-            "ModSource": "GodhomeRandomizer",
-            "PoolGroup": "Bindings"
+      {
+        "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+        "Message": "RandoSupplementalMetadata",
+        "Properties": {
+          "ModSource": "GodhomeRandomizer",
+          "PoolGroup": "Pantheon Marks",
+          "PinSprite": {
+            "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+            "Key": "Charms"
           }
         }
-      ],
+      }
+    ],
     "obtainState": "Unobtained"
   },
   {
@@ -361,14 +416,19 @@
         }
     },
     "tags": [
-        {
-          "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
-          "Properties": {
-            "ModSource": "GodhomeRandomizer",
-            "PoolGroup": "Bindings"
+      {
+        "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+        "Message": "RandoSupplementalMetadata",
+        "Properties": {
+          "ModSource": "GodhomeRandomizer",
+          "PoolGroup": "Pantheon Marks",
+          "PinSprite": {
+            "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+            "Key": "Soul"
           }
         }
-      ],
+      }
+    ],
     "obtainState": "Unobtained"
   },
   {
@@ -392,14 +452,19 @@
         }
     },
     "tags": [
-        {
-          "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
-          "Properties": {
-            "ModSource": "GodhomeRandomizer",
-            "PoolGroup": "Bindings"
+      {
+        "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+        "Message": "RandoSupplementalMetadata",
+        "Properties": {
+          "ModSource": "GodhomeRandomizer",
+          "PoolGroup": "Pantheon Marks",
+          "PinSprite": {
+            "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+            "Key": "AllAtOnce"
           }
         }
-      ],
+      }
+    ],
     "obtainState": "Unobtained"
   },
   {
@@ -423,21 +488,26 @@
         }
     },
     "tags": [
-        {
-          "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
-          "Properties": {
-            "ModSource": "GodhomeRandomizer",
-            "PoolGroup": "Bindings"
+      {
+        "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+        "Message": "RandoSupplementalMetadata",
+        "Properties": {
+          "ModSource": "GodhomeRandomizer",
+          "PoolGroup": "Pantheon Marks",
+          "PinSprite": {
+            "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+            "Key": "Hitless"
           }
         }
-      ],
+      }
+    ],
     "obtainState": "Unobtained"
     },
     {
       "$type": "GodhomeRandomizer.IC.BindingItem, GodhomeRandomizer",
       "name": "Pantheon_Sage-Completion",
       "pantheonID": 3,
-      "bindingType": "Complete",
+      "bindingType": "Completion",
       "UIDef": {
           "$type": "ItemChanger.UIDefs.MsgUIDef, ItemChanger",
           "name": {
@@ -454,14 +524,19 @@
           }
       },
       "tags": [
-          {
-            "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
-            "Properties": {
-              "ModSource": "GodhomeRandomizer",
-              "PoolGroup": "Bindings"
+        {
+          "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+          "Message": "RandoSupplementalMetadata",
+          "Properties": {
+            "ModSource": "GodhomeRandomizer",
+            "PoolGroup": "Pantheon Marks",
+            "PinSprite": {
+              "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+              "Key": "Complete"
             }
           }
-        ],
+        }
+      ],
       "obtainState": "Unobtained"
     },
     {
@@ -485,14 +560,19 @@
           }
       },
       "tags": [
-          {
-            "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
-            "Properties": {
-              "ModSource": "GodhomeRandomizer",
-              "PoolGroup": "Bindings"
+        {
+          "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+          "Message": "RandoSupplementalMetadata",
+          "Properties": {
+            "ModSource": "GodhomeRandomizer",
+            "PoolGroup": "Pantheon Marks",
+            "PinSprite": {
+              "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+              "Key": "Nail"
             }
           }
-        ],
+        }
+      ],
       "obtainState": "Unobtained"
     },
     {
@@ -516,14 +596,19 @@
           }
       },
       "tags": [
-          {
-            "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
-            "Properties": {
-              "ModSource": "GodhomeRandomizer",
-              "PoolGroup": "Bindings"
+        {
+          "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+          "Message": "RandoSupplementalMetadata",
+          "Properties": {
+            "ModSource": "GodhomeRandomizer",
+            "PoolGroup": "Pantheon Marks",
+            "PinSprite": {
+              "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+              "Key": "Shell"
             }
           }
-        ],
+        }
+      ],
       "obtainState": "Unobtained"
     },
     {
@@ -547,14 +632,19 @@
           }
       },
       "tags": [
-          {
-            "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
-            "Properties": {
-              "ModSource": "GodhomeRandomizer",
-              "PoolGroup": "Bindings"
+        {
+          "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+          "Message": "RandoSupplementalMetadata",
+          "Properties": {
+            "ModSource": "GodhomeRandomizer",
+            "PoolGroup": "Pantheon Marks",
+            "PinSprite": {
+              "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+              "Key": "Charms"
             }
           }
-        ],
+        }
+      ],
       "obtainState": "Unobtained"
     },
     {
@@ -578,14 +668,19 @@
           }
       },
       "tags": [
-          {
-            "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
-            "Properties": {
-              "ModSource": "GodhomeRandomizer",
-              "PoolGroup": "Bindings"
+        {
+          "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+          "Message": "RandoSupplementalMetadata",
+          "Properties": {
+            "ModSource": "GodhomeRandomizer",
+            "PoolGroup": "Pantheon Marks",
+            "PinSprite": {
+              "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+              "Key": "Soul"
             }
           }
-        ],
+        }
+      ],
       "obtainState": "Unobtained"
     },
     {
@@ -609,14 +704,19 @@
           }
       },
       "tags": [
-          {
-            "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
-            "Properties": {
-              "ModSource": "GodhomeRandomizer",
-              "PoolGroup": "Bindings"
+        {
+          "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+          "Message": "RandoSupplementalMetadata",
+          "Properties": {
+            "ModSource": "GodhomeRandomizer",
+            "PoolGroup": "Pantheon Marks",
+            "PinSprite": {
+              "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+              "Key": "AllAtOnce"
             }
           }
-        ],
+        }
+      ],
       "obtainState": "Unobtained"
     },
     {
@@ -640,21 +740,26 @@
           }
       },
       "tags": [
-          {
-            "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
-            "Properties": {
-              "ModSource": "GodhomeRandomizer",
-              "PoolGroup": "Bindings"
+        {
+          "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+          "Message": "RandoSupplementalMetadata",
+          "Properties": {
+            "ModSource": "GodhomeRandomizer",
+            "PoolGroup": "Pantheon Marks",
+            "PinSprite": {
+              "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+              "Key": "Hitless"
             }
           }
-        ],
+        }
+      ],
       "obtainState": "Unobtained"
     },
     {
       "$type": "GodhomeRandomizer.IC.BindingItem, GodhomeRandomizer",
       "name": "Pantheon_Knight-Completion",
       "pantheonID": 4,
-      "bindingType": "Complete",
+      "bindingType": "Completion",
       "UIDef": {
           "$type": "ItemChanger.UIDefs.MsgUIDef, ItemChanger",
           "name": {
@@ -671,14 +776,19 @@
           }
       },
       "tags": [
-          {
-            "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
-            "Properties": {
-              "ModSource": "GodhomeRandomizer",
-              "PoolGroup": "Bindings"
+        {
+          "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+          "Message": "RandoSupplementalMetadata",
+          "Properties": {
+            "ModSource": "GodhomeRandomizer",
+            "PoolGroup": "Pantheon Marks",
+            "PinSprite": {
+              "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+              "Key": "Complete"
             }
           }
-        ],
+        }
+      ],
       "obtainState": "Unobtained"
     },
     {
@@ -702,14 +812,19 @@
           }
       },
       "tags": [
-          {
-            "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
-            "Properties": {
-              "ModSource": "GodhomeRandomizer",
-              "PoolGroup": "Bindings"
+        {
+          "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+          "Message": "RandoSupplementalMetadata",
+          "Properties": {
+            "ModSource": "GodhomeRandomizer",
+            "PoolGroup": "Pantheon Marks",
+            "PinSprite": {
+              "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+              "Key": "Nail"
             }
           }
-        ],
+        }
+      ],
       "obtainState": "Unobtained"
     },
     {
@@ -733,14 +848,19 @@
           }
       },
       "tags": [
-          {
-            "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
-            "Properties": {
-              "ModSource": "GodhomeRandomizer",
-              "PoolGroup": "Bindings"
+        {
+          "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+          "Message": "RandoSupplementalMetadata",
+          "Properties": {
+            "ModSource": "GodhomeRandomizer",
+            "PoolGroup": "Pantheon Marks",
+            "PinSprite": {
+              "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+              "Key": "Shell"
             }
           }
-        ],
+        }
+      ],
       "obtainState": "Unobtained"
     },
     {
@@ -764,14 +884,19 @@
           }
       },
       "tags": [
-          {
-            "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
-            "Properties": {
-              "ModSource": "GodhomeRandomizer",
-              "PoolGroup": "Bindings"
+        {
+          "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+          "Message": "RandoSupplementalMetadata",
+          "Properties": {
+            "ModSource": "GodhomeRandomizer",
+            "PoolGroup": "Pantheon Marks",
+            "PinSprite": {
+              "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+              "Key": "Charms"
             }
           }
-        ],
+        }
+      ],
       "obtainState": "Unobtained"
     },
     {
@@ -795,14 +920,19 @@
           }
       },
       "tags": [
-          {
-            "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
-            "Properties": {
-              "ModSource": "GodhomeRandomizer",
-              "PoolGroup": "Bindings"
+        {
+          "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+          "Message": "RandoSupplementalMetadata",
+          "Properties": {
+            "ModSource": "GodhomeRandomizer",
+            "PoolGroup": "Pantheon Marks",
+            "PinSprite": {
+              "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+              "Key": "Soul"
             }
           }
-        ],
+        }
+      ],
       "obtainState": "Unobtained"
     },
     {
@@ -826,14 +956,19 @@
           }
       },
       "tags": [
-          {
-            "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
-            "Properties": {
-              "ModSource": "GodhomeRandomizer",
-              "PoolGroup": "Bindings"
+        {
+          "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+          "Message": "RandoSupplementalMetadata",
+          "Properties": {
+            "ModSource": "GodhomeRandomizer",
+            "PoolGroup": "Pantheon Marks",
+            "PinSprite": {
+              "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+              "Key": "AllAtOnce"
             }
           }
-        ],
+        }
+      ],
       "obtainState": "Unobtained"
     },
     {
@@ -857,21 +992,26 @@
           }
       },
       "tags": [
-          {
-            "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
-            "Properties": {
-              "ModSource": "GodhomeRandomizer",
-              "PoolGroup": "Bindings"
+        {
+          "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+          "Message": "RandoSupplementalMetadata",
+          "Properties": {
+            "ModSource": "GodhomeRandomizer",
+            "PoolGroup": "Pantheon Marks",
+            "PinSprite": {
+              "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+              "Key": "Hitless"
             }
           }
-        ],
+        }
+      ],
       "obtainState": "Unobtained"
     },
     {
       "$type": "GodhomeRandomizer.IC.BindingItem, GodhomeRandomizer",
       "name": "Pantheon_Hallownest-Completion",
       "pantheonID": 5,
-      "bindingType": "Complete",
+      "bindingType": "Completion",
       "UIDef": {
           "$type": "ItemChanger.UIDefs.MsgUIDef, ItemChanger",
           "name": {
@@ -888,14 +1028,19 @@
           }
       },
       "tags": [
-          {
-            "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
-            "Properties": {
-              "ModSource": "GodhomeRandomizer",
-              "PoolGroup": "Bindings"
+        {
+          "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+          "Message": "RandoSupplementalMetadata",
+          "Properties": {
+            "ModSource": "GodhomeRandomizer",
+            "PoolGroup": "Pantheon Marks",
+            "PinSprite": {
+              "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+              "Key": "Complete"
             }
           }
-        ],
+        }
+      ],
       "obtainState": "Unobtained"
     },
     {
@@ -919,14 +1064,19 @@
           }
       },
       "tags": [
-          {
-            "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
-            "Properties": {
-              "ModSource": "GodhomeRandomizer",
-              "PoolGroup": "Bindings"
+        {
+          "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+          "Message": "RandoSupplementalMetadata",
+          "Properties": {
+            "ModSource": "GodhomeRandomizer",
+            "PoolGroup": "Pantheon Marks",
+            "PinSprite": {
+              "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+              "Key": "Nail"
             }
           }
-        ],
+        }
+      ],
       "obtainState": "Unobtained"
     },
     {
@@ -950,14 +1100,19 @@
           }
       },
       "tags": [
-          {
-            "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
-            "Properties": {
-              "ModSource": "GodhomeRandomizer",
-              "PoolGroup": "Bindings"
+        {
+          "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+          "Message": "RandoSupplementalMetadata",
+          "Properties": {
+            "ModSource": "GodhomeRandomizer",
+            "PoolGroup": "Pantheon Marks",
+            "PinSprite": {
+              "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+              "Key": "Shell"
             }
           }
-        ],
+        }
+      ],
       "obtainState": "Unobtained"
     },
     {
@@ -981,14 +1136,19 @@
           }
       },
       "tags": [
-          {
-            "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
-            "Properties": {
-              "ModSource": "GodhomeRandomizer",
-              "PoolGroup": "Bindings"
+        {
+          "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+          "Message": "RandoSupplementalMetadata",
+          "Properties": {
+            "ModSource": "GodhomeRandomizer",
+            "PoolGroup": "Pantheon Marks",
+            "PinSprite": {
+              "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+              "Key": "Charms"
             }
           }
-        ],
+        }
+      ],
       "obtainState": "Unobtained"
     },
     {
@@ -1012,14 +1172,19 @@
           }
       },
       "tags": [
-          {
-            "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
-            "Properties": {
-              "ModSource": "GodhomeRandomizer",
-              "PoolGroup": "Bindings"
+        {
+          "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+          "Message": "RandoSupplementalMetadata",
+          "Properties": {
+            "ModSource": "GodhomeRandomizer",
+            "PoolGroup": "Pantheon Marks",
+            "PinSprite": {
+              "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+              "Key": "Soul"
             }
           }
-        ],
+        }
+      ],
       "obtainState": "Unobtained"
     },
     {
@@ -1043,14 +1208,19 @@
           }
       },
       "tags": [
-          {
-            "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
-            "Properties": {
-              "ModSource": "GodhomeRandomizer",
-              "PoolGroup": "Bindings"
+        {
+          "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+          "Message": "RandoSupplementalMetadata",
+          "Properties": {
+            "ModSource": "GodhomeRandomizer",
+            "PoolGroup": "Pantheon Marks",
+            "PinSprite": {
+              "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+              "Key": "AllAtOnce"
             }
           }
-        ],
+        }
+      ],
       "obtainState": "Unobtained"
     },
     {
@@ -1074,14 +1244,19 @@
           }
       },
       "tags": [
-          {
-            "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
-            "Properties": {
-              "ModSource": "GodhomeRandomizer",
-              "PoolGroup": "Bindings"
+        {
+          "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+          "Message": "RandoSupplementalMetadata",
+          "Properties": {
+            "ModSource": "GodhomeRandomizer",
+            "PoolGroup": "Pantheon Marks",
+            "PinSprite": {
+              "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+              "Key": "Hitless"
             }
           }
-        ],
+        }
+      ],
       "obtainState": "Unobtained"
     }
 ]

@@ -125,18 +125,38 @@
         "Stateless": true
     },
     {
+        "name": "Nail_Upgradable_1",
+        "logic": "Room_nailsmith[left1] + LISTEN?TRUE + Can_Replenish_Geo",
+        "Stateless": true
+    },
+    {
+        "name": "Nail_Upgradable_2",
+        "logic": "Room_nailsmith[left1] + LISTEN?TRUE + PALEORE + Can_Replenish_Geo",
+        "Stateless": true
+    },
+    {
+        "name": "Nail_Upgradable_3",
+        "logic": "Room_nailsmith[left1] + LISTEN?TRUE + PALEORE>2 + Can_Replenish_Geo + Can_Visit_Lemm",
+        "Stateless": true
+    },
+    {
+        "name": "Nail_Upgradable_4",
+        "logic": "Room_nailsmith[left1] + LISTEN?TRUE + PALEORE>5 + Can_Replenish_Geo + Can_Visit_Lemm",
+        "Stateless": true
+    },
+    {
         "name": "Attuned_Combat",
-        "logic": "NAILCOMBAT + SPELLS | SPICYCOMBATSKIPS",
+        "logic": "NAILCOMBAT + SPELLS + (Nail_Upgradable_1 | MILDCOMBATSKIPS) | SPICYCOMBATSKIPS",
         "Stateless": true
     },
     {
         "name": "Ascended_Combat",
-        "logic": "NAILCOMBAT + SPELLS>1 + QUAKE + (FULLDASH | ANYDASH + MILDCOMBATSKIPS) | SPICYCOMBATSKIPS",
+        "logic": "NAILCOMBAT + SPELLS>1 + QUAKE + (FULLDASH | ANYDASH + MILDCOMBATSKIPS) + (Nail_Upgradable_2 | Nail_Upgradable_1 + MILDCOMBATSKIPS) | SPICYCOMBATSKIPS",
         "Stateless": true
     },
     {
         "name": "Radiant_Combat",
-        "logic":  "NAILCOMBAT + QUAKE>1 | (CURSED + QUAKE) + (FULLSHADOWDASH | ANYSHADOWDASH + MILDCOMBATSKIPS) | SPICYCOMBATSKIPS",
+        "logic":  "NAILCOMBAT + QUAKE>1 | (CURSED + QUAKE) + (FULLSHADOWDASH | ANYSHADOWDASH + MILDCOMBATSKIPS) + (Nail_Upgradable_3 | Nail_Upgradable_2 + MILDCOMBATSKIPS)  | SPICYCOMBATSKIPS",
         "Stateless": true
     }
 ]

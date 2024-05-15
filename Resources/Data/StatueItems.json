@@ -5,6 +5,7 @@
         "position": "BOTTOM",
         "isDreamBoss": false,
         "statueStateName": "statueStateGruzMother",
+        "battleSceneName": "GG_Gruz_Mother",
         "pantheonID": 1,
         "UIDef": {
             "$type": "ItemChanger.UIDefs.MsgUIDef, ItemChanger",
@@ -24,9 +25,14 @@
         "tags": [
             {
               "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+              "Message": "RandoSupplementalMetadata",
               "Properties": {
                 "ModSource": "GodhomeRandomizer",
-                "PoolGroup": "HallOfGods"
+                "PoolGroup": "Statue Marks",
+                "PinSprite": {
+                  "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+                  "Key": "GruzMother"
+                }
               }
             }
           ],
@@ -38,6 +44,7 @@
         "position": "BOTTOM",
         "isDreamBoss": false,
         "statueStateName": "statueStateVengefly",
+        "battleSceneName": "GG_Vengefly",
         "pantheonID": 1,
         "UIDef": {
             "$type": "ItemChanger.UIDefs.MsgUIDef, ItemChanger",
@@ -57,9 +64,14 @@
         "tags": [
             {
               "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+              "Message": "RandoSupplementalMetadata",
               "Properties": {
                 "ModSource": "GodhomeRandomizer",
-                "PoolGroup": "HallOfGods"
+                "PoolGroup": "Statue Marks",
+                "PinSprite": {
+                  "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+                  "Key": "VengeflyKing"
+                }
               }
             }
           ],
@@ -68,6 +80,7 @@
     {
         "$type": "GodhomeRandomizer.IC.StatueItem, GodhomeRandomizer",
         "name": "Statue_Mark-Brooding_Mawlek",
+        "battleSceneName": "GG_Brooding_Mawlek",
         "position": "BOTTOM",
         "isDreamBoss": false,
         "statueStateName": "statueStateBroodingMawlek",
@@ -90,9 +103,14 @@
         "tags": [
             {
               "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+              "Message": "RandoSupplementalMetadata",
               "Properties": {
                 "ModSource": "GodhomeRandomizer",
-                "PoolGroup": "HallOfGods"
+                "PoolGroup": "Statue Marks",
+                "PinSprite": {
+                  "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+                  "Key": "BroodingMawlek"
+                }
               }
             }
           ],
@@ -104,6 +122,7 @@
         "position": "BOTTOM",
         "isDreamBoss": false,
         "statueStateName": "statueStateFalseKnight",
+        "battleSceneName": "GG_False_Knight",
         "pantheonID": 1,
         "UIDef": {
             "$type": "ItemChanger.UIDefs.MsgUIDef, ItemChanger",
@@ -123,9 +142,14 @@
         "tags": [
             {
               "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+              "Message": "RandoSupplementalMetadata",
               "Properties": {
                 "ModSource": "GodhomeRandomizer",
-                "PoolGroup": "HallOfGods"
+                "PoolGroup": "Statue Marks",
+                "PinSprite": {
+                  "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+                  "Key": "FalseKnight"
+                }                
               }
             }
           ],
@@ -138,6 +162,7 @@
         "dependency": "False_Knight",
         "isDreamBoss": true,
         "statueStateName": "statueStateFailedChampion",
+        "battleSceneName": "GG_Failed_Champion",
         "pantheonID": 4,
         "UIDef": {
             "$type": "ItemChanger.UIDefs.MsgUIDef, ItemChanger",
@@ -157,9 +182,14 @@
         "tags": [
             {
               "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+              "Message": "RandoSupplementalMetadata",
               "Properties": {
                 "ModSource": "GodhomeRandomizer",
-                "PoolGroup": "HallOfGods"
+                "PoolGroup": "Statue Marks",
+                "PinSprite": {
+                  "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+                  "Key": "FalseKnight"
+                }
               }
             }
           ],
@@ -171,6 +201,7 @@
         "position": "BOTTOM",
         "isDreamBoss": false,
         "statueStateName": "statueStateHornet1",
+        "battleSceneName": "GG_Hornet_1",
         "pantheonID": 1,
         "UIDef": {
             "$type": "ItemChanger.UIDefs.MsgUIDef, ItemChanger",
@@ -190,9 +221,14 @@
         "tags": [
             {
               "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+              "Message": "RandoSupplementalMetadata",
               "Properties": {
                 "ModSource": "GodhomeRandomizer",
-                "PoolGroup": "HallOfGods"
+                "PoolGroup": "Statue Marks",
+                "PinSprite": {
+                  "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+                  "Key": "Hornet1"
+                }
               }
             }
           ],
@@ -205,6 +241,7 @@
         "dependency": "Hornet_1",
         "isDreamBoss": false,
         "statueStateName": "statueStateHornet2",
+        "battleSceneName": "GG_Hornet_2",
         "pantheonID": 3,
         "UIDef": {
             "$type": "ItemChanger.UIDefs.MsgUIDef, ItemChanger",
@@ -224,9 +261,14 @@
         "tags": [
             {
               "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+              "Message": "RandoSupplementalMetadata",
               "Properties": {
                 "ModSource": "GodhomeRandomizer",
-                "PoolGroup": "HallOfGods"
+                "PoolGroup": "Statue Marks",
+                "PinSprite": {
+                  "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+                  "Key": "Hornet2"
+                }
               }
             }
           ],
@@ -238,6 +280,7 @@
         "position": "BOTTOM",
         "isDreamBoss": false,
         "statueStateName": "statueStateMegaMossCharger",
+        "battleSceneName": "GG_Mega_Moss_Charger",
         "pantheonID": 1,
         "UIDef": {
             "$type": "ItemChanger.UIDefs.MsgUIDef, ItemChanger",
@@ -257,9 +300,14 @@
         "tags": [
             {
               "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+              "Message": "RandoSupplementalMetadata",
               "Properties": {
                 "ModSource": "GodhomeRandomizer",
-                "PoolGroup": "HallOfGods"
+                "PoolGroup": "Statue Marks",
+                "PinSprite": {
+                  "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+                  "Key": "MassiveMossCharger"
+                }
               }
             }
           ],
@@ -271,6 +319,7 @@
         "position": "BOTTOM",
         "isDreamBoss": false,
         "statueStateName": "statueStateMantisLords",
+        "battleSceneName": "GG_Mantis_Lords",
         "pantheonID": 2,
         "UIDef": {
             "$type": "ItemChanger.UIDefs.MsgUIDef, ItemChanger",
@@ -290,9 +339,14 @@
         "tags": [
             {
               "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+              "Message": "RandoSupplementalMetadata",
               "Properties": {
                 "ModSource": "GodhomeRandomizer",
-                "PoolGroup": "HallOfGods"
+                "PoolGroup": "Statue Marks",
+                "PinSprite": {
+                  "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+                  "Key": "MantisLords"
+                }
               }
             }
           ],
@@ -304,6 +358,7 @@
         "position": "BOTTOM",
         "isDreamBoss": false,
         "statueStateName": "statueStateOblobbles",
+        "battleSceneName": "GG_Oblobbles",
         "pantheonID": 2,
         "UIDef": {
             "$type": "ItemChanger.UIDefs.MsgUIDef, ItemChanger",
@@ -323,9 +378,14 @@
         "tags": [
             {
               "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+              "Message": "RandoSupplementalMetadata",
               "Properties": {
                 "ModSource": "GodhomeRandomizer",
-                "PoolGroup": "HallOfGods"
+                "PoolGroup": "Statue Marks",
+                "PinSprite": {
+                  "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+                  "Key": "Oblobbles"
+                }
               }
             }
           ],
@@ -337,6 +397,7 @@
         "position": "BOTTOM",
         "isDreamBoss": false,
         "statueStateName": "statueStateGreyPrince",
+        "battleSceneName": "GG_Grey_Prince_Zote",
         "UIDef": {
             "$type": "ItemChanger.UIDefs.MsgUIDef, ItemChanger",
             "name": {
@@ -355,9 +416,14 @@
         "tags": [
             {
               "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+              "Message": "RandoSupplementalMetadata",
               "Properties": {
                 "ModSource": "GodhomeRandomizer",
-                "PoolGroup": "HallOfGods"
+                "PoolGroup": "Statue Marks",
+                "PinSprite": {
+                  "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+                  "Key": "Zote"
+                }
               }
             }
           ],
@@ -369,6 +435,7 @@
         "position": "BOTTOM",
         "isDreamBoss": false,
         "statueStateName": "statueStateBrokenVessel",
+        "battleSceneName": "GG_Broken_Vessel",
         "pantheonID": 2,
         "UIDef": {
             "$type": "ItemChanger.UIDefs.MsgUIDef, ItemChanger",
@@ -388,9 +455,14 @@
         "tags": [
             {
               "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+              "Message": "RandoSupplementalMetadata",
               "Properties": {
                 "ModSource": "GodhomeRandomizer",
-                "PoolGroup": "HallOfGods"
+                "PoolGroup": "Statue Marks",
+                "PinSprite": {
+                  "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+                  "Key": "BrokenVessel"
+                }
               }
             }
           ],
@@ -403,6 +475,7 @@
         "dependency": "Broken_Vessel",
         "isDreamBoss": true,
         "statueStateName": "statueStateLostKin",
+        "battleSceneName": "GG_Lost_Kin",
         "pantheonID": 4,
         "UIDef": {
             "$type": "ItemChanger.UIDefs.MsgUIDef, ItemChanger",
@@ -422,9 +495,14 @@
         "tags": [
             {
               "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+              "Message": "RandoSupplementalMetadata",
               "Properties": {
                 "ModSource": "GodhomeRandomizer",
-                "PoolGroup": "HallOfGods"
+                "PoolGroup": "Statue Marks",
+                "PinSprite": {
+                  "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+                  "Key": "BrokenVessel"
+                }
               }
             }
           ],
@@ -436,6 +514,7 @@
         "position": "BOTTOM",
         "isDreamBoss": false,
         "statueStateName": "statueStateNosk",
+        "battleSceneName": "GG_Nosk",
         "pantheonID": 2,
         "UIDef": {
             "$type": "ItemChanger.UIDefs.MsgUIDef, ItemChanger",
@@ -455,9 +534,14 @@
         "tags": [
             {
               "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+              "Message": "RandoSupplementalMetadata",
               "Properties": {
                 "ModSource": "GodhomeRandomizer",
-                "PoolGroup": "HallOfGods"
+                "PoolGroup": "Statue Marks",
+                "PinSprite": {
+                  "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+                  "Key": "Nosk"
+                }
               }
             }
           ],
@@ -469,6 +553,7 @@
         "position": "BOTTOM",
         "isDreamBoss": false,
         "statueStateName": "statueStateFlukemarm",
+        "battleSceneName": "GG_Flukemarm",
         "pantheonID": 2,
         "UIDef": {
             "$type": "ItemChanger.UIDefs.MsgUIDef, ItemChanger",
@@ -488,9 +573,14 @@
         "tags": [
             {
               "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+              "Message": "RandoSupplementalMetadata",
               "Properties": {
                 "ModSource": "GodhomeRandomizer",
-                "PoolGroup": "HallOfGods"
+                "PoolGroup": "Statue Marks",
+                "PinSprite": {
+                  "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+                  "Key": "Flukemarm"
+                }
               }
             }
           ],
@@ -502,6 +592,7 @@
         "position": "BOTTOM",
         "isDreamBoss": false,
         "statueStateName": "statueStateCollector",
+        "battleSceneName": "GG_Collector",
         "pantheonID": 3,
         "UIDef": {
             "$type": "ItemChanger.UIDefs.MsgUIDef, ItemChanger",
@@ -521,9 +612,14 @@
         "tags": [
             {
               "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+              "Message": "RandoSupplementalMetadata",
               "Properties": {
                 "ModSource": "GodhomeRandomizer",
-                "PoolGroup": "HallOfGods"
+                "PoolGroup": "Statue Marks",
+                "PinSprite": {
+                  "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+                  "Key": "Collector"
+                }
               }
             }
           ],
@@ -535,6 +631,7 @@
         "position": "TOP",
         "isDreamBoss": false,
         "statueStateName": "statueStateWatcherKnights",
+        "battleSceneName": "GG_Watcher_Knights",
         "pantheonID": 4,
         "UIDef": {
             "$type": "ItemChanger.UIDefs.MsgUIDef, ItemChanger",
@@ -554,9 +651,14 @@
         "tags": [
             {
               "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+              "Message": "RandoSupplementalMetadata",
               "Properties": {
                 "ModSource": "GodhomeRandomizer",
-                "PoolGroup": "HallOfGods"
+                "PoolGroup": "Statue Marks",
+                "PinSprite": {
+                  "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+                  "Key": "WatcherKnights"
+                }
               }
             }
           ],
@@ -568,6 +670,7 @@
         "position": "TOP",
         "isDreamBoss": false,
         "statueStateName": "statueStateSoulMaster",
+        "battleSceneName": "GG_Soul_Master",
         "pantheonID": 2,
         "UIDef": {
             "$type": "ItemChanger.UIDefs.MsgUIDef, ItemChanger",
@@ -587,9 +690,14 @@
         "tags": [
             {
               "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+              "Message": "RandoSupplementalMetadata",
               "Properties": {
                 "ModSource": "GodhomeRandomizer",
-                "PoolGroup": "HallOfGods"
+                "PoolGroup": "Statue Marks",
+                "PinSprite": {
+                  "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+                  "Key": "SoulMaster"
+                }
               }
             }
           ],
@@ -602,6 +710,7 @@
         "dependency": "Soul_Master",
         "isDreamBoss": true,
         "statueStateName": "statueStateSoulTyrant",
+        "battleSceneName": "GG_Soul_Tyrant",
         "pantheonID": 4,
         "UIDef": {
             "$type": "ItemChanger.UIDefs.MsgUIDef, ItemChanger",
@@ -621,9 +730,14 @@
         "tags": [
             {
               "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+              "Message": "RandoSupplementalMetadata",
               "Properties": {
                 "ModSource": "GodhomeRandomizer",
-                "PoolGroup": "HallOfGods"
+                "PoolGroup": "Statue Marks",
+                "PinSprite": {
+                  "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+                  "Key": "SoulMaster"
+                }
               }
             }
           ],
@@ -635,6 +749,7 @@
         "position": "BOTTOM",
         "isDreamBoss": false,
         "statueStateName": "statueStateGodTamer",
+        "battleSceneName": "GG_God_Tamer",
         "pantheonID": 3,
         "UIDef": {
             "$type": "ItemChanger.UIDefs.MsgUIDef, ItemChanger",
@@ -654,9 +769,14 @@
         "tags": [
             {
               "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+              "Message": "RandoSupplementalMetadata",
               "Properties": {
                 "ModSource": "GodhomeRandomizer",
-                "PoolGroup": "HallOfGods"
+                "PoolGroup": "Statue Marks",
+                "PinSprite": {
+                  "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+                  "Key": "GodTamer"
+                }
               }
             }
           ],
@@ -668,6 +788,7 @@
         "position": "BOTTOM",
         "isDreamBoss": false,
         "statueStateName": "statueStateCrystalGuardian1",
+        "battleSceneName": "GG_Crystal_Guardian",
         "pantheonID": 2,
         "UIDef": {
             "$type": "ItemChanger.UIDefs.MsgUIDef, ItemChanger",
@@ -687,9 +808,14 @@
         "tags": [
             {
               "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+              "Message": "RandoSupplementalMetadata",
               "Properties": {
                 "ModSource": "GodhomeRandomizer",
-                "PoolGroup": "HallOfGods"
+                "PoolGroup": "Statue Marks",
+                "PinSprite": {
+                  "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+                  "Key": "CrystalGuardian"
+                }
               }
             }
           ],
@@ -702,6 +828,7 @@
         "dependency": "Crystal_Guardian",
         "isDreamBoss": false,
         "statueStateName": "statueStateCrystalGuardian2",
+        "battleSceneName": "GG_Crystal_Guardian_2",
         "pantheonID": 4,
         "UIDef": {
             "$type": "ItemChanger.UIDefs.MsgUIDef, ItemChanger",
@@ -721,9 +848,14 @@
         "tags": [
             {
               "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+              "Message": "RandoSupplementalMetadata",
               "Properties": {
                 "ModSource": "GodhomeRandomizer",
-                "PoolGroup": "HallOfGods"
+                "PoolGroup": "Statue Marks",
+                "PinSprite": {
+                  "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+                  "Key": "CrystalGuardian"
+                }
               }
             }
           ],
@@ -735,6 +867,7 @@
         "position": "BOTTOM",
         "isDreamBoss": false,
         "statueStateName": "statueStateUumuu",
+        "battleSceneName": "GG_Uumuu",
         "pantheonID": 3,
         "UIDef": {
             "$type": "ItemChanger.UIDefs.MsgUIDef, ItemChanger",
@@ -754,9 +887,14 @@
         "tags": [
             {
               "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+              "Message": "RandoSupplementalMetadata",
               "Properties": {
                 "ModSource": "GodhomeRandomizer",
-                "PoolGroup": "HallOfGods"
+                "PoolGroup": "Statue Marks",
+                "PinSprite": {
+                  "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+                  "Key": "Uumuu"
+                }
               }
             }
           ],
@@ -768,6 +906,7 @@
         "position": "TOP",
         "isDreamBoss": false,
         "statueStateName": "statueStateDungDefender",
+        "battleSceneName": "GG_Dung_Defender",
         "pantheonID": 1,
         "UIDef": {
             "$type": "ItemChanger.UIDefs.MsgUIDef, ItemChanger",
@@ -787,9 +926,14 @@
         "tags": [
             {
               "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+              "Message": "RandoSupplementalMetadata",
               "Properties": {
                 "ModSource": "GodhomeRandomizer",
-                "PoolGroup": "HallOfGods"
+                "PoolGroup": "Statue Marks",
+                "PinSprite": {
+                  "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+                  "Key": "DungDefender"
+                }
               }
             }
           ],
@@ -802,6 +946,7 @@
         "dependency": "Dung_Defender",
         "isDreamBoss": true,
         "statueStateName": "statueStateWhiteDefender",
+        "battleSceneName": "GG_White_Defender",
         "pantheonID": 4,
         "UIDef": {
             "$type": "ItemChanger.UIDefs.MsgUIDef, ItemChanger",
@@ -821,9 +966,14 @@
         "tags": [
             {
               "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+              "Message": "RandoSupplementalMetadata",
               "Properties": {
                 "ModSource": "GodhomeRandomizer",
-                "PoolGroup": "HallOfGods"
+                "PoolGroup": "Statue Marks",
+                "PinSprite": {
+                  "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+                  "Key": "DungDefender"
+                }
               }
             }
           ],
@@ -835,6 +985,7 @@
         "position": "BOTTOM",
         "isDreamBoss": false,
         "statueStateName": "statueStateHiveKnight",
+        "battleSceneName": "GG_Hive_Knight",
         "pantheonID": 3,
         "UIDef": {
             "$type": "ItemChanger.UIDefs.MsgUIDef, ItemChanger",
@@ -854,9 +1005,14 @@
         "tags": [
             {
               "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+              "Message": "RandoSupplementalMetadata",
               "Properties": {
                 "ModSource": "GodhomeRandomizer",
-                "PoolGroup": "HallOfGods"
+                "PoolGroup": "Statue Marks",
+                "PinSprite": {
+                  "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+                  "Key": "HiveKnight"
+                }
               }
             }
           ],
@@ -868,6 +1024,7 @@
         "position": "BOTTOM",
         "isDreamBoss": false,
         "statueStateName": "statueStateTraitorLord",
+        "battleSceneName": "GG_Traitor_Lord",
         "pantheonID": 4,
         "UIDef": {
             "$type": "ItemChanger.UIDefs.MsgUIDef, ItemChanger",
@@ -887,9 +1044,14 @@
         "tags": [
             {
               "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+              "Message": "RandoSupplementalMetadata",
               "Properties": {
                 "ModSource": "GodhomeRandomizer",
-                "PoolGroup": "HallOfGods"
+                "PoolGroup": "Statue Marks",
+                "PinSprite": {
+                  "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+                  "Key": "TraitorLord"
+                }
               }
             }
           ],
@@ -901,6 +1063,7 @@
         "position": "TOP",
         "isDreamBoss": false,
         "statueStateName": "statueStateGrimm",
+        "battleSceneName": "GG_Grimm",
         "pantheonID": 3,
         "UIDef": {
             "$type": "ItemChanger.UIDefs.MsgUIDef, ItemChanger",
@@ -920,9 +1083,14 @@
         "tags": [
             {
               "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+              "Message": "RandoSupplementalMetadata",
               "Properties": {
                 "ModSource": "GodhomeRandomizer",
-                "PoolGroup": "HallOfGods"
+                "PoolGroup": "Statue Marks",
+                "PinSprite": {
+                  "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+                  "Key": "Grimm"
+                }
               }
             }
           ],
@@ -934,7 +1102,8 @@
         "position": "TOP",
         "dependency": "Grimm",
         "isDreamBoss": true,
-        "statueStateName": "statueStateNightmareGrimm",        
+        "statueStateName": "statueStateNightmareGrimm",    
+        "battleSceneName": "GG_Grimm_Nightmare",    
         "UIDef": {
             "$type": "ItemChanger.UIDefs.MsgUIDef, ItemChanger",
             "name": {
@@ -953,9 +1122,14 @@
         "tags": [
             {
               "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+              "Message": "RandoSupplementalMetadata",
               "Properties": {
                 "ModSource": "GodhomeRandomizer",
-                "PoolGroup": "HallOfGods"
+                "PoolGroup": "Statue Marks",
+                "PinSprite": {
+                  "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+                  "Key": "Grimm"
+                }
               }
             }
           ],
@@ -966,7 +1140,8 @@
         "name": "Statue_Mark-Pure_Vessel",
         "position": "TOP",
         "isDreamBoss": false,
-        "statueStateName": "statueStateHollowKnight",        
+        "statueStateName": "statueStateHollowKnight",   
+        "battleSceneName": "GG_Hollow_Knight",     
         "UIDef": {
             "$type": "ItemChanger.UIDefs.MsgUIDef, ItemChanger",
             "name": {
@@ -985,9 +1160,14 @@
         "tags": [
             {
               "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+              "Message": "RandoSupplementalMetadata",
               "Properties": {
                 "ModSource": "GodhomeRandomizer",
-                "PoolGroup": "HallOfGods"
+                "PoolGroup": "Statue Marks",
+                "PinSprite": {
+                  "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+                  "Key": "PureVessel"
+                }
               }
             }
           ],
@@ -999,6 +1179,7 @@
         "position": "TOP",
         "isDreamBoss": false,
         "statueStateName": "statueStateElderHu",
+        "battleSceneName": "GG_Ghost_Hu",
         "pantheonID": 3,
         "UIDef": {
             "$type": "ItemChanger.UIDefs.MsgUIDef, ItemChanger",
@@ -1018,9 +1199,14 @@
         "tags": [
             {
               "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+              "Message": "RandoSupplementalMetadata",
               "Properties": {
                 "ModSource": "GodhomeRandomizer",
-                "PoolGroup": "HallOfGods"
+                "PoolGroup": "Statue Marks",
+                "PinSprite": {
+                  "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+                  "Key": "ElderHu"
+                }
               }
             }
           ],
@@ -1032,6 +1218,7 @@
         "position": "TOP",
         "isDreamBoss": false,
         "statueStateName": "statueStateGalien",
+        "battleSceneName": "GG_Ghost_Galien",
         "pantheonID": 3,
         "UIDef": {
             "$type": "ItemChanger.UIDefs.MsgUIDef, ItemChanger",
@@ -1051,9 +1238,14 @@
         "tags": [
             {
               "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+              "Message": "RandoSupplementalMetadata",
               "Properties": {
                 "ModSource": "GodhomeRandomizer",
-                "PoolGroup": "HallOfGods"
+                "PoolGroup": "Statue Marks",
+                "PinSprite": {
+                  "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+                  "Key": "Galien"
+                }
               }
             }
           ],
@@ -1065,6 +1257,7 @@
         "position": "TOP",
         "isDreamBoss": false,
         "statueStateName": "statueStateMarkoth",
+        "battleSceneName": "GG_Ghost_Markoth",
         "pantheonID": 4,
         "UIDef": {
             "$type": "ItemChanger.UIDefs.MsgUIDef, ItemChanger",
@@ -1084,9 +1277,14 @@
         "tags": [
             {
               "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+              "Message": "RandoSupplementalMetadata",
               "Properties": {
                 "ModSource": "GodhomeRandomizer",
-                "PoolGroup": "HallOfGods"
+                "PoolGroup": "Statue Marks",
+                "PinSprite": {
+                  "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+                  "Key": "Markoth"
+                }
               }
             }
           ],
@@ -1098,6 +1296,7 @@
         "position": "TOP",
         "isDreamBoss": false,
         "statueStateName": "statueStateMarmu",
+        "battleSceneName": "GG_Ghost_Marmu",
         "pantheonID": 2,
         "UIDef": {
             "$type": "ItemChanger.UIDefs.MsgUIDef, ItemChanger",
@@ -1117,9 +1316,14 @@
         "tags": [
             {
               "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+              "Message": "RandoSupplementalMetadata",
               "Properties": {
                 "ModSource": "GodhomeRandomizer",
-                "PoolGroup": "HallOfGods"
+                "PoolGroup": "Statue Marks",
+                "PinSprite": {
+                  "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+                  "Key": "Marmu"
+                }
               }
             }
           ],
@@ -1131,6 +1335,7 @@
         "position": "TOP",
         "isDreamBoss": false,
         "statueStateName": "statueStateNoEyes",
+        "battleSceneName": "GG_Ghost_No_Eyes",
         "pantheonID": 4,
         "UIDef": {
             "$type": "ItemChanger.UIDefs.MsgUIDef, ItemChanger",
@@ -1150,9 +1355,14 @@
         "tags": [
             {
               "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+              "Message": "RandoSupplementalMetadata",
               "Properties": {
                 "ModSource": "GodhomeRandomizer",
-                "PoolGroup": "HallOfGods"
+                "PoolGroup": "Statue Marks",
+                "PinSprite": {
+                  "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+                  "Key": "NoEyes"
+                }
               }
             }
           ],
@@ -1164,6 +1374,7 @@
         "position": "TOP",
         "isDreamBoss": false,
         "statueStateName": "statueStateXero",
+        "battleSceneName": "GG_Ghost_Xero",
         "pantheonID": 2,
         "UIDef": {
             "$type": "ItemChanger.UIDefs.MsgUIDef, ItemChanger",
@@ -1183,9 +1394,14 @@
         "tags": [
             {
               "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+              "Message": "RandoSupplementalMetadata",
               "Properties": {
                 "ModSource": "GodhomeRandomizer",
-                "PoolGroup": "HallOfGods"
+                "PoolGroup": "Statue Marks",
+                "PinSprite": {
+                  "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+                  "Key": "Xero"
+                }
               }
             }
           ],
@@ -1197,6 +1413,7 @@
         "position": "TOP",
         "isDreamBoss": false,
         "statueStateName": "statueStateGorb",
+        "battleSceneName": "GG_Ghost_Gorb",
         "pantheonID": 1,
         "UIDef": {
             "$type": "ItemChanger.UIDefs.MsgUIDef, ItemChanger",
@@ -1216,9 +1433,14 @@
         "tags": [
             {
               "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+              "Message": "RandoSupplementalMetadata",
               "Properties": {
                 "ModSource": "GodhomeRandomizer",
-                "PoolGroup": "HallOfGods"
+                "PoolGroup": "Statue Marks",
+                "PinSprite": {
+                  "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+                  "Key": "Gorb"
+                }
               }
             }
           ],
@@ -1229,7 +1451,8 @@
         "name": "Statue_Mark-Radiance",
         "position": "TOP",
         "isDreamBoss": false,
-        "statueStateName": "statueStateRadiance",        
+        "statueStateName": "statueStateRadiance",
+        "battleSceneName": "GG_Radiance",        
         "UIDef": {
             "$type": "ItemChanger.UIDefs.MsgUIDef, ItemChanger",
             "name": {
@@ -1248,9 +1471,14 @@
         "tags": [
             {
               "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+              "Message": "RandoSupplementalMetadata",
               "Properties": {
                 "ModSource": "GodhomeRandomizer",
-                "PoolGroup": "HallOfGods"
+                "PoolGroup": "Statue Marks",
+                "PinSprite": {
+                  "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+                  "Key": "Radiance"
+                }
               }
             }
           ],
@@ -1261,7 +1489,8 @@
         "name": "Statue_Mark-Sly",
         "position": "TOP",
         "isDreamBoss": false,
-        "statueStateName": "statueStateSly",        
+        "statueStateName": "statueStateSly",
+        "battleSceneName": "GG_Sly",        
         "UIDef": {
             "$type": "ItemChanger.UIDefs.MsgUIDef, ItemChanger",
             "name": {
@@ -1280,9 +1509,14 @@
         "tags": [
             {
               "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+              "Message": "RandoSupplementalMetadata",
               "Properties": {
                 "ModSource": "GodhomeRandomizer",
-                "PoolGroup": "HallOfGods"
+                "PoolGroup": "Statue Marks",
+                "PinSprite": {
+                  "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+                  "Key": "Sly"
+                }
               }
             }
           ],
@@ -1294,6 +1528,7 @@
         "position": "TOP",
         "isDreamBoss": false,
         "statueStateName": "statueStateNailmasters",
+        "battleSceneName": "GG_Nailmasters",
         "UIDef": {
             "$type": "ItemChanger.UIDefs.MsgUIDef, ItemChanger",
             "name": {
@@ -1312,9 +1547,14 @@
         "tags": [
             {
               "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+              "Message": "RandoSupplementalMetadata",
               "Properties": {
                 "ModSource": "GodhomeRandomizer",
-                "PoolGroup": "HallOfGods"
+                "PoolGroup": "Statue Marks",
+                "PinSprite": {
+                  "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+                  "Key": "Brothers"
+                }
               }
             }
           ],
@@ -1326,6 +1566,7 @@
         "position": "TOP",
         "isDreamBoss": false,
         "statueStateName": "statueStateMageKnight",
+        "battleSceneName": "GG_Mage_Knight",
         "pantheonID": 1,
         "UIDef": {
             "$type": "ItemChanger.UIDefs.MsgUIDef, ItemChanger",
@@ -1345,9 +1586,14 @@
         "tags": [
             {
               "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+              "Message": "RandoSupplementalMetadata",
               "Properties": {
                 "ModSource": "GodhomeRandomizer",
-                "PoolGroup": "HallOfGods"
+                "PoolGroup": "Statue Marks",
+                "PinSprite": {
+                  "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+                  "Key": "SoulWarrior"
+                }
               }
             }
           ],
@@ -1359,6 +1605,7 @@
         "position": "TOP",
         "isDreamBoss": false,
         "statueStateName": "statueStatePaintmaster",
+        "battleSceneName": "GG_Painter",
         "UIDef": {
             "$type": "ItemChanger.UIDefs.MsgUIDef, ItemChanger",
             "name": {
@@ -1377,9 +1624,14 @@
         "tags": [
             {
               "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+              "Message": "RandoSupplementalMetadata",
               "Properties": {
                 "ModSource": "GodhomeRandomizer",
-                "PoolGroup": "HallOfGods"
+                "PoolGroup": "Statue Marks",
+                "PinSprite": {
+                  "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+                  "Key": "Sheo"
+                }
               }
             }
           ],
@@ -1391,7 +1643,8 @@
         "position": "BOTTOM",
         "dependency": "Nosk",
         "isDreamBoss": false,
-        "statueStateName": "statueStateNoskHornet",       
+        "statueStateName": "statueStateNoskHornet",   
+        "battleSceneName": "GG_Nosk_Hornet",    
         "UIDef": {
             "$type": "ItemChanger.UIDefs.MsgUIDef, ItemChanger",
             "name": {
@@ -1410,9 +1663,14 @@
         "tags": [
             {
               "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+              "Message": "RandoSupplementalMetadata",
               "Properties": {
                 "ModSource": "GodhomeRandomizer",
-                "PoolGroup": "HallOfGods"
+                "PoolGroup": "Statue Marks",
+                "PinSprite": {
+                  "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+                  "Key": "WingedNosk"
+                }
               }
             }
           ],
@@ -1425,6 +1683,7 @@
         "dependency": "Mantis_Lords",
         "isDreamBoss": false,
         "statueStateName": "statueStateMantisLordsExtra",
+        "battleSceneName": "GG_Mantis_Lords_V",
         "UIDef": {
             "$type": "ItemChanger.UIDefs.MsgUIDef, ItemChanger",
             "name": {
@@ -1443,9 +1702,14 @@
         "tags": [
             {
               "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+              "Message": "RandoSupplementalMetadata",
               "Properties": {
                 "ModSource": "GodhomeRandomizer",
-                "PoolGroup": "HallOfGods"
+                "PoolGroup": "Statue Marks",
+                "PinSprite": {
+                  "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
+                  "Key": "Sisters"
+                }
               }
             }
           ],

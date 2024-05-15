@@ -23,6 +23,11 @@ jobs:
           wget https://github.com/hk-modding/api/releases/latest/download/ModdingApiWin.zip -O API.zip
           unzip -o API.zip -d References
 
+      - name: Fetch FStats
+        run: |
+          wget https://github.com/flibber-hk/HollowKnight.FStats/releases/latest/download/FStats.zip -O FStats.zip
+          unzip -o FStats.zip -d References
+
       - name: Fetch ItemChanger
         run: |
           wget https://github.com/homothetyhk/HollowKnight.ItemChanger/releases/latest/download/ItemChanger.zip -O ItemChanger.zip

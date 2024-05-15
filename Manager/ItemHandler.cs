@@ -8,14 +8,17 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Linq;
 
+
 namespace GodhomeRandomizer.Manager {
     internal static class ItemHandler
     {
+        private static Dictionary<string, ItemGroupBuilder> definedGroups = [];
         internal static void Hook()
         {
             DefineObjects();
+            //RequestBuilder.OnUpdate.Subscribe(0.5f, CreateGroups);
             RequestBuilder.OnUpdate.Subscribe(100f, AddHOGObjects);
-            RequestBuilder.OnUpdate.Subscribe(100f, AddPantheonObjects);
+            RequestBuilder.OnUpdate.Subscribe(105f, AddPantheonObjects);
         }
 
         public static void DefineObjects()
@@ -54,63 +57,12 @@ namespace GodhomeRandomizer.Manager {
             Finder.DefineCustomItem(new OrdealItem());
             Finder.DefineCustomLocation(new OrdealLocation());
         }
-        private static void AddPantheonObjects(RequestBuilder builder)
-        {
-            if (!GodhomeManager.GlobalSettings.Enabled)
-                return;
-            
-            Assembly assembly = Assembly.GetExecutingAssembly();
-            JsonSerializer jsonSerializer = new() {TypeNameHandling = TypeNameHandling.Auto};
-            GodhomeRandomizerSettings.Panth settings = GodhomeManager.GlobalSettings.Pantheons;
-            List<string> availableSettings = [];
-            if (settings.Completion == true)
-                availableSettings.Add("Complete");
-            if (settings.Nail == true || settings.AllAtOnce == true)
-                availableSettings.Add("Nail");
-            if (settings.Shell == true || settings.AllAtOnce == true)
-                availableSettings.Add("Shell");
-            if (settings.Charms == true || settings.AllAtOnce == true)
-                availableSettings.Add("Charms");
-            if (settings.Soul == true || settings.AllAtOnce == true)
-                availableSettings.Add("Soul");
-            if (settings.AllAtOnce == true)
-                availableSettings.Add("AllAtOnce");
-            if (settings.Hitless == true)
-                availableSettings.Add("Hitless");
-
-            // Define items
-            using Stream itemStream = assembly.GetManifestResourceStream("GodhomeRandomizer.Resources.Data.BindingItems.json");
-            StreamReader itemReader = new(itemStream);
-            List<BindingItem> itemList = jsonSerializer.Deserialize<List<BindingItem>>(new JsonTextReader(itemReader));
-            foreach (BindingItem item in itemList)
-            {
-                if (item.pantheonID <= settings.PantheonsIncluded && availableSettings.Contains(item.bindingType))
-                    builder.AddItemByName(item.name);
-            }
-
-            // Define locations
-            using Stream locationStream = assembly.GetManifestResourceStream("GodhomeRandomizer.Resources.Data.BindingLocations.json");
-            StreamReader locationReader = new(locationStream);
-            List<BindingLocation> locationList = jsonSerializer.Deserialize<List<BindingLocation>>(new JsonTextReader(locationReader));
-            foreach (BindingLocation location in locationList)
-            {
-                if (location.pantheonID <= settings.PantheonsIncluded && availableSettings.Contains(location.bindingType))
-                    builder.AddLocationByName(location.name);
-            }
-
-            // Add lifeblood if available
-            if (settings.Lifeblood)
-            {
-                builder.AddItemByName("Godhome_Lifeblood");
-                builder.AddLocationByName("Godhome_Lifeblood");
-            }
-        }
 
         public static void AddHOGObjects(RequestBuilder builder)
         {
             if (!GodhomeManager.GlobalSettings.Enabled)
                 return;
-        
+
             Assembly assembly = Assembly.GetExecutingAssembly();
             JsonSerializer jsonSerializer = new() {TypeNameHandling = TypeNameHandling.Auto};
             GodhomeRandomizerSettings.HOG settings = GodhomeManager.GlobalSettings.HallOfGods;
@@ -126,7 +78,19 @@ namespace GodhomeRandomizer.Manager {
                 List<StatueItem> itemList = jsonSerializer.Deserialize<List<StatueItem>>(new JsonTextReader(itemReader));
             
                 foreach (StatueItem item in itemList)
+                {
                     builder.AddItemByName(item.name, itemCount);
+                    builder.EditItemRequest(item.name, info =>
+                    {
+                        info.getItemDef = () => new()
+                        {
+                            MajorItem = false,
+                            Name = item.name,
+                            Pool = "Statue Marks",
+                            PriceCap = 500
+                        };
+                    });
+                }
 
                 // Define locations
                 using Stream locationStream = assembly.GetManifestResourceStream("GodhomeRandomizer.Resources.Data.StatueLocations.json");
@@ -155,13 +119,97 @@ namespace GodhomeRandomizer.Manager {
 
                 foreach (StatueLocation location in locationList)
                     builder.AddLocationByName(location.name);
-                
-                // Add Eternal Ordeal if available
-                if (settings.RandomizeOrdeal)
+            }
+            
+            // Add Eternal Ordeal if available
+            if (settings.RandomizeOrdeal)
+            {
+                builder.AddItemByName("Eternal_Ordeal");
+                builder.EditItemRequest("Eternal_Ordeal", info =>
                 {
-                    builder.AddItemByName("Eternal_Ordeal");
-                    builder.AddLocationByName("Eternal_Ordeal");
+                    info.getItemDef = () => new()
+                    {
+                        MajorItem = false,
+                        Name = "Eternal_Ordeal",
+                        Pool = "Statue Marks",
+                        PriceCap = 1
+                    };
+                });
+                builder.AddLocationByName("Eternal_Ordeal");
+            }
+        }
+
+        private static void AddPantheonObjects(RequestBuilder builder)
+        {
+            if (!GodhomeManager.GlobalSettings.Enabled)
+                return;
+            
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            JsonSerializer jsonSerializer = new() {TypeNameHandling = TypeNameHandling.Auto};
+            GodhomeRandomizerSettings.Panth settings = GodhomeManager.GlobalSettings.Pantheons;
+            List<string> availableSettings = [];
+            if (settings.Completion)
+                availableSettings.Add("Completion");
+            if (settings.Nail || settings.AllAtOnce )
+                availableSettings.Add("Nail");
+            if (settings.Shell || settings.AllAtOnce)
+                availableSettings.Add("Shell");
+            if (settings.Charms || settings.AllAtOnce)
+                availableSettings.Add("Charms");
+            if (settings.Soul || settings.AllAtOnce)
+                availableSettings.Add("Soul");
+            if (settings.AllAtOnce)
+                availableSettings.Add("AllAtOnce");
+            if (settings.Hitless)
+                availableSettings.Add("Hitless");
+
+            // Define items
+            using Stream itemStream = assembly.GetManifestResourceStream("GodhomeRandomizer.Resources.Data.BindingItems.json");
+            StreamReader itemReader = new(itemStream);
+            List<BindingItem> itemList = jsonSerializer.Deserialize<List<BindingItem>>(new JsonTextReader(itemReader));
+            foreach (BindingItem item in itemList)
+            {
+                if (item.pantheonID <= settings.PantheonsIncluded && availableSettings.Contains(item.bindingType))
+                {    
+                    builder.AddItemByName(item.name);
+                    builder.EditItemRequest(item.name, info =>
+                    {
+                        info.getItemDef = () => new()
+                        {
+                            MajorItem = false,
+                            Name = item.name,
+                            Pool = "Pantheon Marks",
+                            PriceCap = 500
+                        };
+                    });
                 }
+            }
+
+            // Define locations
+            using Stream locationStream = assembly.GetManifestResourceStream("GodhomeRandomizer.Resources.Data.BindingLocations.json");
+            StreamReader locationReader = new(locationStream);
+            List<BindingLocation> locationList = jsonSerializer.Deserialize<List<BindingLocation>>(new JsonTextReader(locationReader));
+            foreach (BindingLocation location in locationList)
+            {
+                if (location.pantheonID <= settings.PantheonsIncluded && availableSettings.Contains(location.bindingType))
+                    builder.AddLocationByName(location.name);
+            }
+
+            // Add lifeblood if available
+            if (settings.Lifeblood)
+            {
+                builder.AddItemByName("Godhome_Lifeblood");
+                builder.EditItemRequest("Godhome_Lifeblood", info =>
+                    {
+                        info.getItemDef = () => new()
+                        {
+                            MajorItem = false,
+                            Name = "Godhome_Lifeblood",
+                            Pool = "Lifeblood",
+                            PriceCap = 500
+                        };
+                    });
+                builder.AddLocationByName("Godhome_Lifeblood");
             }
         }
     }

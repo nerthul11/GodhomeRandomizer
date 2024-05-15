@@ -1,5 +1,7 @@
+using GodhomeRandomizer.Modules;
 using GodhomeRandomizer.Settings;
 using ItemChanger;
+using ItemChanger.Tags;
 
 namespace GodhomeRandomizer.IC
 {
@@ -9,7 +11,7 @@ namespace GodhomeRandomizer.IC
         public string bindingType { get; set; }
         public override void GiveImmediate(GiveInfo info)
         {
-            GodhomeRandomizer.Instance.ManagePantheonState(pantheonID.ToString(), bindingType, true);
+            PantheonModule.Instance.ManagePantheonState(pantheonID.ToString(), bindingType, true);
         }
     }
 }

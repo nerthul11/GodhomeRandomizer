@@ -16,10 +16,11 @@ namespace GodhomeRandomizer.IC
             tags = [OrdealTag()];
         }
 
-        private static Tag OrdealTag()
+        private static InteropTag OrdealTag()
         {
             InteropTag tag = new();
             tag.Properties["ModSource"] = "GodhomeRandomizer";
+            tag.Properties["PoolGroup"] = "Statue Marks";
             tag.Properties["PinSprite"] = new GodhomeSprite("Ordeal");
             tag.Properties["VanillaItem"] = "Eternal_Ordeal";
             tag.Properties["MapLocations"] = new (string, float, float)[] {("GG_Waterways", 0.6f, 0.3f)};
@@ -48,7 +49,7 @@ namespace GodhomeRandomizer.IC
                 });
             });
             fsm.ChangeTransition("Add Zoteling 2", "NEXT", "GiveItem");
-            fsm.AddTransition("GiveItem", "FINISHED", "Add Warrior 3");
+            fsm.AddTransition("GiveItem", "FINISHED", PlayerData.instance.ordealAchieved ? "Menu Unlock" : "Add Warrior 3");
         }
     }
 }

@@ -1,4 +1,5 @@
 using ItemChanger;
+using ItemChanger.Tags;
 using ItemChanger.UIDefs;
 
 namespace GodhomeRandomizer.IC
@@ -13,7 +14,19 @@ namespace GodhomeRandomizer.IC
                 shopDesc = new BoxedString("It sparks with the lifeblood of attuned beings."),
                 sprite = new GodhomeSprite("Lifeblood")
             };
+            tags = [LifebloodTag()];
         }
+
+        private static InteropTag LifebloodTag()
+        {
+            InteropTag tag = new();
+            tag.Properties["ModSource"] = "GodhomeRandomizer";
+            tag.Properties["PinSprite"] = new GodhomeSprite("Lifeblood");
+            tag.Properties["PoolGroup"] = "Lifeblood Cocoons";
+            tag.Message = "RandoSupplementalMetadata";
+            return tag;
+        }
+        
         public override void GiveImmediate(GiveInfo info)
         {
             PlayerData.instance.blueRoomActivated = true;

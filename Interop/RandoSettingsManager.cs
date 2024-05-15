@@ -1,9 +1,10 @@
 using GodhomeRandomizer.Manager;
+using GodhomeRandomizer.Settings;
 using RandoSettingsManager;
 using RandoSettingsManager.SettingsManagement;
 using RandoSettingsManager.SettingsManagement.Versioning;
 
-namespace GodhomeRandomizer.Settings
+namespace GodhomeRandomizer.Interop
 {
     internal static class RSM_Interop
     {

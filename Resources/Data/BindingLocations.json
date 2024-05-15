@@ -4,12 +4,13 @@
     "name": "Pantheon_Master-Completion",
     "sceneName": "GG_Atrium",
     "pantheonID": 1,
-    "bindingType": "Complete",
+    "bindingType": "Completion",
     "tags": [
       {
         "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
         "Properties": {
           "ModSource": "GodhomeRandomizer",
+          "PoolGroup": "Pantheon Marks",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "Complete"
@@ -42,6 +43,7 @@
         "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
         "Properties": {
           "ModSource": "GodhomeRandomizer",
+          "PoolGroup": "Pantheon Marks",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "Nail"
@@ -74,6 +76,7 @@
         "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
         "Properties": {
           "ModSource": "GodhomeRandomizer",
+          "PoolGroup": "Pantheon Marks",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "Shell"
@@ -106,6 +109,7 @@
         "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
         "Properties": {
           "ModSource": "GodhomeRandomizer",
+          "PoolGroup": "Pantheon Marks",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "Charms"
@@ -138,6 +142,7 @@
         "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
         "Properties": {
           "ModSource": "GodhomeRandomizer",
+          "PoolGroup": "Pantheon Marks",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "Soul"
@@ -170,6 +175,7 @@
         "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
         "Properties": {
           "ModSource": "GodhomeRandomizer",
+          "PoolGroup": "Pantheon Marks",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "AllAtOnce"
@@ -202,6 +208,7 @@
         "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
         "Properties": {
           "ModSource": "GodhomeRandomizer",
+          "PoolGroup": "Pantheon Marks",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "Hitless"
@@ -228,12 +235,13 @@
     "name": "Pantheon_Artist-Completion",
     "sceneName": "GG_Atrium",
     "pantheonID": 2,
-    "bindingType": "Complete",
+    "bindingType": "Completion",
     "tags": [
       {
         "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
         "Properties": {
           "ModSource": "GodhomeRandomizer",
+          "PoolGroup": "Pantheon Marks",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "Complete"
@@ -266,6 +274,7 @@
         "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
         "Properties": {
           "ModSource": "GodhomeRandomizer",
+          "PoolGroup": "Pantheon Marks",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "Nail"
@@ -298,6 +307,7 @@
         "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
         "Properties": {
           "ModSource": "GodhomeRandomizer",
+          "PoolGroup": "Pantheon Marks",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "Shell"
@@ -330,6 +340,7 @@
         "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
         "Properties": {
           "ModSource": "GodhomeRandomizer",
+          "PoolGroup": "Pantheon Marks",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "Charms"
@@ -362,6 +373,7 @@
         "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
         "Properties": {
           "ModSource": "GodhomeRandomizer",
+          "PoolGroup": "Pantheon Marks",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "Soul"
@@ -394,6 +406,7 @@
         "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
         "Properties": {
           "ModSource": "GodhomeRandomizer",
+          "PoolGroup": "Pantheon Marks",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "AllAtOnce"
@@ -426,6 +439,7 @@
         "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
         "Properties": {
           "ModSource": "GodhomeRandomizer",
+          "PoolGroup": "Pantheon Marks",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "Hitless"
@@ -452,12 +466,13 @@
     "name": "Pantheon_Sage-Completion",
     "sceneName": "GG_Atrium",
     "pantheonID": 3,
-    "bindingType": "Complete",
+    "bindingType": "Completion",
     "tags": [
       {
         "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
         "Properties": {
           "ModSource": "GodhomeRandomizer",
+          "PoolGroup": "Pantheon Marks",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "Complete"
@@ -490,6 +505,7 @@
         "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
         "Properties": {
           "ModSource": "GodhomeRandomizer",
+          "PoolGroup": "Pantheon Marks",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "Nail"
@@ -522,6 +538,7 @@
         "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
         "Properties": {
           "ModSource": "GodhomeRandomizer",
+          "PoolGroup": "Pantheon Marks",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "Shell"
@@ -554,6 +571,7 @@
         "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
         "Properties": {
           "ModSource": "GodhomeRandomizer",
+          "PoolGroup": "Pantheon Marks",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "Charms"
@@ -586,6 +604,7 @@
         "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
         "Properties": {
           "ModSource": "GodhomeRandomizer",
+          "PoolGroup": "Pantheon Marks",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "Soul"
@@ -618,6 +637,7 @@
         "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
         "Properties": {
           "ModSource": "GodhomeRandomizer",
+          "PoolGroup": "Pantheon Marks",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "AllAtOnce"
@@ -650,6 +670,7 @@
         "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
         "Properties": {
           "ModSource": "GodhomeRandomizer",
+          "PoolGroup": "Pantheon Marks",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "Hitless"
@@ -676,12 +697,13 @@
     "name": "Pantheon_Knight-Completion",
     "sceneName": "GG_Atrium",
     "pantheonID": 4,
-    "bindingType": "Complete",
+    "bindingType": "Completion",
     "tags": [
       {
         "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
         "Properties": {
           "ModSource": "GodhomeRandomizer",
+          "PoolGroup": "Pantheon Marks",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "Complete"
@@ -714,6 +736,7 @@
         "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
         "Properties": {
           "ModSource": "GodhomeRandomizer",
+          "PoolGroup": "Pantheon Marks",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "Nail"
@@ -746,6 +769,7 @@
         "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
         "Properties": {
           "ModSource": "GodhomeRandomizer",
+          "PoolGroup": "Pantheon Marks",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "Shell"
@@ -778,6 +802,7 @@
         "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
         "Properties": {
           "ModSource": "GodhomeRandomizer",
+          "PoolGroup": "Pantheon Marks",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "Charms"
@@ -810,6 +835,7 @@
         "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
         "Properties": {
           "ModSource": "GodhomeRandomizer",
+          "PoolGroup": "Pantheon Marks",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "Soul"
@@ -842,6 +868,7 @@
         "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
         "Properties": {
           "ModSource": "GodhomeRandomizer",
+          "PoolGroup": "Pantheon Marks",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "AllAtOnce"
@@ -874,6 +901,7 @@
         "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
         "Properties": {
           "ModSource": "GodhomeRandomizer",
+          "PoolGroup": "Pantheon Marks",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "Hitless"
@@ -900,12 +928,13 @@
     "name": "Pantheon_Hallownest-Completion",
     "sceneName": "GG_Atrium",
     "pantheonID": 5,
-    "bindingType": "Complete",
+    "bindingType": "Completion",
     "tags": [
       {
         "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
         "Properties": {
           "ModSource": "GodhomeRandomizer",
+          "PoolGroup": "Pantheon Marks",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "Complete"
@@ -938,6 +967,7 @@
         "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
         "Properties": {
           "ModSource": "GodhomeRandomizer",
+          "PoolGroup": "Pantheon Marks",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "Nail"
@@ -970,6 +1000,7 @@
         "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
         "Properties": {
           "ModSource": "GodhomeRandomizer",
+          "PoolGroup": "Pantheon Marks",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "Shell"
@@ -1002,6 +1033,7 @@
         "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
         "Properties": {
           "ModSource": "GodhomeRandomizer",
+          "PoolGroup": "Pantheon Marks",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "Charms"
@@ -1034,6 +1066,7 @@
         "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
         "Properties": {
           "ModSource": "GodhomeRandomizer",
+          "PoolGroup": "Pantheon Marks",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "Soul"
@@ -1066,6 +1099,7 @@
         "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
         "Properties": {
           "ModSource": "GodhomeRandomizer",
+          "PoolGroup": "Pantheon Marks",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "AllAtOnce"
@@ -1098,6 +1132,7 @@
         "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
         "Properties": {
           "ModSource": "GodhomeRandomizer",
+          "PoolGroup": "Pantheon Marks",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "Hitless"

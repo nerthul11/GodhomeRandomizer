@@ -17,11 +17,12 @@ namespace GodhomeRandomizer.IC
             tags = [LifebloodTag()];
         }
 
-        private static Tag LifebloodTag()
+        private static InteropTag LifebloodTag()
         {
             InteropTag tag = new();
             tag.Properties["ModSource"] = "GodhomeRandomizer";
             tag.Properties["PinSprite"] = new GodhomeSprite("Lifeblood");
+            tag.Properties["PoolGroup"] = "Lifeblood Cocoons";
             tag.Properties["VanillaItem"] = "Godhome_Lifeblood";
             tag.Properties["MapLocations"] = new (string, float, float)[] {("GG_Waterways", 0.3f, 0.3f)};
             tag.Message = "RandoSupplementalMetadata";

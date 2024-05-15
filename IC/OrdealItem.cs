@@ -1,4 +1,6 @@
+using System;
 using ItemChanger;
+using ItemChanger.Tags;
 using ItemChanger.UIDefs;
 
 namespace GodhomeRandomizer.IC
@@ -13,7 +15,19 @@ namespace GodhomeRandomizer.IC
                 shopDesc = new BoxedString("Obey All Precepts!"),
                 sprite = new GodhomeSprite("Ordeal")
             };
+            tags = [OrdealTag()];
         }
+
+        private static InteropTag OrdealTag()
+        {
+            InteropTag tag = new();
+            tag.Properties["ModSource"] = "GodhomeRandomizer";
+            tag.Properties["PinSprite"] = new GodhomeSprite("Ordeal");
+            tag.Properties["PoolGroup"] = "Statue Marks";
+            tag.Message = "RandoSupplementalMetadata";
+            return tag;
+        }
+        
         public override void GiveImmediate(GiveInfo info)
         {
             PlayerData.instance.ordealAchieved = true;

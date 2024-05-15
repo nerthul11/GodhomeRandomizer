@@ -28,7 +28,7 @@ __NOTE:__ To obtain Godhome Lifeblood and Weathered Mask you need to get the ind
 
 The mysterious blue room that contains a giant lifeblood cocoon can also be randomized. If you obtain the item, lifeseeds will spawn on Godhome's resting rooms. The room itself will now grant a random item instead of that bonification.
 
-All this can add up to a whopping total of __212__ new items and locations to the Randomization pool!
+All this can add up to a whopping total of __213__ new items and locations to the Randomization pool!
 
 ## Settings:
 - Enabled --> Boolean to define if the connection should be active or not.
@@ -60,6 +60,23 @@ All this can add up to a whopping total of __212__ new items and locations to th
 
 ## Integrations:
 - ExtraRando: When using the "Randomize Pantheon Access" option, it takes precedence over the settings defined by this mod.
+- FStats: When enabled, a new page for diverse Godhome achievements will be added, and it'll display the achievements regardless of randomization settings for them.
+    - All Statues Unlocked: Obtained by unlocking all Hall of Gods statues.
+    - All Attuned: Obtained a bronze mark for all Hall of Gods statues.
+    - All Ascended: Obtained a silver mark for all Hall of Gods statues.
+    - All Radiant: Obtained a gold mark for all Hall of Gods statues.
+    - Eternal Ordeal: Turned Zote's statue into gold.
+    - Pantheon 1 Completed: Obtained by clearing P1.
+    - Pantheon 2 Completed: Obtained by clearing P2.
+    - Pantheon 3 Completed: Obtained by clearing P3.
+    - Pantheon 4 Completed: Obtained by clearing P4.
+    - Pantheon 5 Completed: Obtained by clearing P5.
+    - Blue Door Unlocked: Obtained by clearing 8 pantheon bindings.
+    - All Lifeblood Unlocked: Obtained by clearing 16 pantheon bindings.
+    - All Bindings Cleared: Obtained by clearing all 20 pantheon bindings.
+    - Unleashed Pantheons: Obtained by clearing all pantheons with all bindings at once.
+    - Unscarred Pantheons: Obtained by clearing all pantheons without receiving damage.
+
 - Lost Artifacts: There is one element there that has its logic altered by the randomizing of Godhome assets.
 - RandoSettingsManager
 - TheRealJournalRando: This mod has quite a few interactions with TRJR:
@@ -67,8 +84,3 @@ All this can add up to a whopping total of __212__ new items and locations to th
     - This also applies for regular entries that are summoned by bosses (IE: Folly from Soul Warrior or Zotelings).
     - Access to the Weathered Mask Journal Entry may be affected if bindings are randomized, so the logic gets adjusted.
     - Access to the Void Idol Journal Entry now checks for this mod's statue marks for each tier.
-
-## Known issues
-
-- The "All unlocked" setting fails when paired with "Vanilla" Hall of Gods tier limit and the access mode is set to vanilla, so, don't use them together as it will not behave as intended and can make a seed impossible.
-- If every single other Randomizer and connection setting except statue access mode is vanilla, the generation of a seed will fail.
