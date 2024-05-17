@@ -37,6 +37,7 @@ All this can add up to a whopping total of __213__ new items and locations to th
 - Randomize access --> Defines if statue access is vanilla, randomized or if all of them are unlocked by default. This last option will likely force you to fight Godhome bosses earlier in the progression.
 - Limit --> Options: IncludeAll, ExcludeRadiant, ExcludeAscended, Vanilla. Defines which locations should be randomized and contain items and which should remain vanilla. Excluding Ascended also Excludes Radiant entries.
 - Randomize Ordeal --> This adds the Glorious Invincible Fearless Sensual Mysterious Enchanting Vigorous Diligent Overwhelming Gorgeous Passionate Terryfing Beautiful Powerful Life Ender Mighty Zote's ordeal to the pool.
+- Duplicate Marks --> This will add an extra copy of the Statue Mark items, while not affecting any logic behind them. Useful to complete HOG or unlock pantheons earlier in progression.
 
 ### Pantheons
 - Apply access to Pantheon --> Defines if the access rules provided to Hall of Gods should also apply to Pantheons or leave it vanilla.

@@ -80,6 +80,8 @@ namespace GodhomeRandomizer.Manager {
                 foreach (StatueItem item in itemList)
                 {
                     builder.AddItemByName(item.name, itemCount);
+                    if (settings.DuplicateMarks)
+                        builder.AddItemByName($"{PlaceholderItem.Prefix}{item.name}");
                     builder.EditItemRequest(item.name, info =>
                     {
                         info.getItemDef = () => new()
@@ -90,6 +92,7 @@ namespace GodhomeRandomizer.Manager {
                             PriceCap = 500
                         };
                     });
+                    
                 }
 
                 // Define locations
@@ -118,7 +121,19 @@ namespace GodhomeRandomizer.Manager {
                 }
 
                 foreach (StatueLocation location in locationList)
+                {
                     builder.AddLocationByName(location.name);
+                    builder.EditLocationRequest(location.name, info =>
+                    {
+                        info.getLocationDef = () => new()
+                        {
+                            Name = location.name,
+                            SceneName = SceneNames.GG_Workshop,
+                            FlexibleCount = false,
+                            AdditionalProgressionPenalty = false
+                        };
+                    });
+                }
             }
             
             // Add Eternal Ordeal if available
@@ -136,6 +151,16 @@ namespace GodhomeRandomizer.Manager {
                     };
                 });
                 builder.AddLocationByName("Eternal_Ordeal");
+                builder.EditLocationRequest("Eternal_Ordeal", info =>
+                {
+                    info.getLocationDef = () => new()
+                    {
+                        Name = "Eternal_Ordeal",
+                        SceneName = SceneNames.GG_Workshop,
+                        FlexibleCount = false,
+                        AdditionalProgressionPenalty = false
+                    };
+                });
             }
         }
 
@@ -176,7 +201,7 @@ namespace GodhomeRandomizer.Manager {
                     {
                         info.getItemDef = () => new()
                         {
-                            MajorItem = false,
+                            MajorItem = item.bindingType == "Completion",
                             Name = item.name,
                             Pool = "Pantheon Marks",
                             PriceCap = 500
@@ -192,7 +217,19 @@ namespace GodhomeRandomizer.Manager {
             foreach (BindingLocation location in locationList)
             {
                 if (location.pantheonID <= settings.PantheonsIncluded && availableSettings.Contains(location.bindingType))
+                {
                     builder.AddLocationByName(location.name);
+                    builder.EditLocationRequest(location.name, info =>
+                    {
+                        info.getLocationDef = () => new()
+                        {
+                            Name = location.name,
+                            SceneName = location.pantheonID < PantheonLimitMode.Hallownest ? SceneNames.GG_Atrium : SceneNames.GG_Atrium_Roof,
+                            FlexibleCount = false,
+                            AdditionalProgressionPenalty = false
+                        };
+                    });
+                }
             }
 
             // Add lifeblood if available
@@ -210,6 +247,16 @@ namespace GodhomeRandomizer.Manager {
                         };
                     });
                 builder.AddLocationByName("Godhome_Lifeblood");
+                builder.EditLocationRequest("Godhome_Lifeblood", info =>
+                {
+                    info.getLocationDef = () => new()
+                    {
+                        Name = "Godhome_Lifeblood",
+                        SceneName = SceneNames.GG_Blue_Room,
+                        FlexibleCount = false,
+                        AdditionalProgressionPenalty = false
+                    };
+                });
             }
         }
     }

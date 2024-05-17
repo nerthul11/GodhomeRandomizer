@@ -63,6 +63,7 @@ namespace GodhomeRandomizer.Settings
             [MenuLabel("HOG Battle randomization")]
             public TierLimitMode RandomizeTiers { get; set; } = TierLimitMode.Vanilla;
             public bool RandomizeOrdeal { get; set; } = false;
+            public bool DuplicateMarks { get; set; } = false;
         }
 
         public class Panth

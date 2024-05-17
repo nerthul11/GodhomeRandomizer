@@ -15,6 +15,7 @@ namespace GodhomeRandomizer.IC
         public string dependency { get; set; }
         public bool isDreamBoss { get; set; }
         public int pantheonID { get; set; }
+        public override bool Redundant() => StatueModule.Instance.CurrentMarks(battleSceneName) >= StatueModule.Instance.TotalMarks;
         public override void GiveImmediate(GiveInfo info)
         {
             StatueModule module = StatueModule.Instance;

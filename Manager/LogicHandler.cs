@@ -166,7 +166,7 @@ namespace GodhomeRandomizer.Manager
                 if (item.bindingType == "Hitless" || item.bindingType == "AllAtOnce")
                 {
                     lmb.AddItem(new EmptyItem(item.name));
-                    lmb.DoLogicEdit(new(item.name, "ORIG + Radiant_Combat"));
+                    lmb.DoLogicEdit(new(item.name, "ORIG + Hardcore_Combat"));
                 }
                 else if (item.bindingType != "Completion")
                 {

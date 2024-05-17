@@ -158,5 +158,10 @@
         "name": "Radiant_Combat",
         "logic":  "NAILCOMBAT + QUAKE>1 | (CURSED + QUAKE) + (FULLSHADOWDASH | ANYSHADOWDASH + MILDCOMBATSKIPS) + (Nail_Upgradable_3 | Nail_Upgradable_2 + MILDCOMBATSKIPS)  | SPICYCOMBATSKIPS",
         "Stateless": true
+    },
+    {
+        "name": "Hardcore_Combat",
+        "logic":  "NAILCOMBAT + Nail_Upgradable_4 + SPELLS>5 | (CURSED + SPELLS>2) + FULLSHADOWDASH",
+        "Stateless": true
     }
 ]

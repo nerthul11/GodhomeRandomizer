@@ -46,17 +46,20 @@ namespace GodhomeRandomizer.Settings
             hogElementFactory = new(ghPage, GodhomeManager.GlobalSettings.HallOfGods);
             pantheonElementFactory = new(ghPage, GodhomeManager.GlobalSettings.Pantheons);
             VerticalItemPanel topLevelPanel = new(ghPage, new Vector2(0, 400), 75, true);
-            VerticalItemPanel itemPanel = new(ghPage, new Vector2(0, 400), 240, false);
+            VerticalItemPanel itemPanel = new(ghPage, new Vector2(0, 400), 200, false);
             
             // Define HOG Parameters
             topLevelElementFactory.ElementLookup["Enabled"].SelfChanged += EnableSwitch;
             MenuLabel hogLabel = new(ghPage, "Hall of Gods Randomizer");
-            VerticalItemPanel hogSettingHolder = new(ghPage, Vector2.zero, 55, false, [
+            VerticalItemPanel hogLeftSettingHolder = new(ghPage, Vector2.zero, 60, false, [
                 hogElementFactory.ElementLookup["RandomizeTiers"],
-                hogElementFactory.ElementLookup["RandomizeStatueAccess"],
                 hogElementFactory.ElementLookup["RandomizeOrdeal"],
             ]);
-            hogSettingHolder.Insert(0, hogLabel);
+            VerticalItemPanel hogRightSettingHolder = new(ghPage, Vector2.zero, 60, false, [
+                hogElementFactory.ElementLookup["RandomizeStatueAccess"],
+                hogElementFactory.ElementLookup["DuplicateMarks"],
+            ]);
+            GridItemPanel hogSettingHolder = new(ghPage, Vector2.zero, 2, 100, 800, false, [hogLeftSettingHolder, hogRightSettingHolder]);
 
             // Define Pantheon Parameters
             MenuLabel panthLabel = new(ghPage, "Pantheon Randomizer");
@@ -85,6 +88,7 @@ namespace GodhomeRandomizer.Settings
             itemPanel.Add(panthSettingHolder);
             itemPanel.Add(bindSettingHolder);
             topLevelPanel.Add(topLevelElementFactory.ElementLookup["Enabled"]);
+            topLevelPanel.Add(hogLabel);
             topLevelPanel.Add(itemPanel);
             topLevelPanel.ResetNavigation();
             topLevelPanel.SymSetNeighbor(Neighbor.Down, ghPage.backButton);

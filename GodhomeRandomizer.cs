@@ -9,7 +9,7 @@ namespace GodhomeRandomizer
     public class GodhomeRandomizer : Mod, IGlobalSettings<GlobalSettings>
     {
         new public string GetName() => "GodhomeRandomizer";
-        public override string GetVersion() => "2.2.0.0";
+        public override string GetVersion() => "2.2.1.0";
 
         private static GodhomeRandomizer _instance;
         public GodhomeRandomizer() : base()
