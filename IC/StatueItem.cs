@@ -19,23 +19,22 @@ namespace GodhomeRandomizer.IC
         public override void GiveImmediate(GiveInfo info)
         {
             StatueModule module = StatueModule.Instance;
-            BossStatue.Completion statueCompletion = PlayerData.instance.GetVariable<BossStatue.Completion>(statueStateName);
-            if (!statueCompletion.isUnlocked && module.Settings.RandomizeStatueAccess == AccessMode.Randomized)
+            if (!module.UnlockedScenes.Contains(battleSceneName) && module.Settings.RandomizeStatueAccess == AccessMode.Randomized)
             {
                 module.UnlockedScenes.Add(battleSceneName);
                 module.StatueOverride(statueStateName, battleSceneName);
             }
-            else if (!statueCompletion.completedTier1 && module.Settings.RandomizeTiers > TierLimitMode.Vanilla)
+            else if (!module.AttunedStatues.Contains(battleSceneName) && module.Settings.RandomizeTiers > TierLimitMode.Vanilla)
             {
                 module.AttunedStatues.Add(battleSceneName);
                 module.StatueOverride(statueStateName, battleSceneName);
             }
-            else if (!statueCompletion.completedTier2 && module.Settings.RandomizeTiers > TierLimitMode.ExcludeAscended)
+            else if (!module.AscendedStatues.Contains(battleSceneName) && module.Settings.RandomizeTiers > TierLimitMode.ExcludeAscended)
             {
                 module.AscendedStatues.Add(battleSceneName);
                 module.StatueOverride(statueStateName, battleSceneName);
             }
-            else if (!statueCompletion.completedTier3 && module.Settings.RandomizeTiers > TierLimitMode.ExcludeRadiant)
+            else if (!module.RadiantStatues.Contains(battleSceneName) && module.Settings.RandomizeTiers > TierLimitMode.ExcludeRadiant)
             {
                 module.RadiantStatues.Add(battleSceneName);
                 module.StatueOverride(statueStateName, battleSceneName);

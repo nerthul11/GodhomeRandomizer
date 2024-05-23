@@ -1,22 +1,28 @@
 using GodhomeRandomizer.IC;
+using GodhomeRandomizer.IC.Shop;
 using GodhomeRandomizer.Settings;
 using ItemChanger;
+using ItemChanger.Locations;
 using Newtonsoft.Json;
+using RandomizerCore.Logic;
 using RandomizerMod.RC;
 using System.IO;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Linq;
-
+using System;
 
 namespace GodhomeRandomizer.Manager {
     internal static class ItemHandler
     {
-        private static Dictionary<string, ItemGroupBuilder> definedGroups = [];
+        private static StatueCostProvider costProvider;
         internal static void Hook()
         {
             DefineObjects();
-            //RequestBuilder.OnUpdate.Subscribe(0.5f, CreateGroups);
+            RequestBuilder.OnUpdate.Subscribe(float.NegativeInfinity, SetupShopCost);
+            RequestBuilder.OnUpdate.Subscribe(-500f, DefineShopRef);
+            RequestBuilder.OnUpdate.Subscribe(-100f, RandomizeShopCost);
+            RequestBuilder.OnUpdate.Subscribe(0f, AddGodhomeShop);
             RequestBuilder.OnUpdate.Subscribe(100f, AddHOGObjects);
             RequestBuilder.OnUpdate.Subscribe(105f, AddPantheonObjects);
         }
@@ -56,6 +62,98 @@ namespace GodhomeRandomizer.Manager {
 
             Finder.DefineCustomItem(new OrdealItem());
             Finder.DefineCustomLocation(new OrdealLocation());
+
+            Finder.DefineCustomLocation(new GodhomeShop());
+        }
+
+        private static void DefineShopRef(RequestBuilder builder)
+        {
+            if (!GodhomeManager.GlobalSettings.Enabled || !GodhomeManager.GlobalSettings.GodhomeShop)
+                return;
+
+            builder.EditLocationRequest("Godhome_Shop", info =>
+            {
+                info.getLocationDef = () => new()
+                {
+                    Name = "Godhome_Shop",
+                    SceneName = SceneNames.GG_Workshop,
+                    FlexibleCount = true,
+                    AdditionalProgressionPenalty = true
+                };
+            });
+        }
+
+        private static void SetupShopCost(RequestBuilder builder)
+        {
+            if (!GodhomeManager.GlobalSettings.Enabled || !GodhomeManager.GlobalSettings.GodhomeShop)
+                return;
+
+            int statues = 44;
+            int multiplier = (int)GodhomeManager.GlobalSettings.HallOfGods.RandomizeTiers;
+            multiplier += GodhomeManager.GlobalSettings.HallOfGods.RandomizeStatueAccess == AccessMode.Randomized ? 1 : 0;
+            costProvider = new("STATUEMARKS", (int)(0.1 * statues * multiplier), (int)(0.2 * statues * multiplier), amount => new StatueCost(amount));
+        }
+
+        // Rightfully stolen from MoreLocations & GrassRando. I have literally no idea of what this does.
+        private static void RandomizeShopCost(RequestBuilder builder)
+        {
+            if (!GodhomeManager.GlobalSettings.Enabled || !GodhomeManager.GlobalSettings.GodhomeShop)
+                return;
+            
+            builder.CostConverters.Subscribe(150f, RandomizeCost);
+            builder.EditLocationRequest("Godhome_Shop", info =>
+            {
+                info.customPlacementFetch += (factory, rp) =>
+                {
+                    if (factory.TryFetchPlacement(rp.Location.Name, out AbstractPlacement plt))
+                        return plt;
+                    ShopLocation shop = (ShopLocation)factory.MakeLocation(rp.Location.Name);
+                    shop.costDisplayerSelectionStrategy = new MixedCostDisplayerSelectionStrategy()
+                    {
+                        Capabilities = {new StatueCostSupport()}
+                    };
+                    plt = shop.Wrap();
+                    factory.AddPlacement(plt);
+                    return plt;
+                };
+
+                info.onRandoLocationCreation += (factory, rl) =>
+                {
+                    if (costProvider == null)
+                        return;
+                    LogicCost nextCost = costProvider.Next(factory.lm, factory.rng);
+                    rl.AddCost(nextCost);
+                };
+            });
+        }
+
+        private static bool RandomizeCost(LogicCost logicCost, out Cost cost)
+        {
+            if (logicCost is StatueLogicCost c)
+            {
+                cost = c.GetIcCost();
+                return true;
+            }
+            else
+            {
+                cost = default;
+                return false;
+            }
+        }
+
+        private static void AddGodhomeShop(RequestBuilder builder)
+        {
+            if (!GodhomeManager.GlobalSettings.Enabled)
+                return;
+            
+            // Don't add unless settings randomize at least one statue mark type.
+            int multiplier = (int)GodhomeManager.GlobalSettings.HallOfGods.RandomizeTiers;
+            multiplier += GodhomeManager.GlobalSettings.HallOfGods.RandomizeStatueAccess == AccessMode.Randomized ? 1 : 0;
+            if (multiplier == 0)
+                return;
+            
+            if (GodhomeManager.GlobalSettings.GodhomeShop)
+                builder.AddLocationByName("Godhome_Shop");
         }
 
         public static void AddHOGObjects(RequestBuilder builder)
@@ -72,6 +170,9 @@ namespace GodhomeRandomizer.Manager {
 
             if (itemCount > 0)
             {
+                // Add the shop only if there are statue marks available
+                
+
                 // Define items
                 using Stream itemStream = assembly.GetManifestResourceStream("GodhomeRandomizer.Resources.Data.StatueItems.json");
                 StreamReader itemReader = new(itemStream);
@@ -175,13 +276,13 @@ namespace GodhomeRandomizer.Manager {
             List<string> availableSettings = [];
             if (settings.Completion)
                 availableSettings.Add("Completion");
-            if (settings.Nail || settings.AllAtOnce )
+            if (settings.Nail)
                 availableSettings.Add("Nail");
-            if (settings.Shell || settings.AllAtOnce)
+            if (settings.Shell)
                 availableSettings.Add("Shell");
-            if (settings.Charms || settings.AllAtOnce)
+            if (settings.Charms)
                 availableSettings.Add("Charms");
-            if (settings.Soul || settings.AllAtOnce)
+            if (settings.Soul)
                 availableSettings.Add("Soul");
             if (settings.AllAtOnce)
                 availableSettings.Add("AllAtOnce");

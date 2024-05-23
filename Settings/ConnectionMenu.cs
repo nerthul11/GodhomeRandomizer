@@ -46,7 +46,7 @@ namespace GodhomeRandomizer.Settings
             hogElementFactory = new(ghPage, GodhomeManager.GlobalSettings.HallOfGods);
             pantheonElementFactory = new(ghPage, GodhomeManager.GlobalSettings.Pantheons);
             VerticalItemPanel topLevelPanel = new(ghPage, new Vector2(0, 400), 75, true);
-            VerticalItemPanel itemPanel = new(ghPage, new Vector2(0, 400), 200, false);
+            VerticalItemPanel itemPanel = new(ghPage, new Vector2(0, 400), 180, false);
             
             // Define HOG Parameters
             topLevelElementFactory.ElementLookup["Enabled"].SelfChanged += EnableSwitch;
@@ -88,6 +88,7 @@ namespace GodhomeRandomizer.Settings
             itemPanel.Add(panthSettingHolder);
             itemPanel.Add(bindSettingHolder);
             topLevelPanel.Add(topLevelElementFactory.ElementLookup["Enabled"]);
+            topLevelPanel.Add(topLevelElementFactory.ElementLookup["GodhomeShop"]);
             topLevelPanel.Add(hogLabel);
             topLevelPanel.Add(itemPanel);
             topLevelPanel.ResetNavigation();

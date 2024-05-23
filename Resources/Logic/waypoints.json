@@ -10,6 +10,11 @@
         "Stateless": true
     },
     {
+        "name": "Godhome_Shop",
+        "logic": "GG_Waterways + GODTUNERUNLOCK + DREAMNAIL + LISTEN ? TRUE",
+        "Stateless": false
+    },
+    {
         "name": "Opened_Pantheon_1",
         "logic": "GG_Atrium + ((Defeated_Gruz_Mother + Defeated_False_Knight + Defeated_Massive_Moss_Charger + Defeated_Hornet_1 + Defeated_Gorb + Defeated_Dung_Defender + Defeated_Soul_Warrior + Defeated_Brooding_Mawlek) | (PANTHEON_KEY_1 ? FALSE))",
         "Stateless": true
@@ -161,7 +166,7 @@
     },
     {
         "name": "Hardcore_Combat",
-        "logic":  "NAILCOMBAT + Nail_Upgradable_4 + SPELLS>5 | (CURSED + SPELLS>2) + FULLSHADOWDASH",
+        "logic":  "NAILCOMBAT + Nail_Upgradable_4 + (SPELLS>5 | CURSED + SPELLS>2) + FULLSHADOWDASH",
         "Stateless": true
     }
 ]

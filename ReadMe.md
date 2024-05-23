@@ -28,7 +28,11 @@ __NOTE:__ To obtain Godhome Lifeblood and Weathered Mask you need to get the ind
 
 The mysterious blue room that contains a giant lifeblood cocoon can also be randomized. If you obtain the item, lifeseeds will spawn on Godhome's resting rooms. The room itself will now grant a random item instead of that bonification.
 
-All this can add up to a whopping total of __213__ new items and locations to the Randomization pool!
+### Godhome Shop
+
+Since this mod allows to add a significant number of duplicate items (44 if duping the Statue Marks), a counter-measure to prevent regular shops from being too overcrowded is the introduction of a new shop. This shop will check for Statue Marks obtained and use them as currency. It works similar to Grubs or essence, meaning it checks if you achieved a given threshold of Statue Marks, without actually consuming them. Since it will only look for randomized statue marks, the shop will obviously be disabled if no Statue Mark items exist.
+
+All this can add up to a whopping total of __214__ new locations and items to the Randomization pool!
 
 ## Settings:
 - Enabled --> Boolean to define if the connection should be active or not.

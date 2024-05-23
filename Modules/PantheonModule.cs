@@ -30,13 +30,13 @@ namespace GodhomeRandomizer.Modules
         // Setting values
         public class SaveSettings {
             public PantheonLimitMode PantheonsIncluded { get; set; } = GodhomeManager.GlobalSettings.Enabled ? GodhomeManager.GlobalSettings.Pantheons.PantheonsIncluded : PantheonLimitMode.None;
-            public bool Completion { get; set; } = GodhomeManager.GlobalSettings.Enabled ? GodhomeManager.GlobalSettings.Pantheons.Completion : false;
-            public bool Nail { get; set; } = GodhomeManager.GlobalSettings.Enabled ? GodhomeManager.GlobalSettings.Pantheons.Nail : false;
-            public bool Shell { get; set; } = GodhomeManager.GlobalSettings.Enabled ? GodhomeManager.GlobalSettings.Pantheons.Shell : false;
-            public bool Charms { get; set; } = GodhomeManager.GlobalSettings.Enabled ? GodhomeManager.GlobalSettings.Pantheons.Charms : false;
-            public bool Soul { get; set; } = GodhomeManager.GlobalSettings.Enabled ? GodhomeManager.GlobalSettings.Pantheons.Soul : false;
-            public bool AllAtOnce { get; set; } = GodhomeManager.GlobalSettings.Enabled ? GodhomeManager.GlobalSettings.Pantheons.AllAtOnce : false;
-            public bool Hitless { get; set; } = GodhomeManager.GlobalSettings.Enabled ? GodhomeManager.GlobalSettings.Pantheons.Hitless : false;
+            public bool Completion { get; set; } = GodhomeManager.GlobalSettings.Enabled && GodhomeManager.GlobalSettings.Pantheons.Completion;
+            public bool Nail { get; set; } = GodhomeManager.GlobalSettings.Enabled && GodhomeManager.GlobalSettings.Pantheons.Nail;
+            public bool Shell { get; set; } = GodhomeManager.GlobalSettings.Enabled && GodhomeManager.GlobalSettings.Pantheons.Shell;
+            public bool Charms { get; set; } = GodhomeManager.GlobalSettings.Enabled && GodhomeManager.GlobalSettings.Pantheons.Charms;
+            public bool Soul { get; set; } = GodhomeManager.GlobalSettings.Enabled && GodhomeManager.GlobalSettings.Pantheons.Soul;
+            public bool AllAtOnce { get; set; } = GodhomeManager.GlobalSettings.Enabled && GodhomeManager.GlobalSettings.Pantheons.AllAtOnce;
+            public bool Hitless { get; set; } = GodhomeManager.GlobalSettings.Enabled && GodhomeManager.GlobalSettings.Pantheons.Hitless;
         }
         // Module properties
         public PantheonBindings Master { get; set; } = new();

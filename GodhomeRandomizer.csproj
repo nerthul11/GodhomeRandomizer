@@ -8,8 +8,8 @@
     <Product>GodhomeRandomizer</Product>
     <Description>A Randomizer add-on for Godhome checks.</Description>
     <Copyright>Copyright ©2024</Copyright>
-    <AssemblyVersion>2.2.1.0</AssemblyVersion>
-    <FileVersion>2.2.1.0</FileVersion>
+    <AssemblyVersion>2.2.2.0</AssemblyVersion>
+    <FileVersion>2.2.2.0</FileVersion>
     <OutputPath>bin\$(Configuration)\</OutputPath>
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
@@ -81,9 +81,6 @@
     </Reference>
     <Reference Include="ItemChanger">
       <HintPath>$(LocalRefs)/Mods/ItemChanger/ItemChanger.dll</HintPath>
-    </Reference>
-    <Reference Include="ItemChangerDataLoader">
-      <HintPath>$(LocalRefs)/Mods/ItemChangerDataLoader/ItemChangerDataLoader.dll</HintPath>
     </Reference>
     <Reference Include="KorzUtils">
       <HintPath>$(LocalRefs)/Mods/KorzUtils/KorzUtils.dll</HintPath>
@@ -366,6 +363,9 @@
     </Reference>
     <Reference Include="UnityEngine.XRModule">
       <HintPath>$(LocalRefs)/UnityEngine.XRModule.dll</HintPath>
+    </Reference>
+    <Reference Include="Vasi">
+      <HintPath>$(LocalRefs)/Mods/Vasi/Vasi.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

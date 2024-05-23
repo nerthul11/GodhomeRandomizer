@@ -1,39 +1,72 @@
-using System;
-using System.Collections.Generic;
 using GodhomeRandomizer.Manager;
 using GodhomeRandomizer.Settings;
 using ItemChanger;
+using ItemChanger.Modules;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace GodhomeRandomizer.Modules
 {
-    public class StatueModule : ItemChanger.Modules.Module
+    public class StatueModule : Module
     {
         public SaveSettings Settings { get; set; } = new();
         public class SaveSettings 
         {
             public AccessMode RandomizeStatueAccess { get; set; } = GodhomeManager.GlobalSettings.Enabled ? GodhomeManager.GlobalSettings.HallOfGods.RandomizeStatueAccess : AccessMode.Vanilla;
             public TierLimitMode RandomizeTiers { get; set; } = GodhomeManager.GlobalSettings.Enabled ? GodhomeManager.GlobalSettings.HallOfGods.RandomizeTiers : TierLimitMode.Vanilla;
-            public bool ApplyAccessToPantheons { get; set; } = GodhomeManager.GlobalSettings.Enabled ? GodhomeManager.GlobalSettings.Pantheons.ApplyAccessToPantheons : false;
+            public bool ApplyAccessToPantheons { get; set; } = GodhomeManager.GlobalSettings.Enabled && GodhomeManager.GlobalSettings.Pantheons.ApplyAccessToPantheons;
         }
         // Module properties
         public List<string> UnlockedScenes { get; set; } = [];
         public List<string> AttunedStatues { get; set; } = [];
         public List<string> AscendedStatues { get; set; } = [];
         public List<string> RadiantStatues { get; set; } = [];
+        public int UnlockedCount() => UnlockedScenes.Count;
+        public int AttunedCount() => AttunedStatues.Count;
+        public int AscendedCount() => AscendedStatues.Count;
+        public int RadiantCount() => RadiantStatues.Count;
+        public int TotalCount()
+        {
+            int count = 0;
+            if (Settings.RandomizeStatueAccess == AccessMode.Randomized)
+                count += UnlockedCount();
+            if (Settings.RandomizeTiers > TierLimitMode.Vanilla)
+                count += AttunedCount();
+            if (Settings.RandomizeTiers > TierLimitMode.ExcludeAscended)
+                count += AscendedCount();
+            if (Settings.RandomizeTiers > TierLimitMode.ExcludeRadiant)
+                count += RadiantCount();
+            return count;
+        }
         public int CurrentBossLevel { get; set; } = 0;
         public static StatueModule Instance => ItemChangerMod.Modules.GetOrAdd<StatueModule>();
         public override void Initialize() 
         {
+            if (ItemChangerMod.Modules?.Get<InventoryTracker>() is InventoryTracker it)
+                it.OnGenerateFocusDesc += AddStatueProgress;
             On.BossScene.IsUnlocked += UnlockCheck;
             On.BossSceneController.Awake += VanillaTracker;
             On.BossStatue.UpdateDetails += GetDetails;
+            On.BossChallengeUI.LoadBoss_int_bool += StoreBossLevel;
         }
+
         public override void Unload() 
         {
+            if (ItemChangerMod.Modules?.Get<InventoryTracker>() is InventoryTracker it)
+                it.OnGenerateFocusDesc -= AddStatueProgress;
             On.BossScene.IsUnlocked -= UnlockCheck;
             On.BossSceneController.Awake -= VanillaTracker;
             On.BossStatue.UpdateDetails -= GetDetails;
+            On.BossChallengeUI.LoadBoss_int_bool -= StoreBossLevel;
         }
+
+        private void AddStatueProgress(StringBuilder builder)
+        {
+            if (TotalMarks > 0)
+                builder.AppendLine($"Statue mark items obtained: {TotalCount()}");
+        }
+
         public int CurrentMarks(string battleScene)
         {
             int count = 0;
@@ -77,13 +110,13 @@ namespace GodhomeRandomizer.Modules
             List<string> completed = [];
 
             // Check for item state if randomized
-            if (UnlockedScenes.Count == 44)
+            if (UnlockedCount() == 44)
                 completed.Add("All Statues Unlocked");
-            if (AttunedStatues.Count == 44)
+            if (AttunedCount() == 44)
                 completed.Add("All Attuned");
-            if (AscendedStatues.Count == 44)
+            if (AscendedCount() == 44)
                 completed.Add("All Ascended");
-            if (RadiantStatues.Count == 44)
+            if (RadiantCount() == 44)
                 completed.Add("All Radiant");
             if (PlayerData.instance.ordealAchieved)
                 completed.Add("Eternal Ordeal Completed");
@@ -92,10 +125,17 @@ namespace GodhomeRandomizer.Modules
 
         private void GetDetails(On.BossStatue.orig_UpdateDetails orig, BossStatue self)
         {
-            StatueOverride(self.statueStatePD, self.bossScene.Tier1Scene);
-            if (self.HasDreamVersion)
-                StatueOverride(self.dreamStatueStatePD, self.dreamBossScene.Tier1Scene);
+            try
+            {
+                StatueOverride(self.statueStatePD, self.bossScene.Tier1Scene);
+                if (self.HasDreamVersion)
+                    StatueOverride(self.dreamStatueStatePD, self.dreamBossScene.Tier1Scene);
+            }
+            // There's a pesky null reference appearing that doesn't affect functionality
+            catch (NullReferenceException) {}
+
             PantheonModule.Instance.CurrentPantheon = 0;
+            CurrentBossLevel = 0;
             orig(self);
         }
 
@@ -141,6 +181,12 @@ namespace GodhomeRandomizer.Modules
             // Save changes
             PlayerData.instance.SetVariable(statueStateName, orig);
             CompletedChallenges();
+        }
+
+        private void StoreBossLevel(On.BossChallengeUI.orig_LoadBoss_int_bool orig, BossChallengeUI self, int level, bool doHideAnim)
+        {
+            CurrentBossLevel = level;
+            orig(self, level, doHideAnim);
         }
 
         public T GetVariable<T>(string propertyName) {

@@ -52,6 +52,7 @@ namespace GodhomeRandomizer.Manager
 
             GodhomeRandomizerSettings.HOG settings = GodhomeManager.GlobalSettings.HallOfGods;
             int req = settings.RandomizeStatueAccess == AccessMode.Randomized ? 1 : 0;
+            lmb.GetOrAddTerm("STATUEMARKS", TermType.Int);
             foreach (StatueItem item in itemList)
             {
                 string boss = item.name.Split('-').Last();
@@ -62,7 +63,7 @@ namespace GodhomeRandomizer.Manager
                 lmb.GetOrAddTerm($"GG_{boss}", TermType.Int);
 
                 // Add logic items
-                lmb.AddItem(new StringItemTemplate($"Statue_Mark-{boss}", $"GG_{boss}++"));
+                lmb.AddItem(new StringItemTemplate($"Statue_Mark-{boss}", $"STATUEMARKS++ >> GG_{boss}++"));
 
                 // Empty mark logic
                 lmb.AddLogicDef(new($"Empty_Mark-{boss}", $"{position}_STATUE + GG_{boss}>0"));

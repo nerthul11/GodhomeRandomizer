@@ -9,7 +9,7 @@ namespace GodhomeRandomizer
     public class GodhomeRandomizer : Mod, IGlobalSettings<GlobalSettings>
     {
         new public string GetName() => "GodhomeRandomizer";
-        public override string GetVersion() => "2.2.1.0";
+        public override string GetVersion() => "2.2.2.0";
 
         private static GodhomeRandomizer _instance;
         public GodhomeRandomizer() : base()
@@ -43,9 +43,16 @@ namespace GodhomeRandomizer
                 {
                     RSM_Interop.Hook();
                 }
+                CondensedSpoilerLogger.AddCategory("Pantheon Completion", () => GodhomeManager.GlobalSettings.Enabled && GodhomeManager.GlobalSettings.Pantheons.Completion,
+                    [
+                        "Pantheon_Master-Completion", "Pantheon_Artist-Completion",
+                        "Pantheon_Sage-Completion", "Pantheon_Knight-Completion",
+                        "Pantheon_Hallownest-Completion"
+                    ]
+                );
                 Log("Initialized");
             }
-        }
+        }        
 
         public void OnLoadGlobal(GlobalSettings s) => GS = s;
         public GlobalSettings OnSaveGlobal() => GS;
