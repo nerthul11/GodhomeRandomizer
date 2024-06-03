@@ -37,7 +37,6 @@ namespace GodhomeRandomizer.IC.Shop
 
         public Cost GetIcCost()
         {
-            GodhomeRandomizer.Instance.Log(logicCost);
             return converter?.Invoke(logicCost) ?? throw new InvalidOperationException("Cost converter is undefined");
         }
 

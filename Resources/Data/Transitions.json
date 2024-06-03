@@ -1,0 +1,46 @@
+[
+    {
+        "SceneName": "GG_Workshop",
+        "DoorName": "left1",
+        "MapArea": "Godhome",
+        "TitledArea": "Hall of Gods",
+        "VanillaTarget": "GG_Atrium[Door_Workshop]",
+        "Direction": "Left",
+        "IsTitledAreaTransition": true,
+        "IsMapAreaTransition": false,
+        "Sides": "Both"
+    },
+    {
+        "SceneName": "GG_Atrium",
+        "DoorName": "Door_Workshop",
+        "MapArea": "Godhome",
+        "TitledArea": "Godhome",
+        "VanillaTarget": "GG_Workshop[left1]",
+        "Direction": "Door",
+        "IsTitledAreaTransition": true,
+        "IsMapAreaTransition": false,
+        "Sides": "Both"
+    },
+    {
+        "SceneName": "GG_Blue_Room",
+        "DoorName": "left1",
+        "MapArea": "Godhome",
+        "TitledArea": "Godhome",
+        "VanillaTarget": "GG_Atrium[door1_blueRoom]",
+        "Direction": "Left",
+        "IsTitledAreaTransition": false,
+        "IsMapAreaTransition": false,
+        "Sides": "Both"
+    },
+    {
+        "SceneName": "GG_Atrium",
+        "DoorName": "door1_blueRoom",
+        "MapArea": "Godhome",
+        "TitledArea": "Godhome",
+        "VanillaTarget": "GG_Blue_Room[left1]",
+        "Direction": "Door",
+        "IsTitledAreaTransition": false,
+        "IsMapAreaTransition": false,
+        "Sides": "Both"
+    }
+]

@@ -12,7 +12,7 @@ namespace GodhomeRandomizer.IC
         public LifebloodLocation()
         {
             name = "Godhome_Lifeblood";
-            sceneName = "GG_Blue_Room";
+            sceneName = SceneNames.GG_Blue_Room;
             flingType = FlingType.DirectDeposit;
             tags = [LifebloodTag()];
         }

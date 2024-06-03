@@ -1,13 +1,23 @@
 [
     {
+        "name": "GG_Atrium",
+        "logic": "Warp-Junk_Pit_to_Godhome + (RIGHTCLAW | WINGS | LEFTCLAW + RIGHTSUPERDASH) | (GG_Atrium[Door_Workshop] | GG_Atrium[door1_blueRoom]) + (LEFTCLAW | RIGHTCLAW + WINGS | $SHRIEKPOGO[5]) | Bench-Godhome_Atrium",
+        "Stateless": false
+    },
+    {
         "name": "GG_Atrium_Roof",
-        "logic": "GG_Atrium + LEFTCLAW + PANTHEON_COMPLETION_1 ? Defeated_Pantheon_1 + PANTHEON_COMPLETION_2 ? Defeated_Pantheon_2 + PANTHEON_COMPLETION_3 ? Defeated_Pantheon_3 + PANTHEON_COMPLETION_4 ? Defeated_Pantheon_4",
+        "logic": "GG_Atrium + LEFTCLAW + PANTHEON_COMPLETION_1 + PANTHEON_COMPLETION_2 + PANTHEON_COMPLETION_3 + PANTHEON_COMPLETION_4",
         "Stateless": false
     },
     {
         "name": "GG_Blue_Room",
-        "logic": "GG_Atrium + Radiant_Combat + Defeated_Pantheon_1 + Defeated_Pantheon_2 + Defeated_Pantheon_3 + Defeated_Pantheon_4 + Defeated_Pantheon_5",
+        "logic": "GG_Blue_Room[left1]",
         "Stateless": true
+    },
+    {
+        "name": "GG_Workshop",
+        "logic": "GG_Workshop[left1] + (ANYCLAW | $SHRIEKPOGO[6]) | Bench-Hall_of_Gods",
+        "Stateless": false
     },
     {
         "name": "Godhome_Shop",
@@ -161,12 +171,12 @@
     },
     {
         "name": "Radiant_Combat",
-        "logic":  "NAILCOMBAT + QUAKE>1 | (CURSED + QUAKE) + (FULLSHADOWDASH | ANYSHADOWDASH + MILDCOMBATSKIPS) + (Nail_Upgradable_3 | Nail_Upgradable_2 + MILDCOMBATSKIPS)  | SPICYCOMBATSKIPS",
+        "logic":  "NAILCOMBAT + QUAKE>1 | (CURSED + QUAKE | MILDCOMBATSKIPS) + (FULLSHADOWDASH | ANYSHADOWDASH + MILDCOMBATSKIPS) + (Nail_Upgradable_3 | Nail_Upgradable_2 + MILDCOMBATSKIPS)  | SPICYCOMBATSKIPS",
         "Stateless": true
     },
     {
         "name": "Hardcore_Combat",
-        "logic":  "NAILCOMBAT + Nail_Upgradable_4 + (SPELLS>5 | CURSED + SPELLS>2) + FULLSHADOWDASH",
+        "logic":  "NAILCOMBAT + ((Nail_Upgradable_4 + (SPELLS>5 | CURSED + SPELLS>2) + FULLSHADOWDASH) | (Nail_Upgradable_3 + SPELLS>2 + QUAKE + ANYSHADOWDASH + FULLDASH + MILDCOMBATSKIPS) | (Nail_Upgradable_2 + SPELLS>1 + SPICYCOMBATSKIPS))",
         "Stateless": true
     }
 ]

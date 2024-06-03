@@ -1,6 +1,6 @@
 {
-    "TOP_STATUE": "GG_Workshop + (ANYCLAW | $SHRIEKPOGO[6]) | Bench-Hall_of_Gods",
-    "BOTTOM_STATUE": "GG_Workshop | Bench-Hall_of_Gods",
+    "TOP_STATUE": "GG_Workshop[left1] + (ANYCLAW | $SHRIEKPOGO[6]) | Bench-Hall_of_Gods",
+    "BOTTOM_STATUE": "GG_Workshop[left1]",
     "COMBAT[Colosseum_3]": "BOSS + (FOCUS | SPICYCOMBATSKIPS)",
     "COMBAT[Vengefly_King]": "ANY",
     "COMBAT[Massive_Moss_Charger]": "ANY",

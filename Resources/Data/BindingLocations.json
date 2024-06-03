@@ -11,6 +11,7 @@
         "Properties": {
           "ModSource": "GodhomeRandomizer",
           "PoolGroup": "Pantheon Marks",
+          "VanillaItem": "Pantheon_Master-Completion",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "Complete"
@@ -44,6 +45,7 @@
         "Properties": {
           "ModSource": "GodhomeRandomizer",
           "PoolGroup": "Pantheon Marks",
+          "VanillaItem": "Pantheon_Master-Nail_Binding",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "Nail"
@@ -77,6 +79,7 @@
         "Properties": {
           "ModSource": "GodhomeRandomizer",
           "PoolGroup": "Pantheon Marks",
+          "VanillaItem": "Pantheon_Master-Shell_Binding",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "Shell"
@@ -110,6 +113,7 @@
         "Properties": {
           "ModSource": "GodhomeRandomizer",
           "PoolGroup": "Pantheon Marks",
+          "VanillaItem": "Pantheon_Master-Charms_Binding",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "Charms"
@@ -143,6 +147,7 @@
         "Properties": {
           "ModSource": "GodhomeRandomizer",
           "PoolGroup": "Pantheon Marks",
+          "VanillaItem": "Pantheon_Master-Soul_Binding",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "Soul"
@@ -176,6 +181,7 @@
         "Properties": {
           "ModSource": "GodhomeRandomizer",
           "PoolGroup": "Pantheon Marks",
+          "VanillaItem": "Pantheon_Master-All_Bindings",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "AllAtOnce"
@@ -209,6 +215,7 @@
         "Properties": {
           "ModSource": "GodhomeRandomizer",
           "PoolGroup": "Pantheon Marks",
+          "VanillaItem": "Pantheon_Master-Hitless",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "Hitless"
@@ -242,6 +249,7 @@
         "Properties": {
           "ModSource": "GodhomeRandomizer",
           "PoolGroup": "Pantheon Marks",
+          "VanillaItem": "Pantheon_Artist-Completion",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "Complete"
@@ -275,6 +283,7 @@
         "Properties": {
           "ModSource": "GodhomeRandomizer",
           "PoolGroup": "Pantheon Marks",
+          "VanillaItem": "Pantheon_Artist-Nail_Binding",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "Nail"
@@ -308,6 +317,7 @@
         "Properties": {
           "ModSource": "GodhomeRandomizer",
           "PoolGroup": "Pantheon Marks",
+          "VanillaItem": "Pantheon_Artist-Shell_Binding",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "Shell"
@@ -341,6 +351,7 @@
         "Properties": {
           "ModSource": "GodhomeRandomizer",
           "PoolGroup": "Pantheon Marks",
+          "VanillaItem": "Pantheon_Artist-Charms_Binding",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "Charms"
@@ -374,6 +385,7 @@
         "Properties": {
           "ModSource": "GodhomeRandomizer",
           "PoolGroup": "Pantheon Marks",
+          "VanillaItem": "Pantheon_Artist-Soul_Binding",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "Soul"
@@ -407,6 +419,7 @@
         "Properties": {
           "ModSource": "GodhomeRandomizer",
           "PoolGroup": "Pantheon Marks",
+          "VanillaItem": "Pantheon_Artist-All_Bindings",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "AllAtOnce"
@@ -440,6 +453,7 @@
         "Properties": {
           "ModSource": "GodhomeRandomizer",
           "PoolGroup": "Pantheon Marks",
+          "VanillaItem": "Pantheon_Artist-Hitless",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "Hitless"
@@ -473,6 +487,7 @@
         "Properties": {
           "ModSource": "GodhomeRandomizer",
           "PoolGroup": "Pantheon Marks",
+          "VanillaItem": "Pantheon_Sage-Completion",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "Complete"
@@ -506,6 +521,7 @@
         "Properties": {
           "ModSource": "GodhomeRandomizer",
           "PoolGroup": "Pantheon Marks",
+          "VanillaItem": "Pantheon_Sage-Nail_Binding",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "Nail"
@@ -539,6 +555,7 @@
         "Properties": {
           "ModSource": "GodhomeRandomizer",
           "PoolGroup": "Pantheon Marks",
+          "VanillaItem": "Pantheon_Sage-Shell_Binding",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "Shell"
@@ -572,6 +589,7 @@
         "Properties": {
           "ModSource": "GodhomeRandomizer",
           "PoolGroup": "Pantheon Marks",
+          "VanillaItem": "Pantheon_Sage-Charms_Binding",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "Charms"
@@ -605,6 +623,7 @@
         "Properties": {
           "ModSource": "GodhomeRandomizer",
           "PoolGroup": "Pantheon Marks",
+          "VanillaItem": "Pantheon_Sage-Soul_Binding",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "Soul"
@@ -638,6 +657,7 @@
         "Properties": {
           "ModSource": "GodhomeRandomizer",
           "PoolGroup": "Pantheon Marks",
+          "VanillaItem": "Pantheon_Sage-All_Bindings",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "AllAtOnce"
@@ -671,6 +691,7 @@
         "Properties": {
           "ModSource": "GodhomeRandomizer",
           "PoolGroup": "Pantheon Marks",
+          "VanillaItem": "Pantheon_Sage-Hitless",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "Hitless"
@@ -704,6 +725,7 @@
         "Properties": {
           "ModSource": "GodhomeRandomizer",
           "PoolGroup": "Pantheon Marks",
+          "VanillaItem": "Pantheon_Knight-Completion",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "Complete"
@@ -737,6 +759,7 @@
         "Properties": {
           "ModSource": "GodhomeRandomizer",
           "PoolGroup": "Pantheon Marks",
+          "VanillaItem": "Pantheon_Knight-Nail_Binding",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "Nail"
@@ -770,6 +793,7 @@
         "Properties": {
           "ModSource": "GodhomeRandomizer",
           "PoolGroup": "Pantheon Marks",
+          "VanillaItem": "Pantheon_Knight-Shell_Binding",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "Shell"
@@ -803,6 +827,7 @@
         "Properties": {
           "ModSource": "GodhomeRandomizer",
           "PoolGroup": "Pantheon Marks",
+          "VanillaItem": "Pantheon_Knight-Charms_Binding",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "Charms"
@@ -836,6 +861,7 @@
         "Properties": {
           "ModSource": "GodhomeRandomizer",
           "PoolGroup": "Pantheon Marks",
+          "VanillaItem": "Pantheon_Knight-Soul_Binding",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "Soul"
@@ -869,6 +895,7 @@
         "Properties": {
           "ModSource": "GodhomeRandomizer",
           "PoolGroup": "Pantheon Marks",
+          "VanillaItem": "Pantheon_Knight-All_Bindings",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "AllAtOnce"
@@ -902,6 +929,7 @@
         "Properties": {
           "ModSource": "GodhomeRandomizer",
           "PoolGroup": "Pantheon Marks",
+          "VanillaItem": "Pantheon_Knight-Hitless",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "Hitless"
@@ -935,6 +963,7 @@
         "Properties": {
           "ModSource": "GodhomeRandomizer",
           "PoolGroup": "Pantheon Marks",
+          "VanillaItem": "Pantheon_Hallownest-Completion",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "Complete"
@@ -968,6 +997,7 @@
         "Properties": {
           "ModSource": "GodhomeRandomizer",
           "PoolGroup": "Pantheon Marks",
+          "VanillaItem": "Pantheon_Hallownest-Nail_Binding",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "Nail"
@@ -1001,6 +1031,7 @@
         "Properties": {
           "ModSource": "GodhomeRandomizer",
           "PoolGroup": "Pantheon Marks",
+          "VanillaItem": "Pantheon_Hallownest-Shell_Binding",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "Shell"
@@ -1034,6 +1065,7 @@
         "Properties": {
           "ModSource": "GodhomeRandomizer",
           "PoolGroup": "Pantheon Marks",
+          "VanillaItem": "Pantheon_Hallownest-Charms_Binding",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "Charms"
@@ -1067,6 +1099,7 @@
         "Properties": {
           "ModSource": "GodhomeRandomizer",
           "PoolGroup": "Pantheon Marks",
+          "VanillaItem": "Pantheon_Hallownest-Soul_Binding",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "Soul"
@@ -1100,6 +1133,7 @@
         "Properties": {
           "ModSource": "GodhomeRandomizer",
           "PoolGroup": "Pantheon Marks",
+          "VanillaItem": "Pantheon_Hallownest-All_Bindings",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "AllAtOnce"
@@ -1133,6 +1167,7 @@
         "Properties": {
           "ModSource": "GodhomeRandomizer",
           "PoolGroup": "Pantheon Marks",
+          "VanillaItem": "Pantheon_Hallownest-Hitless",
           "PinSprite": {
             "$type": "GodhomeRandomizer.IC.GodhomeSprite, GodhomeRandomizer",
               "Key": "Hitless"

@@ -10,7 +10,7 @@ using System.IO;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Linq;
-using System;
+using RandomizerMod.RandomizerData;
 
 namespace GodhomeRandomizer.Manager {
     internal static class ItemHandler
@@ -23,8 +23,9 @@ namespace GodhomeRandomizer.Manager {
             RequestBuilder.OnUpdate.Subscribe(-500f, DefineShopRef);
             RequestBuilder.OnUpdate.Subscribe(-100f, RandomizeShopCost);
             RequestBuilder.OnUpdate.Subscribe(0f, AddGodhomeShop);
-            RequestBuilder.OnUpdate.Subscribe(100f, AddHOGObjects);
-            RequestBuilder.OnUpdate.Subscribe(105f, AddPantheonObjects);
+            RequestBuilder.OnUpdate.Subscribe(10f, AddHOGObjects);
+            RequestBuilder.OnUpdate.Subscribe(20f, AddPantheonObjects);
+            RequestBuilder.OnUpdate.Subscribe(1100f, DefineTransitions);
         }
 
         public static void DefineObjects()
@@ -91,7 +92,7 @@ namespace GodhomeRandomizer.Manager {
             int statues = 44;
             int multiplier = (int)GodhomeManager.GlobalSettings.HallOfGods.RandomizeTiers;
             multiplier += GodhomeManager.GlobalSettings.HallOfGods.RandomizeStatueAccess == AccessMode.Randomized ? 1 : 0;
-            costProvider = new("STATUEMARKS", (int)(0.1 * statues * multiplier), (int)(0.2 * statues * multiplier), amount => new StatueCost(amount));
+            costProvider = new("STATUEMARKS", (int)(0.1 * statues * multiplier), (int)(0.9 * statues * multiplier), amount => new StatueCost(amount));
         }
 
         // Rightfully stolen from MoreLocations & GrassRando. I have literally no idea of what this does.
@@ -203,23 +204,17 @@ namespace GodhomeRandomizer.Manager {
                 
                 // Filter Gold, Silver and Bronze marks if TierLimitMode excludes them.
                 if (settings.RandomizeTiers == TierLimitMode.ExcludeRadiant)
-                {
                     locationList = locationList.Where(location => !location.name.StartsWith("Gold")).ToList();
-                }
+
                 else if (settings.RandomizeTiers == TierLimitMode.ExcludeAscended)
-                {
                     locationList = locationList.Where(location => !location.name.StartsWith("Gold") && !location.name.StartsWith("Silver")).ToList();
-                }
+
                 else if (settings.RandomizeTiers == TierLimitMode.Vanilla)
-                {
                     locationList = locationList.Where(location => location.name.StartsWith("Empty")).ToList();
-                }
 
                 // Remove statue access locations if StatueAccessMode isn't randomized
                 if (settings.RandomizeStatueAccess != AccessMode.Randomized)
-                {
                     locationList = locationList.Where(location => !location.name.StartsWith("Empty")).ToList();
-                }
 
                 foreach (StatueLocation location in locationList)
                 {
@@ -263,6 +258,8 @@ namespace GodhomeRandomizer.Manager {
                     };
                 });
             }
+            else
+                builder.AddToVanilla("Eternal_Ordeal", "Eternal_Ordeal");
         }
 
         private static void AddPantheonObjects(RequestBuilder builder)
@@ -309,6 +306,8 @@ namespace GodhomeRandomizer.Manager {
                         };
                     });
                 }
+                else
+                    builder.AddToVanilla(item.name, item.name);
             }
 
             // Define locations
@@ -358,6 +357,52 @@ namespace GodhomeRandomizer.Manager {
                         AdditionalProgressionPenalty = false
                     };
                 });
+            }
+            else
+                builder.AddToVanilla("Godhome_Lifeblood", "Godhome_Lifeblood");
+        }
+
+        private static void DefineTransitions(RequestBuilder builder)
+        {
+            if (!GodhomeManager.GlobalSettings.Enabled)
+                return;
+            
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            JsonSerializer jsonSerializer = new() {TypeNameHandling = TypeNameHandling.Auto};
+            using Stream stream = assembly.GetManifestResourceStream("GodhomeRandomizer.Resources.Data.Transitions.json");
+            StreamReader reader = new(stream);
+            List<TransitionDef> list = jsonSerializer.Deserialize<List<TransitionDef>>(new JsonTextReader(reader));
+            
+            if (builder.gs.TransitionSettings.Mode != RandomizerMod.Settings.TransitionSettings.TransitionMode.None)
+            {
+                int group = 1;
+                foreach (TransitionDef def in list)
+                {
+                    builder.EditTransitionRequest($"{def.SceneName}[{def.DoorName}]", info => info.getTransitionDef = () => def);
+                    bool uncoupled = builder.gs.TransitionSettings.TransitionMatching == RandomizerMod.Settings.TransitionSettings.TransitionMatchingSetting.NonmatchingDirections;
+                    if (uncoupled)
+                    {
+                        SelfDualTransitionGroupBuilder tgb = builder.EnumerateTransitionGroups().First(x => x.label == RBConsts.TwoWayGroup) as SelfDualTransitionGroupBuilder;
+                        tgb.Transitions.Add($"{def.SceneName}[{def.DoorName}]");
+                    }
+                    else
+                    {
+                        SymmetricTransitionGroupBuilder stgb = builder.EnumerateTransitionGroups().First(x => x.label == RBConsts.InLeftOutRightGroup) as SymmetricTransitionGroupBuilder;
+                        if (group == 1)
+                            stgb.Group1.Add($"{def.SceneName}[{def.DoorName}]");
+                        else
+                            stgb.Group2.Add($"{def.SceneName}[{def.DoorName}]");
+                    }
+                    group = group == 1 ? 2 : 1;
+                }
+            }
+            else
+            {
+                foreach (TransitionDef def in list)
+                {
+                    builder.EditTransitionRequest($"{def.SceneName}[{def.DoorName}]", info => info.getTransitionDef = () => def);
+                    builder.EnsureVanillaSourceTransition($"{def.SceneName}[{def.DoorName}]");
+                }
             }
         }
     }

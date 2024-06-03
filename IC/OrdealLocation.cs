@@ -11,7 +11,7 @@ namespace GodhomeRandomizer.IC
         public OrdealLocation()
         {
             name = "Eternal_Ordeal";
-            sceneName = "GG_Workshop";
+            sceneName = SceneNames.GG_Workshop;
             flingType = FlingType.DirectDeposit;
             tags = [OrdealTag()];
         }

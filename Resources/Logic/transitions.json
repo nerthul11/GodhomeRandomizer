@@ -1,0 +1,18 @@
+[
+    {
+        "name": "GG_Workshop[left1]",
+        "logic": "GG_Workshop[left1] | GG_Workshop"
+    },
+    {
+        "name": "GG_Atrium[Door_Workshop]",
+        "logic": "GG_Atrium[Door_Workshop] | GG_Atrium[door1_blueRoom] | GG_Atrium"
+    },
+    {
+        "name": "GG_Blue_Room[left1]",
+        "logic": "GG_Blue_Room[left1]"
+    },
+    {
+        "name": "GG_Atrium[door1_blueRoom]",
+        "logic": "GG_Atrium[door1_blueRoom] | GG_Atrium + Pantheon_Bindings>7"
+    }
+]

@@ -16,6 +16,7 @@ namespace GodhomeRandomizer.Modules
             On.BossSequenceBindingsDisplay.CountCompletedBindings += CompletedBindings;
             On.HeroController.TakeDamage += DisableHitless;
             On.BossSequenceController.FinishLastBossScene += VanillaTracker;
+            On.GameManager.BeginSceneTransition += ForceBools;
         }
 
         public override void Unload()
@@ -24,6 +25,7 @@ namespace GodhomeRandomizer.Modules
             On.BossSequenceBindingsDisplay.CountCompletedBindings -= CompletedBindings;
             On.HeroController.TakeDamage -= DisableHitless;
             On.BossSequenceController.FinishLastBossScene -= VanillaTracker;
+            On.GameManager.BeginSceneTransition -= ForceBools;
         }
         public static PantheonModule Instance => ItemChangerMod.Modules.GetOrAdd<PantheonModule>();
         public SaveSettings Settings { get; set; } = new();
@@ -141,6 +143,13 @@ namespace GodhomeRandomizer.Modules
             CurrentPantheonRun.SetVariable("Hitless", true);
             CurrentPantheonRun.SetVariable("AllAtOnce", CurrentPantheonRun.Nail && CurrentPantheonRun.Shell && CurrentPantheonRun.Charms && CurrentPantheonRun.Soul);
             orig(sequence, bindings, playerData);
+        }
+
+        private void ForceBools(On.GameManager.orig_BeginSceneTransition orig, GameManager self, GameManager.SceneLoadInfo info)
+        {
+            orig(self, info);
+            if (info.SceneName == SceneNames.GG_Atrium && info.EntryGateName == "door1_blueRoom")
+                PlayerData.instance.blueRoomDoorUnlocked = true;
         }
 
         private void DisableHitless(On.HeroController.orig_TakeDamage orig, HeroController self, GameObject go, CollisionSide damageSide, int damageAmount, int hazardType)

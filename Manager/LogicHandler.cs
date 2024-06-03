@@ -12,8 +12,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Linq;
-using System;
-
 
 namespace GodhomeRandomizer.Manager
 {
@@ -21,6 +19,8 @@ namespace GodhomeRandomizer.Manager
     {
         public static void Hook()
         {
+            RCData.RuntimeLogicOverride.Subscribe(0f, AddTransitions);
+            RCData.RuntimeLogicOverride.Subscribe(0f, AddMacros);
             RCData.RuntimeLogicOverride.Subscribe(1f, AddHOGLogic);
             if (ModHooks.GetMod("LostArtifacts") is Mod)
                 RCData.RuntimeLogicOverride.Subscribe(2f, EditLostArtifacts);
@@ -28,21 +28,49 @@ namespace GodhomeRandomizer.Manager
                 RCData.RuntimeLogicOverride.Subscribe(11f, EditTRJR);
             if (ModHooks.GetMod("RandoPlus") is Mod)
                 RCData.RuntimeLogicOverride.Subscribe(51f, EditRandoPlus);
-            // Pantheon logic to be added after ExtraRando
+            // Pantheon logic and waypoints to be added after ExtraRando
+            RCData.RuntimeLogicOverride.Subscribe(2000f, AddWaypoints);
             RCData.RuntimeLogicOverride.Subscribe(2048f, AddPantheonLogic);
             RCData.RuntimeLogicOverride.Subscribe(4096f, EditPantheonAccessLogic);
         }
 
+        private static void AddMacros(GenerationSettings settings, LogicManagerBuilder lmb)
+        {
+            if (!GodhomeManager.GlobalSettings.Enabled)
+                return;
+
+            JsonLogicFormat fmt = new();
+            lmb.DeserializeFile(LogicFileType.Macros, fmt, typeof(GodhomeRandomizer).Assembly.GetManifestResourceStream($"GodhomeRandomizer.Resources.Logic.macros.json"));
+        }
+
+        private static void AddWaypoints(GenerationSettings settings, LogicManagerBuilder lmb)
+        {
+            if (!GodhomeManager.GlobalSettings.Enabled)
+                return;
+            
+            JsonLogicFormat fmt = new();
+            lmb.DeserializeFile(LogicFileType.Waypoints, fmt, typeof(GodhomeRandomizer).Assembly.GetManifestResourceStream($"GodhomeRandomizer.Resources.Logic.waypoints.json"));
+        }
+
+        private static void AddTransitions(GenerationSettings settings, LogicManagerBuilder lmb)
+        {
+            if (!GodhomeManager.GlobalSettings.Enabled)
+                return;
+            
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            JsonSerializer jsonSerializer = new() {TypeNameHandling = TypeNameHandling.Auto};
+            using Stream stream = assembly.GetManifestResourceStream("GodhomeRandomizer.Resources.Logic.transitions.json");
+            StreamReader reader = new(stream);
+            List<RawLogicDef> list = jsonSerializer.Deserialize<List<RawLogicDef>>(new JsonTextReader(reader));
+
+            foreach (RawLogicDef def in list)
+                lmb.AddTransition(def);
+        }
         private static void AddHOGLogic(GenerationSettings gs, LogicManagerBuilder lmb)
         {
             if (!GodhomeManager.GlobalSettings.Enabled)
                 return;
 
-            // Add macros and waypoints.
-            JsonLogicFormat fmt = new();
-            lmb.DeserializeFile(LogicFileType.Macros, fmt, typeof(GodhomeRandomizer).Assembly.GetManifestResourceStream($"GodhomeRandomizer.Resources.Logic.macros.json"));
-            lmb.DeserializeFile(LogicFileType.Waypoints, fmt, typeof(GodhomeRandomizer).Assembly.GetManifestResourceStream($"GodhomeRandomizer.Resources.Logic.waypoints.json"));
-  
             // Read item definitions
             Assembly assembly = Assembly.GetExecutingAssembly();
             JsonSerializer jsonSerializer = new() {TypeNameHandling = TypeNameHandling.Auto};
@@ -129,30 +157,21 @@ namespace GodhomeRandomizer.Manager
 
             // Eternal Ordeal logic
             lmb.AddItem(new EmptyItem("Eternal_Ordeal"));
-            lmb.AddLogicDef(new("Eternal_Ordeal", "GG_Workshop + (BOSS | SPICYCOMBATSKIPS) + UPWALLBREAK + RIGHTCLAW + WINGS + (LEFTSUPERDASH | LEFTSHARPSHADOW)"));
+            lmb.AddLogicDef(new("Eternal_Ordeal", "GG_Workshop + (BOSS + FOCUS | SPICYCOMBATSKIPS) + UPWALLBREAK + RIGHTCLAW + WINGS + (LEFTSUPERDASH | LEFTSHARPSHADOW)"));
         }
 
         private static void AddPantheonLogic(GenerationSettings gs, LogicManagerBuilder lmb)
         {
             if (!GodhomeManager.GlobalSettings.Enabled)
                 return;
-                      
+             
             // Add logic term
-            GodhomeRandomizerSettings.Panth settings = GodhomeManager.GlobalSettings.Pantheons;
             lmb.GetOrAddTerm($"Pantheon_Bindings", TermType.Int);
-            if (settings.Completion)
-            {
-                if (settings.PantheonsIncluded >= PantheonLimitMode.Master)
-                    lmb.AddItem(new BoolItem("Pantheon_Master-Completion", lmb.GetOrAddTerm($"PANTHEON_COMPLETION_1")));
-                if (settings.PantheonsIncluded >= PantheonLimitMode.Artist)
-                    lmb.AddItem(new BoolItem("Pantheon_Artist-Completion", lmb.GetOrAddTerm($"PANTHEON_COMPLETION_2")));
-                if (settings.PantheonsIncluded >= PantheonLimitMode.Sage)
-                    lmb.AddItem(new BoolItem("Pantheon_Sage-Completion", lmb.GetOrAddTerm($"PANTHEON_COMPLETION_3")));
-                if (settings.PantheonsIncluded >= PantheonLimitMode.Knight)
-                    lmb.AddItem(new BoolItem("Pantheon_Knight-Completion", lmb.GetOrAddTerm($"PANTHEON_COMPLETION_4")));
-                if (settings.PantheonsIncluded >= PantheonLimitMode.Hallownest)
-                    lmb.AddItem(new BoolItem("Pantheon_Hallownest-Completion", lmb.GetOrAddTerm($"PANTHEON_COMPLETION_5")));
-            }
+            lmb.AddItem(new BoolItem("Pantheon_Master-Completion", lmb.GetOrAddTerm($"PANTHEON_COMPLETION_1")));
+            lmb.AddItem(new BoolItem("Pantheon_Artist-Completion", lmb.GetOrAddTerm($"PANTHEON_COMPLETION_2")));
+            lmb.AddItem(new BoolItem("Pantheon_Sage-Completion", lmb.GetOrAddTerm($"PANTHEON_COMPLETION_3")));
+            lmb.AddItem(new BoolItem("Pantheon_Knight-Completion", lmb.GetOrAddTerm($"PANTHEON_COMPLETION_4")));
+            lmb.AddItem(new BoolItem("Pantheon_Hallownest-Completion", lmb.GetOrAddTerm($"PANTHEON_COMPLETION_5")));
 
             // Read item definitions
             Assembly assembly = Assembly.GetExecutingAssembly();
@@ -179,13 +198,6 @@ namespace GodhomeRandomizer.Manager
             // Add lifeblood logic
             lmb.AddItem(new EmptyItem("Godhome_Lifeblood"));
             lmb.AddLogicDef(new("Godhome_Lifeblood", "GG_Blue_Room + DREAMNAIL"));
-            
-            int multiplier = (int)settings.PantheonsIncluded;
-            int bindCount = (settings.Nail ? 1 : 0) + (settings.Shell ? 1 : 0) + (settings.Charms ? 1 : 0) + (settings.Soul ? 1 : 0);
-            if (multiplier * bindCount > 12)
-            {
-                lmb.DoLogicEdit(new("GG_Blue_Room", $"ORIG + Pantheon_Bindings>{multiplier * bindCount - 13}"));
-            }
         }
 
         private static void EditPantheonAccessLogic(GenerationSettings gs, LogicManagerBuilder lmb)
@@ -206,7 +218,7 @@ namespace GodhomeRandomizer.Manager
                 lmb.DoLogicEdit(new("Opened_Pantheon_1", "GG_Atrium + PANTHEON_KEY_1 ? TRUE"));
                 lmb.DoLogicEdit(new("Opened_Pantheon_2", "GG_Atrium + PANTHEON_KEY_2 ? TRUE"));
                 lmb.DoLogicEdit(new("Opened_Pantheon_3", "GG_Atrium + PANTHEON_KEY_3 ? TRUE"));
-                lmb.DoLogicEdit(new("Opened_Pantheon_4", "GG_Atrium + (PANTHEON_COMPLETION_1 ? Defeated_Pantheon_1 + PANTHEON_COMPLETION_2 ? Defeated_Pantheon_2 + PANTHEON_COMPLETION_3 ? Defeated_Pantheon_3 | (PANTHEON_KEY_4 ? FALSE))"));
+                lmb.DoLogicEdit(new("Opened_Pantheon_4", "GG_Atrium + (PANTHEON_COMPLETION_1 + PANTHEON_COMPLETION_2 + PANTHEON_COMPLETION_3 | (PANTHEON_KEY_4 ? FALSE))"));
             }
             if (settings.RandomizeStatueAccess == AccessMode.Randomized)
             {
@@ -227,7 +239,7 @@ namespace GodhomeRandomizer.Manager
                     if (panthID < 4)
                         lmb.DoLogicEdit(new($"Opened_Pantheon_{panthID}", $"GG_Atrium + ({bossLogic} | (PANTHEON_KEY_{panthID} ? FALSE))"));
                     else
-                        lmb.DoLogicEdit(new($"Opened_Pantheon_{panthID}", $"GG_Atrium + (PANTHEON_COMPLETION_1 ? Defeated_Pantheon_1 + PANTHEON_COMPLETION_2 ? Defeated_Pantheon_2 + PANTHEON_COMPLETION_3 ? Defeated_Pantheon_3 + {bossLogic} | (PANTHEON_KEY_{panthID} ? FALSE))"));
+                        lmb.DoLogicEdit(new($"Opened_Pantheon_{panthID}", $"GG_Atrium + (PANTHEON_COMPLETION_1 + PANTHEON_COMPLETION_2 + PANTHEON_COMPLETION_3 + {bossLogic} | (PANTHEON_KEY_{panthID} ? FALSE))"));
                 }
             }
         }
@@ -252,9 +264,8 @@ namespace GodhomeRandomizer.Manager
                 string[] entries = [
                     "Gruz_Mother", "Vengefly_King", "Brooding_Mawlek", "False_Knight",
                     "Massive_Moss_Charger", "Mantis_Lords", "Grey_Prince_Zote", "Broken_Vessel",
-                    "Nosk", "Flukemarm", "Soul_Master", "God_Tamer",
-                    "Uumuu", "Dung_Defender", "White_Defender", "Hive_Knight",
-                    "Traitor_Lord", "Grimm", "Pure_Vessel",
+                    "Nosk", "Flukemarm", "Soul_Master", "God_Tamer", "Uumuu", "Dung_Defender", 
+                    "White_Defender", "Hive_Knight", "Traitor_Lord", "Pure_Vessel",
                     "Elder_Hu", "Galien", "Markoth", "Marmu", "No_Eyes", "Xero", "Gorb",
                     "Radiance", "Soul_Warrior", "Paintmaster_Sheo"
                 ];
@@ -280,9 +291,9 @@ namespace GodhomeRandomizer.Manager
                 }
                 if (bonusEntriesIncluded)
                 {
-                    lmb.DoLogicEdit(new("Defeated_Any_Winged_Zoteling", "ORIG | *Bronze_Mark-Grey_Prince_Zote"));
-                    lmb.DoLogicEdit(new("Defeated_Any_Hopping_Zoteling", "ORIG | *Bronze_Mark-Grey_Prince_Zote"));
-                    lmb.DoLogicEdit(new("Defeated_Any_Volatile_Zoteling", "ORIG | *Bronze_Mark-Grey_Prince_Zote"));
+                    lmb.DoLogicEdit(new("Defeated_Any_Winged_Zoteling", "ORIG | *Bronze_Mark-Grey_Prince_Zote | *Eternal_Ordeal"));
+                    lmb.DoLogicEdit(new("Defeated_Any_Hopping_Zoteling", "ORIG | *Bronze_Mark-Grey_Prince_Zote | *Eternal_Ordeal"));
+                    lmb.DoLogicEdit(new("Defeated_Any_Volatile_Zoteling", "ORIG | *Bronze_Mark-Grey_Prince_Zote | *Eternal_Ordeal"));
                 }
                 if (regularBossIncluded)
                 {
@@ -334,21 +345,12 @@ namespace GodhomeRandomizer.Manager
                     lmb.DoMacroEdit(new("RADIANT_IDOL", bossLogic));
                     lmb.DoLogicEdit(new("Journal_Entry-Void_Idol_3", "RADIANT_IDOL"));
                 }
-
-                // Override GG_Atrium_Roof's definition to fit Godhome Rando requirements
-                lmb.DoLogicEdit(new("GG_Atrium_Roof", "GG_Atrium + LEFTCLAW + PANTHEON_COMPLETION_1 ? Defeated_Pantheon_1 + PANTHEON_COMPLETION_2 ? Defeated_Pantheon_2 + PANTHEON_COMPLETION_3 ? Defeated_Pantheon_3 + PANTHEON_COMPLETION_4 ? Defeated_Pantheon_4"));
             }
 
             // Add bindings requirement to Weathered Mask entry
-            GodhomeRandomizerSettings.Panth panthSettings = GodhomeRandomizer.Instance.GS.Settings.Pantheons;
-            if (panthSettings.PantheonsIncluded > PantheonLimitMode.None)
-            {
-                int multiplier = (int)panthSettings.PantheonsIncluded;
-                int bindCount = (panthSettings.Nail ? 1 : 0) + (panthSettings.Shell ? 1 : 0) + (panthSettings.Charms ? 1 : 0) + (panthSettings.Soul ? 1 : 0);
-                bool weatheredMask = lmb.LogicLookup.TryGetValue("Journal_Entry-Weathered_Mask", out _);
-                if (multiplier * bindCount > 0 && weatheredMask)
-                    lmb.DoLogicEdit(new("Journal_Entry-Weathered_Mask", $"ORIG + Pantheon_Bindings > {(multiplier * bindCount) - 1}"));
-            }
+            bool weatheredMask = lmb.LogicLookup.TryGetValue("Journal_Entry-Weathered_Mask", out _);
+            if (weatheredMask)
+                lmb.DoLogicEdit(new("Journal_Entry-Weathered_Mask", $"ORIG + Pantheon_Bindings>19"));
         }
 
         private static void EditLostArtifacts(GenerationSettings gs, LogicManagerBuilder lmb)
@@ -389,9 +391,7 @@ namespace GodhomeRandomizer.Manager
                 lmb.DoLogicEdit(new("Nail_Upgradable_3", "NAILUPGRADE>2"));
                 lmb.DoLogicEdit(new("Nail_Upgradable_4", "NAILUPGRADE>3"));
             }
-            catch (KeyNotFoundException)
-            {
-            }
+            catch (KeyNotFoundException) {} // Ignore if NAILUPGRADE isn't present
         }
     }
 }

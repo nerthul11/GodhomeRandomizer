@@ -25,7 +25,6 @@ namespace GodhomeRandomizer.IC
                 }
             };
             tags = [ShopTag()];
-            
         }
 
         private static InteropTag ShopTag()
