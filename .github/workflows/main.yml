@@ -42,7 +42,12 @@ jobs:
         run: |
           wget https://github.com/homothetyhk/HollowKnight.MenuChanger/releases/latest/download/MenuChanger.zip -O MenuChanger.zip
           unzip -o MenuChanger.zip -d References
-     
+      
+      - name: Fetch MoreLocations
+        run: |
+          wget https://github.com/BadMagic100/MoreLocations/releases/latest/download/MoreLocations.zip -O MoreLocations.zip
+          unzip -o MoreLocations.zip -d References     
+
       - name: Fetch RandoSettingsManager
         run: |
           wget https://github.com/BadMagic100/RandoSettingsManager/releases/latest/download/RandoSettingsManager.zip -O RandoSettingsManager.zip
