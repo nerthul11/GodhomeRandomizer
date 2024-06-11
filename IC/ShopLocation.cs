@@ -1,4 +1,5 @@
 using GodhomeRandomizer.IC.Shop;
+using GodhomeRandomizer.Modules;
 using HutongGames.PlayMaker.Actions;
 using ItemChanger;
 using ItemChanger.Locations;
@@ -17,12 +18,9 @@ namespace GodhomeRandomizer.IC
             fsmName = "npc_control";
             flingType = FlingType.DirectDeposit;
             dungDiscount = false;
-            costDisplayerSelectionStrategy = new MixedCostDisplayerSelectionStrategy()
+            costDisplayerSelectionStrategy = new SingleCostDisplayerSelectionStrategy()
             {
-                Capabilities = 
-                {
-                    new StatueCostSupport()
-                }
+                CostDisplayer = new StatueCostDisplayer()
             };
             tags = [ShopTag()];
         }
@@ -32,7 +30,6 @@ namespace GodhomeRandomizer.IC
             InteropTag tag = new();
             tag.Properties["ModSource"] = "GodhomeRandomizer";
             tag.Properties["PoolGroup"] = "Shops";
-            tag.Properties["PinSprite"] = new GodhomeSprite("Ordeal");
             tag.Properties["MapLocations"] = new (string, float, float)[] {("GG_Waterways", 0.0f, 0.3f)};
             tag.Message = "RandoSupplementalMetadata";
             return tag;

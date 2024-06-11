@@ -42,7 +42,7 @@ namespace GodhomeRandomizer.IC.Shop
 
         public override string ToString()
         {
-            return $"{term} >= {logicCost}";
+            return $"{logicCost} {term}";
         }
     }
 }

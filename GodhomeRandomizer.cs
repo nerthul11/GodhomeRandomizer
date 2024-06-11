@@ -6,10 +6,10 @@ using System;
 
 namespace GodhomeRandomizer
 {
-    public class GodhomeRandomizer : Mod, IGlobalSettings<GlobalSettings>
+    public class GodhomeRandomizer : Mod, IGlobalSettings<GodhomeRandomizerSettings>
     {
         new public string GetName() => "GodhomeRandomizer";
-        public override string GetVersion() => "2.2.3.0";
+        public override string GetVersion() => "2.2.4.0";
 
         private static GodhomeRandomizer _instance;
         public GodhomeRandomizer() : base()
@@ -27,7 +27,7 @@ namespace GodhomeRandomizer
                 return _instance;
             }
         }
-        public GlobalSettings GS { get; set; } = new();
+        public GodhomeRandomizerSettings GS { get; set; } = new();
         public override void Initialize()
         {
             // Ignore completely if Randomizer 4 is inactive
@@ -38,6 +38,10 @@ namespace GodhomeRandomizer
                 if (ModHooks.GetMod("FStatsMod") is Mod)
                 {
                     FStats_Interop.Hook();
+                }
+                if (ModHooks.GetMod("MoreLocations") is Mod)
+                {
+                    MoreLocations_Interop.Hook();
                 }
                 if (ModHooks.GetMod("RandoSettingsManager") is Mod)
                 {
@@ -54,7 +58,7 @@ namespace GodhomeRandomizer
             }
         }        
 
-        public void OnLoadGlobal(GlobalSettings s) => GS = s;
-        public GlobalSettings OnSaveGlobal() => GS;
+        public void OnLoadGlobal(GodhomeRandomizerSettings s) => GS = s;
+        public GodhomeRandomizerSettings OnSaveGlobal() => GS;
     }   
 }

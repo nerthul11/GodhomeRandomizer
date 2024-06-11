@@ -34,7 +34,7 @@ namespace GodhomeRandomizer.Manager
             RCData.RuntimeLogicOverride.Subscribe(4096f, EditPantheonAccessLogic);
         }
 
-        private static void AddMacros(GenerationSettings settings, LogicManagerBuilder lmb)
+        private static void AddMacros(GenerationSettings gs, LogicManagerBuilder lmb)
         {
             if (!GodhomeManager.GlobalSettings.Enabled)
                 return;
@@ -43,7 +43,7 @@ namespace GodhomeRandomizer.Manager
             lmb.DeserializeFile(LogicFileType.Macros, fmt, typeof(GodhomeRandomizer).Assembly.GetManifestResourceStream($"GodhomeRandomizer.Resources.Logic.macros.json"));
         }
 
-        private static void AddWaypoints(GenerationSettings settings, LogicManagerBuilder lmb)
+        private static void AddWaypoints(GenerationSettings gs, LogicManagerBuilder lmb)
         {
             if (!GodhomeManager.GlobalSettings.Enabled)
                 return;
@@ -52,7 +52,7 @@ namespace GodhomeRandomizer.Manager
             lmb.DeserializeFile(LogicFileType.Waypoints, fmt, typeof(GodhomeRandomizer).Assembly.GetManifestResourceStream($"GodhomeRandomizer.Resources.Logic.waypoints.json"));
         }
 
-        private static void AddTransitions(GenerationSettings settings, LogicManagerBuilder lmb)
+        private static void AddTransitions(GenerationSettings gs, LogicManagerBuilder lmb)
         {
             if (!GodhomeManager.GlobalSettings.Enabled)
                 return;
@@ -78,8 +78,7 @@ namespace GodhomeRandomizer.Manager
             StreamReader itemReader = new(itemStream);
             List<StatueItem> itemList = jsonSerializer.Deserialize<List<StatueItem>>(new JsonTextReader(itemReader));
 
-            GodhomeRandomizerSettings.HOG settings = GodhomeManager.GlobalSettings.HallOfGods;
-            int req = settings.RandomizeStatueAccess == AccessMode.Randomized ? 1 : 0;
+            HallOfGodsSettings settings = GodhomeManager.GlobalSettings.HallOfGods;
             lmb.GetOrAddTerm("STATUEMARKS", TermType.Int);
             foreach (StatueItem item in itemList)
             {
@@ -141,7 +140,7 @@ namespace GodhomeRandomizer.Manager
                 }
 
                 // Gold mark logic
-                lmb.AddLogicDef(new($"Gold_Mark-{boss}", $"{position}_STATUE + Radiant_Combat + GG_{boss}>{1 + req} + COMBAT[{boss}]"));
+                lmb.AddLogicDef(new($"Gold_Mark-{boss}", $"{position}_STATUE + Radiant_Combat + GG_{boss}>2 + COMBAT[{boss}]"));
                 if (dependency is not null && settings.RandomizeStatueAccess < AccessMode.AllUnlocked)
                     lmb.DoLogicEdit(new($"Gold_Mark-{boss}", $"ORIG + GG_{dependency}>0"));
                 if (item.isDreamBoss)
@@ -149,7 +148,7 @@ namespace GodhomeRandomizer.Manager
                 
                 if (settings.RandomizeStatueAccess == AccessMode.Vanilla)
                 {
-                    lmb.DoLogicEdit(new($"Gold_Mark-{boss}", $"{position}_STATUE + Radiant_Combat + GG_{boss}>{1 + req} + Defeated_{boss}"));
+                    lmb.DoLogicEdit(new($"Gold_Mark-{boss}", $"{position}_STATUE + Radiant_Combat + GG_{boss}>2 + Defeated_{boss}"));
                     if (dependency is not null)
                         lmb.DoLogicEdit(new($"Gold_Mark-{boss}", $"ORIG + Defeated_{dependency}"));
                 }
@@ -211,7 +210,7 @@ namespace GodhomeRandomizer.Manager
             StreamReader itemReader = new(itemStream);
             List<StatueItem> itemList = jsonSerializer.Deserialize<List<StatueItem>>(new JsonTextReader(itemReader));
             itemList = itemList.Where(item => !item.pantheonID.Equals(null)).ToList();
-            GodhomeRandomizerSettings.HOG settings = GodhomeManager.GlobalSettings.HallOfGods;   
+            HallOfGodsSettings settings = GodhomeManager.GlobalSettings.HallOfGods;   
 
             if (settings.RandomizeStatueAccess == AccessMode.AllUnlocked)
             {
@@ -255,8 +254,7 @@ namespace GodhomeRandomizer.Manager
             StreamReader itemReader = new(itemStream);
             List<StatueItem> itemList = jsonSerializer.Deserialize<List<StatueItem>>(new JsonTextReader(itemReader));
 
-            GodhomeRandomizerSettings.HOG hogSettings = GodhomeManager.GlobalSettings.HallOfGods;
-            int req = hogSettings.RandomizeStatueAccess == AccessMode.Randomized ? 1 : 0;
+            HallOfGodsSettings hogSettings = GodhomeManager.GlobalSettings.HallOfGods;
 
             // For boss journal entries, add HOG clearance as an option if access is altered
             if (hogSettings.RandomizeStatueAccess > AccessMode.Vanilla)
@@ -316,7 +314,7 @@ namespace GodhomeRandomizer.Manager
                 foreach (StatueItem item in itemList)
                 {
                     string boss = item.name.Split('-').Last();
-                    bossLogic += $" + GG_{boss}>{req}";
+                    bossLogic += $" + GG_{boss}>1";
                 }
                 lmb.DoMacroEdit(new("ATTUNED_IDOL", bossLogic));
                 lmb.DoLogicEdit(new("Journal_Entry-Void_Idol_1", "ATTUNED_IDOL"));
@@ -328,7 +326,7 @@ namespace GodhomeRandomizer.Manager
                     foreach (StatueItem item in itemList)
                     {
                         string boss = item.name.Split('-').Last();
-                        bossLogic += $" + GG_{boss}>{req + 1}";
+                        bossLogic += $" + GG_{boss}>2";
                     }
                     lmb.DoMacroEdit(new("ASCENDED_IDOL", bossLogic));
                     lmb.DoLogicEdit(new("Journal_Entry-Void_Idol_2", "ASCENDED_IDOL"));
@@ -340,7 +338,7 @@ namespace GodhomeRandomizer.Manager
                     foreach (StatueItem item in itemList)
                     {
                         string boss = item.name.Split('-').Last();
-                        bossLogic += $" + GG_{boss}>{req + 2}";
+                        bossLogic += $" + GG_{boss}>3";
                     }
                     lmb.DoMacroEdit(new("RADIANT_IDOL", bossLogic));
                     lmb.DoLogicEdit(new("Journal_Entry-Void_Idol_3", "RADIANT_IDOL"));
@@ -365,8 +363,7 @@ namespace GodhomeRandomizer.Manager
             StreamReader itemReader = new(itemStream);
             List<StatueItem> itemList = jsonSerializer.Deserialize<List<StatueItem>>(new JsonTextReader(itemReader));
 
-            GodhomeRandomizerSettings.HOG settings = GodhomeManager.GlobalSettings.HallOfGods;
-            int req = settings.RandomizeStatueAccess == AccessMode.Randomized ? 1 : 0;
+            HallOfGodsSettings settings = GodhomeManager.GlobalSettings.HallOfGods;
 
             if (settings.RandomizeTiers > TierLimitMode.Vanilla)
             {
@@ -374,7 +371,7 @@ namespace GodhomeRandomizer.Manager
                 foreach (StatueItem item in itemList)
                 {
                     string boss = item.name.Split('-').Last();
-                    logic += $" + GG_{boss}>{req}";
+                    logic += $" + GG_{boss}>1";
                 }
                 lmb.DoMacroEdit(new("ATTUNED_IDOL", logic));
                 lmb.DoLogicEdit(new("AttunedJewel", "ATTUNED_IDOL"));

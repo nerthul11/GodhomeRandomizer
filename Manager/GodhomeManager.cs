@@ -6,7 +6,7 @@ namespace GodhomeRandomizer.Manager
 {
     internal static class GodhomeManager
     {
-        public static GodhomeRandomizerSettings GlobalSettings => GodhomeRandomizer.Instance.GS.Settings;
+        public static GodhomeRandomizerSettings GlobalSettings => GodhomeRandomizer.Instance.GS;
         public static void Hook()
         {
             LogicHandler.Hook();

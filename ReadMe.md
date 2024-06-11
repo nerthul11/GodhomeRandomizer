@@ -30,7 +30,13 @@ The mysterious blue room that contains a giant lifeblood cocoon can also be rand
 
 ### Godhome Shop
 
-Since this mod allows to add a significant number of duplicate items (44 if duping the Statue Marks), a counter-measure to prevent regular shops from being too overcrowded is the introduction of a new shop. This shop will check for Statue Marks obtained and use them as currency. It works similar to Grubs or essence, meaning it checks if you achieved a given threshold of Statue Marks, without actually consuming them. Since it will only look for randomized statue marks, the shop will obviously be disabled if no Statue Mark items exist.
+Since this mod allows to add a significant number of duplicate items (44 if duping the Statue Marks), a counter-measure to prevent regular shops from being too overcrowded is the introduction of a new shop. This shop will check for Statue Marks obtained and use them as currency. It works similar to Grubs or essence, meaning it checks if you achieved a given threshold of Statue Marks, without actually consuming them.
+
+An obtained Statue Mark means that a statue:
+-Has been unlocked.
+-Has an attuned cleared mark.
+-Has an ascended cleared mark.
+-Has a radiant cleared mark.
 
 All this can add up to a whopping total of __214__ new locations and items to the Randomization pool!
 
@@ -83,6 +89,7 @@ All this can add up to a whopping total of __214__ new locations and items to th
     - Unscarred Pantheons: Obtained by clearing all pantheons without receiving damage.
 
 - Lost Artifacts: There is one element there that has its logic altered by the randomizing of Godhome assets.
+- More Locations: Having the mod enabled will allow for Statue Marks to be included as currency for the Junk Shop.
 - RandoSettingsManager
 - TheRealJournalRando: This mod has quite a few interactions with TRJR:
     - Since access to boss fights can be altered, the logic now contemplates the option of beating them through Hall of Gods to obtain their journal entries.

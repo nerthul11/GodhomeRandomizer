@@ -1,7 +1,10 @@
 ﻿namespace GodhomeRandomizer.Settings
 {
-    public class GlobalSettings
+    public class GodhomeRandomizerSettings
     {
-        public GodhomeRandomizerSettings Settings { get; set; } = new();
+        public bool Enabled { get; set; } = new();
+        public GodhomeShopSettings GodhomeShop { get; set; } = new();
+        public HallOfGodsSettings HallOfGods { get; set;} = new();
+        public PantheonSettings Pantheons { get; set;} = new();
     }
 }

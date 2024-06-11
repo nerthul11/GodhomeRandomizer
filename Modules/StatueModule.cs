@@ -29,14 +29,10 @@ namespace GodhomeRandomizer.Modules
         public int TotalCount()
         {
             int count = 0;
-            if (Settings.RandomizeStatueAccess == AccessMode.Randomized)
-                count += UnlockedCount();
-            if (Settings.RandomizeTiers > TierLimitMode.Vanilla)
-                count += AttunedCount();
-            if (Settings.RandomizeTiers > TierLimitMode.ExcludeAscended)
-                count += AscendedCount();
-            if (Settings.RandomizeTiers > TierLimitMode.ExcludeRadiant)
-                count += RadiantCount();
+            count += UnlockedCount();
+            count += AttunedCount();
+            count += AscendedCount();
+            count += RadiantCount();
             return count;
         }
         public int CurrentBossLevel { get; set; } = 0;
@@ -45,6 +41,7 @@ namespace GodhomeRandomizer.Modules
         {
             if (ItemChangerMod.Modules?.Get<InventoryTracker>() is InventoryTracker it)
                 it.OnGenerateFocusDesc += AddStatueProgress;
+            Events.AddLanguageEdit(new LanguageKey("CP3", "INV_DESC_GODFINDER"), AddDetailedStatueProgress);
             On.BossScene.IsUnlocked += UnlockCheck;
             On.BossSceneController.Awake += VanillaTracker;
             On.BossStatue.UpdateDetails += GetDetails;
@@ -55,6 +52,7 @@ namespace GodhomeRandomizer.Modules
         {
             if (ItemChangerMod.Modules?.Get<InventoryTracker>() is InventoryTracker it)
                 it.OnGenerateFocusDesc -= AddStatueProgress;
+            Events.RemoveLanguageEdit(new LanguageKey("UI", "INV_DESC_GODFINDER"), AddDetailedStatueProgress);
             On.BossScene.IsUnlocked -= UnlockCheck;
             On.BossSceneController.Awake -= VanillaTracker;
             On.BossStatue.UpdateDetails -= GetDetails;
@@ -63,8 +61,20 @@ namespace GodhomeRandomizer.Modules
 
         private void AddStatueProgress(StringBuilder builder)
         {
-            if (TotalMarks > 0)
-                builder.AppendLine($"Statue mark items obtained: {TotalCount()}");
+            builder.AppendLine($"Statue marks obtained: {TotalCount()}");
+        }
+
+        private void AddDetailedStatueProgress(ref string value)
+        {
+            value = "Device that resonates with beings of great power.<br>Tracks activity at the Hall of Gods.";
+            if (UnlockedCount() > 0)
+                value += $"<br>Unlocked marks obtained: {UnlockedCount()}";
+            if (AttunedCount() > 0)
+                value += $"<br>Attuned marks obtained: {AttunedCount()}";
+            if (AscendedCount() > 0)
+                value += $"<br>Ascended marks obtained: {AscendedCount()}";
+            if (RadiantCount() > 0)
+                value += $"<br>Radiant marks obtained: {RadiantCount()}";
         }
 
         public int CurrentMarks(string battleScene)

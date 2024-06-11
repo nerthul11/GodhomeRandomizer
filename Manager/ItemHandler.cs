@@ -11,21 +11,22 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Linq;
 using RandomizerMod.RandomizerData;
+using System;
+using RandomizerMod.Settings;
 
 namespace GodhomeRandomizer.Manager {
     internal static class ItemHandler
     {
-        private static StatueCostProvider costProvider;
         internal static void Hook()
         {
             DefineObjects();
-            RequestBuilder.OnUpdate.Subscribe(float.NegativeInfinity, SetupShopCost);
             RequestBuilder.OnUpdate.Subscribe(-500f, DefineShopRef);
             RequestBuilder.OnUpdate.Subscribe(-100f, RandomizeShopCost);
             RequestBuilder.OnUpdate.Subscribe(0f, AddGodhomeShop);
             RequestBuilder.OnUpdate.Subscribe(10f, AddHOGObjects);
             RequestBuilder.OnUpdate.Subscribe(20f, AddPantheonObjects);
             RequestBuilder.OnUpdate.Subscribe(1100f, DefineTransitions);
+            ProgressionInitializer.OnCreateProgressionInitializer += AdjustStatueMarkTerm;
         }
 
         public static void DefineObjects()
@@ -69,7 +70,7 @@ namespace GodhomeRandomizer.Manager {
 
         private static void DefineShopRef(RequestBuilder builder)
         {
-            if (!GodhomeManager.GlobalSettings.Enabled || !GodhomeManager.GlobalSettings.GodhomeShop)
+            if (!GodhomeManager.GlobalSettings.Enabled || !GodhomeManager.GlobalSettings.GodhomeShop.Enabled)
                 return;
 
             builder.EditLocationRequest("Godhome_Shop", info =>
@@ -84,21 +85,9 @@ namespace GodhomeRandomizer.Manager {
             });
         }
 
-        private static void SetupShopCost(RequestBuilder builder)
-        {
-            if (!GodhomeManager.GlobalSettings.Enabled || !GodhomeManager.GlobalSettings.GodhomeShop)
-                return;
-
-            int statues = 44;
-            int multiplier = (int)GodhomeManager.GlobalSettings.HallOfGods.RandomizeTiers;
-            multiplier += GodhomeManager.GlobalSettings.HallOfGods.RandomizeStatueAccess == AccessMode.Randomized ? 1 : 0;
-            costProvider = new("STATUEMARKS", (int)(0.1 * statues * multiplier), (int)(0.9 * statues * multiplier), amount => new StatueCost(amount));
-        }
-
-        // Rightfully stolen from MoreLocations & GrassRando. I have literally no idea of what this does.
         private static void RandomizeShopCost(RequestBuilder builder)
         {
-            if (!GodhomeManager.GlobalSettings.Enabled || !GodhomeManager.GlobalSettings.GodhomeShop)
+            if (!GodhomeManager.GlobalSettings.Enabled || !GodhomeManager.GlobalSettings.GodhomeShop.Enabled)
                 return;
             
             builder.CostConverters.Subscribe(150f, RandomizeCost);
@@ -109,10 +98,6 @@ namespace GodhomeRandomizer.Manager {
                     if (factory.TryFetchPlacement(rp.Location.Name, out AbstractPlacement plt))
                         return plt;
                     ShopLocation shop = (ShopLocation)factory.MakeLocation(rp.Location.Name);
-                    shop.costDisplayerSelectionStrategy = new MixedCostDisplayerSelectionStrategy()
-                    {
-                        Capabilities = {new StatueCostSupport()}
-                    };
                     plt = shop.Wrap();
                     factory.AddPlacement(plt);
                     return plt;
@@ -120,10 +105,12 @@ namespace GodhomeRandomizer.Manager {
 
                 info.onRandoLocationCreation += (factory, rl) =>
                 {
-                    if (costProvider == null)
-                        return;
-                    LogicCost nextCost = costProvider.Next(factory.lm, factory.rng);
-                    rl.AddCost(nextCost);
+                    LogicManager lm = factory.lm;
+                    Random rng = factory.rng;
+                    int multiplier = (int)GodhomeManager.GlobalSettings.HallOfGods.RandomizeTiers + 1;
+                    int minCost = (int)(44 * GodhomeManager.GlobalSettings.GodhomeShop.MinimumCost * multiplier);
+                    int maxCost = (int)(44 * GodhomeManager.GlobalSettings.GodhomeShop.MaximumCost * multiplier);
+                    rl.AddCost(new StatueLogicCost(lm.GetTermStrict("STATUEMARKS"), rng.Next(minCost, maxCost), amount => new StatueCost(amount)));
                 };
             });
         }
@@ -147,13 +134,7 @@ namespace GodhomeRandomizer.Manager {
             if (!GodhomeManager.GlobalSettings.Enabled)
                 return;
             
-            // Don't add unless settings randomize at least one statue mark type.
-            int multiplier = (int)GodhomeManager.GlobalSettings.HallOfGods.RandomizeTiers;
-            multiplier += GodhomeManager.GlobalSettings.HallOfGods.RandomizeStatueAccess == AccessMode.Randomized ? 1 : 0;
-            if (multiplier == 0)
-                return;
-            
-            if (GodhomeManager.GlobalSettings.GodhomeShop)
+            if (GodhomeManager.GlobalSettings.GodhomeShop.Enabled)
                 builder.AddLocationByName("Godhome_Shop");
         }
 
@@ -164,59 +145,56 @@ namespace GodhomeRandomizer.Manager {
 
             Assembly assembly = Assembly.GetExecutingAssembly();
             JsonSerializer jsonSerializer = new() {TypeNameHandling = TypeNameHandling.Auto};
-            GodhomeRandomizerSettings.HOG settings = GodhomeManager.GlobalSettings.HallOfGods;
+            HallOfGodsSettings settings = GodhomeManager.GlobalSettings.HallOfGods;
             int itemCount = (int)settings.RandomizeTiers;
             if (settings.RandomizeStatueAccess == AccessMode.Randomized)
                 itemCount += 1;
 
-            if (itemCount > 0)
+            // Define items
+            using Stream itemStream = assembly.GetManifestResourceStream("GodhomeRandomizer.Resources.Data.StatueItems.json");
+            StreamReader itemReader = new(itemStream);
+            List<StatueItem> itemList = jsonSerializer.Deserialize<List<StatueItem>>(new JsonTextReader(itemReader));
+        
+            foreach (StatueItem item in itemList)
             {
-                // Add the shop only if there are statue marks available
-                
-
-                // Define items
-                using Stream itemStream = assembly.GetManifestResourceStream("GodhomeRandomizer.Resources.Data.StatueItems.json");
-                StreamReader itemReader = new(itemStream);
-                List<StatueItem> itemList = jsonSerializer.Deserialize<List<StatueItem>>(new JsonTextReader(itemReader));
-            
-                foreach (StatueItem item in itemList)
+                builder.AddItemByName(item.name, itemCount);
+                if (settings.DuplicateMarks)
+                    builder.AddItemByName($"{PlaceholderItem.Prefix}{item.name}");
+                builder.EditItemRequest(item.name, info =>
                 {
-                    builder.AddItemByName(item.name, itemCount);
-                    if (settings.DuplicateMarks)
-                        builder.AddItemByName($"{PlaceholderItem.Prefix}{item.name}");
-                    builder.EditItemRequest(item.name, info =>
+                    info.getItemDef = () => new()
                     {
-                        info.getItemDef = () => new()
-                        {
-                            MajorItem = false,
-                            Name = item.name,
-                            Pool = "Statue Marks",
-                            PriceCap = 500
-                        };
-                    });
-                    
-                }
+                        MajorItem = false,
+                        Name = item.name,
+                        Pool = "Statue Marks",
+                        PriceCap = 500
+                    };
+                });
+            }
 
-                // Define locations
-                using Stream locationStream = assembly.GetManifestResourceStream("GodhomeRandomizer.Resources.Data.StatueLocations.json");
-                StreamReader locationReader = new(locationStream);
-                List<StatueLocation> locationList = jsonSerializer.Deserialize<List<StatueLocation>>(new JsonTextReader(locationReader));
-                
-                // Filter Gold, Silver and Bronze marks if TierLimitMode excludes them.
-                if (settings.RandomizeTiers == TierLimitMode.ExcludeRadiant)
-                    locationList = locationList.Where(location => !location.name.StartsWith("Gold")).ToList();
+            // Define locations
+            using Stream locationStream = assembly.GetManifestResourceStream("GodhomeRandomizer.Resources.Data.StatueLocations.json");
+            StreamReader locationReader = new(locationStream);
+            List<StatueLocation> locationList = jsonSerializer.Deserialize<List<StatueLocation>>(new JsonTextReader(locationReader));
+            List<StatueLocation> filteredLocationList = locationList.Where(location => location.name.Contains("Mark")).ToList();
 
-                else if (settings.RandomizeTiers == TierLimitMode.ExcludeAscended)
-                    locationList = locationList.Where(location => !location.name.StartsWith("Gold") && !location.name.StartsWith("Silver")).ToList();
+            // Filter Gold, Silver and Bronze marks if TierLimitMode excludes them.
+            if (settings.RandomizeTiers == TierLimitMode.ExcludeRadiant)
+                filteredLocationList = filteredLocationList.Where(location => !location.name.StartsWith("Gold")).ToList();
 
-                else if (settings.RandomizeTiers == TierLimitMode.Vanilla)
-                    locationList = locationList.Where(location => location.name.StartsWith("Empty")).ToList();
+            else if (settings.RandomizeTiers == TierLimitMode.ExcludeAscended)
+                filteredLocationList = filteredLocationList.Where(location => !location.name.StartsWith("Gold") && !location.name.StartsWith("Silver")).ToList();
 
-                // Remove statue access locations if StatueAccessMode isn't randomized
-                if (settings.RandomizeStatueAccess != AccessMode.Randomized)
-                    locationList = locationList.Where(location => !location.name.StartsWith("Empty")).ToList();
+            else if (settings.RandomizeTiers == TierLimitMode.Vanilla)
+                filteredLocationList = filteredLocationList.Where(location => location.name.StartsWith("Empty")).ToList();
 
-                foreach (StatueLocation location in locationList)
+            // Remove statue access locations if StatueAccessMode isn't randomized
+            if (settings.RandomizeStatueAccess != AccessMode.Randomized)
+                filteredLocationList = filteredLocationList.Where(location => !location.name.StartsWith("Empty")).ToList();
+
+            foreach (StatueLocation location in locationList)
+            {
+                if (filteredLocationList.Contains(location))
                 {
                     builder.AddLocationByName(location.name);
                     builder.EditLocationRequest(location.name, info =>
@@ -229,6 +207,10 @@ namespace GodhomeRandomizer.Manager {
                             AdditionalProgressionPenalty = false
                         };
                     });
+                }
+                else
+                {
+                    builder.AddToVanilla($"Statue_Mark-{location.name.Split('-')[1]}", location.name);
                 }
             }
             
@@ -269,7 +251,7 @@ namespace GodhomeRandomizer.Manager {
             
             Assembly assembly = Assembly.GetExecutingAssembly();
             JsonSerializer jsonSerializer = new() {TypeNameHandling = TypeNameHandling.Auto};
-            GodhomeRandomizerSettings.Panth settings = GodhomeManager.GlobalSettings.Pantheons;
+            PantheonSettings settings = GodhomeManager.GlobalSettings.Pantheons;
             List<string> availableSettings = [];
             if (settings.Completion)
                 availableSettings.Add("Completion");
@@ -404,6 +386,12 @@ namespace GodhomeRandomizer.Manager {
                     builder.EnsureVanillaSourceTransition($"{def.SceneName}[{def.DoorName}]");
                 }
             }
+        }
+
+        private static void AdjustStatueMarkTerm(LogicManager lm, GenerationSettings settings, ProgressionInitializer initializer)
+        {
+            if (GodhomeManager.GlobalSettings.Enabled && GodhomeManager.GlobalSettings.HallOfGods.DuplicateMarks)
+                initializer.Setters.Add(new(lm.GetTermStrict("STATUEMARKS"), -44));
         }
     }
 }

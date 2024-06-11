@@ -2,19 +2,6 @@
 
 namespace GodhomeRandomizer.IC.Shop
 {
-    public class StatueCostSupport : IMixedCostSupport
-    {
-        public CostDisplayer GetDisplayer(Cost c)
-        {
-            return new StatueCostDisplayer();
-        }
-
-        public bool MatchesCost(Cost c)
-        {
-            return c.GetBaseCost() is StatueCost;
-        }
-    }
-
     public class StatueCostDisplayer : CostDisplayer
     {
         public override ISprite CustomCostSprite { get; set; } = new GodhomeSprite("Ordeal");

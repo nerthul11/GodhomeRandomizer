@@ -1,8 +1,8 @@
-using GodhomeRandomizer.Manager;
 using GodhomeRandomizer.Modules;
 using GodhomeRandomizer.Settings;
 using ItemChanger;
 using ItemChanger.UIDefs;
+using RandomizerCore.Logic;
 using System;
 
 namespace GodhomeRandomizer.IC
@@ -15,7 +15,10 @@ namespace GodhomeRandomizer.IC
         public string dependency { get; set; }
         public bool isDreamBoss { get; set; }
         public int pantheonID { get; set; }
-        public override bool Redundant() => StatueModule.Instance.CurrentMarks(battleSceneName) >= StatueModule.Instance.TotalMarks;
+        public override bool Redundant()
+        {
+            return StatueModule.Instance.CurrentMarks(battleSceneName) >= StatueModule.Instance.TotalMarks;
+        }
         public override void GiveImmediate(GiveInfo info)
         {
             StatueModule module = StatueModule.Instance;
