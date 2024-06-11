@@ -33,10 +33,10 @@ The mysterious blue room that contains a giant lifeblood cocoon can also be rand
 Since this mod allows to add a significant number of duplicate items (44 if duping the Statue Marks), a counter-measure to prevent regular shops from being too overcrowded is the introduction of a new shop. This shop will check for Statue Marks obtained and use them as currency. It works similar to Grubs or essence, meaning it checks if you achieved a given threshold of Statue Marks, without actually consuming them.
 
 An obtained Statue Mark means that a statue:
--Has been unlocked.
--Has an attuned cleared mark.
--Has an ascended cleared mark.
--Has a radiant cleared mark.
+- Has been unlocked.
+- Has an attuned cleared mark.
+- Has an ascended cleared mark.
+- Has a radiant cleared mark.
 
 All this can add up to a whopping total of __214__ new locations and items to the Randomization pool!
 
