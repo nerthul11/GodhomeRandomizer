@@ -33,15 +33,22 @@ The mysterious blue room that contains a giant lifeblood cocoon can also be rand
 Since this mod allows to add a significant number of duplicate items (44 if duping the Statue Marks), a counter-measure to prevent regular shops from being too overcrowded is the introduction of a new shop. This shop will check for Statue Marks obtained and use them as currency. It works similar to Grubs or essence, meaning it checks if you achieved a given threshold of Statue Marks, without actually consuming them.
 
 An obtained Statue Mark means that a statue:
--Has been unlocked.
--Has an attuned cleared mark.
--Has an ascended cleared mark.
--Has a radiant cleared mark.
+- Has been unlocked.
+- Has an attuned cleared mark.
+- Has an ascended cleared mark.
+- Has a radiant cleared mark.
 
 All this can add up to a whopping total of __214__ new locations and items to the Randomization pool!
 
 ## Settings:
 - Enabled --> Boolean to define if the connection should be active or not.
+
+### Godhome Shop
+- Enabled --> Boolean to define if the Godhome Shop should appear or not.
+- Minimum/Maximum Cost --> A range from 0 to 1, where 0 is 0% and 1 is 100% (176) of all available marks. Default is 25% (44) to 75% (132). Important notes:
+    - A cost of 45 expects to clear at least one attuned boss if not randomized.
+    - A cost of 89 (over 50%) expects to clear at least one ascended boss if not randomized.
+    - A cost above 133 will require radiant clears if not randomized.
 
 ### Hall of Gods
 - Randomize access --> Defines if statue access is vanilla, randomized or if all of them are unlocked by default. This last option will likely force you to fight Godhome bosses earlier in the progression.
