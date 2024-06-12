@@ -49,6 +49,7 @@ All this can add up to a whopping total of __214__ new locations and items to th
     - A cost of 45 expects to clear at least one attuned boss if not randomized.
     - A cost of 89 (over 50%) expects to clear at least one ascended boss if not randomized.
     - A cost above 133 will require radiant clears if not randomized.
+- Include In Junk Shop --> Allows the defined statue costs to appear as currency in More Locations' Junk Shop, regardless of if the Godhome Shop is enabled or not.
 
 ### Hall of Gods
 - Randomize access --> Defines if statue access is vanilla, randomized or if all of them are unlocked by default. This last option will likely force you to fight Godhome bosses earlier in the progression.
