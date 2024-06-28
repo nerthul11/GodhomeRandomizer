@@ -45,10 +45,12 @@ All this can add up to a whopping total of __214__ new locations and items to th
 
 ### Godhome Shop
 - Enabled --> Boolean to define if the Godhome Shop should appear or not.
+- Include in Junk Shop --> Defines if statue marks should be considered for Junk Shop or not, regardless of the Godhome Shop being enabled or not.
 - Minimum/Maximum Cost --> A range from 0 to 1, where 0 is 0% and 1 is 100% (176) of all available marks. Default is 25% (44) to 75% (132). Important notes:
-    - A cost of 45 expects to clear at least one attuned boss if not randomized.
-    - A cost of 89 (over 50%) expects to clear at least one ascended boss if not randomized.
-    - A cost above 133 will require radiant clears if not randomized.
+    - A cost of 45 expects to clear at least one attuned boss mark.
+    - A cost of 89 (over 50%) expects to clear at least one ascended boss.
+    - A cost above 133 will require radiant clears.
+- Tolerance --> A range from 0 to 1, where 0 is no tolerance and 1 is 100% of the used maximum cost. If maximum cost + tolerance should be over the total 176 marks, the tolerance will automatically be capped. For reference, most mods have tolerance be a 10-25% of the maximum costs. In the case of using the Duplicate Marks setting, the duplicates will also be considered as part of the tolerance.
 
 ### Hall of Gods
 - Randomize access --> Defines if statue access is vanilla, randomized or if all of them are unlocked by default. This last option will likely force you to fight Godhome bosses earlier in the progression.

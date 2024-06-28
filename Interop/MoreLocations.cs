@@ -22,9 +22,8 @@ namespace GodhomeRandomizer.Interop
 
         public LogicCost Next(LogicManager lm, Random rng)
         {
-            int multiplier = (int)GodhomeManager.GlobalSettings.HallOfGods.RandomizeTiers + 1;
-            int minCost = (int)(44 * GodhomeManager.GlobalSettings.GodhomeShop.MinimumCost * multiplier);
-            int maxCost = (int)(44 * GodhomeManager.GlobalSettings.GodhomeShop.MaximumCost * multiplier);
+            int minCost = (int)(176 * GodhomeManager.GlobalSettings.GodhomeShop.MinimumCost);
+            int maxCost = (int)(176 * GodhomeManager.GlobalSettings.GodhomeShop.MaximumCost);
             return new StatueLogicCost(lm.GetTermStrict("STATUEMARKS"), rng.Next(minCost, maxCost + 1), amount => new StatueCost(amount));
         }
 

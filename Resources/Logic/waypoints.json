@@ -176,7 +176,7 @@
     },
     {
         "name": "Hardcore_Combat",
-        "logic":  "NAILCOMBAT + ((Nail_Upgradable_4 + (SPELLS>5 | CURSED + SPELLS>2) + FULLSHADOWDASH) | (Nail_Upgradable_3 + SPELLS>2 + QUAKE + ANYSHADOWDASH + FULLDASH + MILDCOMBATSKIPS) | (Nail_Upgradable_2 + SPELLS>1 + SPICYCOMBATSKIPS))",
+        "logic":  "NAILCOMBAT + QUAKE + ((Nail_Upgradable_4 + (SPELLS>5 | CURSED + SPELLS>2) + FULLSHADOWDASH) | (Nail_Upgradable_3 + SPELLS>2 + ANYSHADOWDASH + FULLDASH + MILDCOMBATSKIPS) | (Nail_Upgradable_2 + SPELLS>1 + SPICYCOMBATSKIPS))",
         "Stateless": true
     }
 ]

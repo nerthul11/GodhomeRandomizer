@@ -11,6 +11,8 @@ namespace GodhomeRandomizer.Settings
         [MenuRange(0f, 1f)]
         [DynamicBound(nameof(MinimumCost), false)]
         public float MaximumCost { get; set; } = 0.75f;
+        [MenuRange(0f, 1f)]
+        public float Tolerance { get; set; } = 0.2f;
         public bool IncludeInJunkShop { get; set; } = false;
     }
 }

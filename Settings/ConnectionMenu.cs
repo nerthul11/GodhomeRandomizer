@@ -99,6 +99,7 @@ namespace GodhomeRandomizer.Settings
             topLevelPanel.Add(hogLabel);
             topLevelPanel.Add(itemPanel);
             topLevelPanel.ResetNavigation();
+            topLevelPanel.SymSetNeighbor(Neighbor.Up, ghPage.backButton);
             topLevelPanel.SymSetNeighbor(Neighbor.Down, ghPage.backButton);
             pageRootButton = new SmallButton(connectionPage, "Godhome Randomizer");
             pageRootButton.AddHideAndShowEvent(connectionPage, ghPage);
@@ -109,7 +110,6 @@ namespace GodhomeRandomizer.Settings
             MenuPage godhomePage = new("Godhome Shop", ghPage);
             MenuLabel header = new(godhomePage, "Godhome Shop");
             shopElementFactory = new(godhomePage, GodhomeManager.GlobalSettings.GodhomeShop);
-            VerticalItemPanel rootPanel = new(ghPage, new Vector2(0, 400), 75, true);
 
             VerticalItemPanel itemPanel = new(godhomePage, new Vector2(0, 350), 75, false);
             GridItemPanel costPanel = new(godhomePage, Vector2.zero, 2, 100, 250, false,
@@ -122,7 +122,11 @@ namespace GodhomeRandomizer.Settings
             itemPanel.Add(shopElementFactory.ElementLookup[nameof(GodhomeShopSettings.Enabled)]);
             itemPanel.Add(shopElementFactory.ElementLookup[nameof(GodhomeShopSettings.IncludeInJunkShop)]);
             itemPanel.Add(costPanel);
-            rootPanel.Add(itemPanel);
+            itemPanel.Add(shopElementFactory.ElementLookup[nameof(GodhomeShopSettings.Tolerance)]);
+
+            itemPanel.ResetNavigation();
+            itemPanel.SymSetNeighbor(Neighbor.Up, godhomePage.backButton);
+            itemPanel.SymSetNeighbor(Neighbor.Down, godhomePage.backButton);
 
             SetButtonColor(godhomeShopPage, () => GodhomeManager.GlobalSettings.GodhomeShop.Enabled);
             return godhomePage;

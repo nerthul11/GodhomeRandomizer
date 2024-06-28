@@ -20,13 +20,13 @@ namespace GodhomeRandomizer.Manager {
         internal static void Hook()
         {
             DefineObjects();
+            ProgressionInitializer.OnCreateProgressionInitializer += AddTolerance;
             RequestBuilder.OnUpdate.Subscribe(-500f, DefineShopRef);
             RequestBuilder.OnUpdate.Subscribe(-100f, RandomizeShopCost);
             RequestBuilder.OnUpdate.Subscribe(0f, AddGodhomeShop);
             RequestBuilder.OnUpdate.Subscribe(10f, AddHOGObjects);
             RequestBuilder.OnUpdate.Subscribe(20f, AddPantheonObjects);
             RequestBuilder.OnUpdate.Subscribe(1100f, DefineTransitions);
-            ProgressionInitializer.OnCreateProgressionInitializer += AdjustStatueMarkTerm;
         }
 
         public static void DefineObjects()
@@ -107,9 +107,8 @@ namespace GodhomeRandomizer.Manager {
                 {
                     LogicManager lm = factory.lm;
                     Random rng = factory.rng;
-                    int multiplier = (int)GodhomeManager.GlobalSettings.HallOfGods.RandomizeTiers + 1;
-                    int minCost = (int)(44 * GodhomeManager.GlobalSettings.GodhomeShop.MinimumCost * multiplier);
-                    int maxCost = (int)(44 * GodhomeManager.GlobalSettings.GodhomeShop.MaximumCost * multiplier);
+                    int minCost = (int)(176 * GodhomeManager.GlobalSettings.GodhomeShop.MinimumCost);
+                    int maxCost = (int)(176 * GodhomeManager.GlobalSettings.GodhomeShop.MaximumCost);
                     rl.AddCost(new StatueLogicCost(lm.GetTermStrict("STATUEMARKS"), rng.Next(minCost, maxCost), amount => new StatueCost(amount)));
                 };
             });
@@ -388,10 +387,15 @@ namespace GodhomeRandomizer.Manager {
             }
         }
 
-        private static void AdjustStatueMarkTerm(LogicManager lm, GenerationSettings settings, ProgressionInitializer initializer)
+        private static void AddTolerance(LogicManager lm, GenerationSettings settings, ProgressionInitializer initializer)
         {
-            if (GodhomeManager.GlobalSettings.Enabled && GodhomeManager.GlobalSettings.HallOfGods.DuplicateMarks)
-                initializer.Setters.Add(new(lm.GetTermStrict("STATUEMARKS"), -44));
+            if (GodhomeManager.GlobalSettings.Enabled && GodhomeManager.GlobalSettings.GodhomeShop.Enabled)
+            {
+                int duplicates = GodhomeManager.GlobalSettings.HallOfGods.DuplicateMarks ? 44 : 0;
+                int markCost = Math.Max((int)(176 * GodhomeManager.GlobalSettings.GodhomeShop.MaximumCost), 1);
+                int markTolerance = Math.Min((int)(markCost * GodhomeManager.GlobalSettings.GodhomeShop.Tolerance + duplicates), 176 - markCost);
+                initializer.Setters.Add(new(lm.GetTermStrict("STATUEMARKS"), -markTolerance));
+            }
         }
     }
 }
