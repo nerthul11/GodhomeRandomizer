@@ -45,7 +45,7 @@ All this can add up to a whopping total of __214__ new locations and items to th
 
 ### Godhome Shop
 - Enabled --> Boolean to define if the Godhome Shop should appear or not.
-- Include in Junk Shop --> Defines if statue marks should be considered for Junk Shop or not, regardless of the Godhome Shop being enabled or not.
+- Include in Junk Shop --> Allows the defined statue costs to appear as currency in More Locations' Junk Shop, regardless of the Godhome Shop being enabled or not.
 - Minimum/Maximum Cost --> A range from 0 to 1, where 0 is 0% and 1 is 100% (176) of all available marks. Default is 25% (44) to 75% (132). Important notes:
     - A cost of 45 expects to clear at least one attuned boss mark.
     - A cost of 89 (over 50%) expects to clear at least one ascended boss.
