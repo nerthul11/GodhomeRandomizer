@@ -58,7 +58,7 @@ namespace GodhomeRandomizer.IC
             bool levelValidation = StatueModule.Instance.CurrentBossLevel >= (int)statueTier;
 
             // Validate the scene name matches the current boss
-            bool exceptions = battleScene.Contains("Nosk_Hornet") || battleScene.Contains("Mantis_Lords");
+            bool exceptions = battleScene.Contains("Nosk_Hornet") || battleScene.Contains("Mantis_Lords") || battleScene.Contains("Grimm");
             bool sceneValidation = (exceptions && battleScene == scene) || (!exceptions && scene.Contains(battleScene));
             if (!isPantheon && levelValidation && sceneValidation)
             {
