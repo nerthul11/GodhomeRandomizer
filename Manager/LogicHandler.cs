@@ -156,7 +156,7 @@ namespace GodhomeRandomizer.Manager
 
             // Eternal Ordeal logic
             lmb.AddItem(new EmptyItem("Eternal_Ordeal"));
-            lmb.AddLogicDef(new("Eternal_Ordeal", "GG_Workshop + (BOSS + FOCUS | SPICYCOMBATSKIPS) + UPWALLBREAK + RIGHTCLAW + WINGS + (LEFTSUPERDASH | LEFTSHARPSHADOW)"));
+            lmb.AddLogicDef(new("Eternal_Ordeal", "GG_Workshop + (BOSS + FOCUS | SPICYCOMBATSKIPS) + (Wall-Godhome_Workshop?TRUE + Wall-Eternal_Ordeal?TRUE + UPWALLBREAK) + RIGHTCLAW + WINGS + (LEFTSUPERDASH | LEFTSHARPSHADOW)"));
         }
 
         private static void AddPantheonLogic(GenerationSettings gs, LogicManagerBuilder lmb)
