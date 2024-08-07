@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Linq;
+using System;
 
 namespace GodhomeRandomizer.Manager
 {
@@ -22,12 +23,21 @@ namespace GodhomeRandomizer.Manager
             RCData.RuntimeLogicOverride.Subscribe(0f, AddTransitions);
             RCData.RuntimeLogicOverride.Subscribe(0f, AddMacros);
             RCData.RuntimeLogicOverride.Subscribe(1f, AddHOGLogic);
+
+            // Edit Attuned Jewel logic
             if (ModHooks.GetMod("LostArtifacts") is Mod)
                 RCData.RuntimeLogicOverride.Subscribe(2f, EditLostArtifacts);
+
+            // Add alternative check for several journal entries
             if (ModHooks.GetMod("TheRealJournalRando") is Mod)
                 RCData.RuntimeLogicOverride.Subscribe(11f, EditTRJR);
+            
+            // Handle Nail Upgrade requirements for Nail-modifying mods
             if (ModHooks.GetMod("RandoPlus") is Mod)
                 RCData.RuntimeLogicOverride.Subscribe(51f, EditRandoPlus);
+            if (ModHooks.GetMod("CombatRandomizer") is Mod)
+                RCData.RuntimeLogicOverride.Subscribe(100f, EditCombatRando);
+            
             // Pantheon logic and waypoints to be added after ExtraRando
             RCData.RuntimeLogicOverride.Subscribe(2000f, AddWaypoints);
             RCData.RuntimeLogicOverride.Subscribe(2048f, AddPantheonLogic);
@@ -263,7 +273,7 @@ namespace GodhomeRandomizer.Manager
                     "Gruz_Mother", "Vengefly_King", "Brooding_Mawlek", "False_Knight",
                     "Massive_Moss_Charger", "Mantis_Lords", "Grey_Prince_Zote", "Broken_Vessel",
                     "Nosk", "Flukemarm", "Soul_Master", "God_Tamer", "Uumuu", "Dung_Defender", 
-                    "White_Defender", "Hive_Knight", "Traitor_Lord", "Pure_Vessel",
+                    "White_Defender", "Hive_Knight", "Traitor_Lord", "Grimm", "Pure_Vessel",
                     "Elder_Hu", "Galien", "Markoth", "Marmu", "No_Eyes", "Xero", "Gorb",
                     "Radiance", "Soul_Warrior", "Paintmaster_Sheo"
                 ];
@@ -290,7 +300,8 @@ namespace GodhomeRandomizer.Manager
                 if (bonusEntriesIncluded)
                 {
                     lmb.DoLogicEdit(new("Defeated_Any_Winged_Zoteling", "ORIG | *Bronze_Mark-Grey_Prince_Zote | *Eternal_Ordeal"));
-                    lmb.DoLogicEdit(new("Defeated_Any_Hopping_Zoteling", "ORIG | *Bronze_Mark-Grey_Prince_Zote | *Eternal_Ordeal"));
+                    // Hopping Zotelings aren't guaranteed to appear on HoG battles.
+                    lmb.DoLogicEdit(new("Defeated_Any_Hopping_Zoteling", "ORIG | *Eternal_Ordeal"));
                     lmb.DoLogicEdit(new("Defeated_Any_Volatile_Zoteling", "ORIG | *Bronze_Mark-Grey_Prince_Zote | *Eternal_Ordeal"));
                 }
                 if (regularBossIncluded)
@@ -389,6 +400,19 @@ namespace GodhomeRandomizer.Manager
                 lmb.DoLogicEdit(new("Nail_Upgradable_4", "NAILUPGRADE>3"));
             }
             catch (KeyNotFoundException) {} // Ignore if NAILUPGRADE isn't present
+        }
+
+        private static void EditCombatRando(GenerationSettings gs, LogicManagerBuilder lmb)
+        {
+            try
+            {
+                lmb.GetTerm("NAILDAMAGE");
+                lmb.DoLogicEdit(new("Nail_Upgradable_1", "NAILDAMAGE>8"));
+                lmb.DoLogicEdit(new("Nail_Upgradable_2", "NAILDAMAGE>12"));
+                lmb.DoLogicEdit(new("Nail_Upgradable_3", "NAILDAMAGE>16"));
+                lmb.DoLogicEdit(new("Nail_Upgradable_4", "NAILDAMAGE>20"));
+            }
+            catch (KeyNotFoundException) {} // Ignore if NAILDAMAGE isn't present
         }
     }
 }

@@ -161,22 +161,22 @@
     },
     {
         "name": "Attuned_Combat",
-        "logic": "NAILCOMBAT + SPELLS + (Nail_Upgradable_1 | MILDCOMBATSKIPS) | SPICYCOMBATSKIPS",
+        "logic": "NAILCOMBAT + (SPELLS | MILDCOMBATSKIPS) + (Nail_Upgradable_1 | MILDCOMBATSKIPS) | SPICYCOMBATSKIPS",
         "Stateless": true
     },
     {
         "name": "Ascended_Combat",
-        "logic": "NAILCOMBAT + SPELLS>1 + QUAKE + (FULLDASH | ANYDASH + MILDCOMBATSKIPS) + (Nail_Upgradable_2 | Nail_Upgradable_1 + MILDCOMBATSKIPS) | SPICYCOMBATSKIPS",
+        "logic": "NAILCOMBAT + (SPELLS>1 | QUAKE | MILDCOMBATSKIPS) + (FULLDASH | ANYDASH + MILDCOMBATSKIPS) + (Nail_Upgradable_2 | Nail_Upgradable_1 + MILDCOMBATSKIPS) | SPICYCOMBATSKIPS",
         "Stateless": true
     },
     {
         "name": "Radiant_Combat",
-        "logic":  "NAILCOMBAT + QUAKE>1 | (CURSED + QUAKE | MILDCOMBATSKIPS) + (FULLSHADOWDASH | ANYSHADOWDASH + MILDCOMBATSKIPS) + (Nail_Upgradable_3 | Nail_Upgradable_2 + MILDCOMBATSKIPS)  | SPICYCOMBATSKIPS",
+        "logic":  "NAILCOMBAT + (SPELLS>2 + QUAKE>1 | QUAKE + (CURSED | MILDCOMBATSKIPS)) + (FULLSHADOWDASH | ANYSHADOWDASH + MILDCOMBATSKIPS) + (Nail_Upgradable_3 | Nail_Upgradable_1 + MILDCOMBATSKIPS)  | SPICYCOMBATSKIPS",
         "Stateless": true
     },
     {
         "name": "Hardcore_Combat",
-        "logic":  "NAILCOMBAT + QUAKE + ((Nail_Upgradable_4 + (SPELLS>5 | CURSED + SPELLS>2) + FULLSHADOWDASH) | (Nail_Upgradable_3 + SPELLS>2 + ANYSHADOWDASH + FULLDASH + MILDCOMBATSKIPS) | (Nail_Upgradable_2 + SPELLS>1 + SPICYCOMBATSKIPS))",
+        "logic":  "NAILCOMBAT + QUAKE + ((Nail_Upgradable_4 + (SPELLS>5 | CURSED + SPELLS>2) + FULLSHADOWDASH) | (Nail_Upgradable_2 + SPELLS>2 + ANYSHADOWDASH + FULLDASH + MILDCOMBATSKIPS) | (Nail_Upgradable_1 + SPICYCOMBATSKIPS))",
         "Stateless": true
     }
 ]
