@@ -1,5 +1,5 @@
 using ItemChanger;
-using KorzUtils.Helper;
+using ItemChanger.Internal;
 using Newtonsoft.Json;
 using System;
 using UnityEngine;
@@ -9,27 +9,15 @@ namespace GodhomeRandomizer.IC
     [Serializable]
     public class GodhomeSprite : ISprite
     {
-        #region Constructors
-
-        public GodhomeSprite() { }
-
+        private static SpriteManager EmbeddedSpriteManager = new(typeof(GodhomeSprite).Assembly, "GodhomeRandomizer.Resources.Sprites.");
+        public string Key { get; set; }
         public GodhomeSprite(string key)
         {
             if (!string.IsNullOrEmpty(key))
                 Key = key;
         }
-
-        #endregion
-
-        #region Properties
-
-        public string Key { get; set; }
-
         [JsonIgnore]
-        public Sprite Value => SpriteHelper.CreateSprite<GodhomeRandomizer>("Sprites." + Key.Replace("/", ".").Replace("\\", "."));
-
-        #endregion
-
-        public ISprite Clone() => new GodhomeSprite(Key);
+        public Sprite Value => EmbeddedSpriteManager.GetSprite(Key);
+        public ISprite Clone() => (ISprite)MemberwiseClone();
     }
 }

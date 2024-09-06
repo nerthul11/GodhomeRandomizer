@@ -33,11 +33,6 @@ jobs:
           wget https://github.com/homothetyhk/HollowKnight.ItemChanger/releases/latest/download/ItemChanger.zip -O ItemChanger.zip
           unzip -o ItemChanger.zip -d References
       
-      - name: Fetch KorzUtils
-        run: |
-          wget https://github.com/Korzer420/KorzUtils/releases/latest/download/KorzUtils.zip -O KorzUtils.zip
-          unzip -o KorzUtils.zip -d References
-      
       - name: Fetch MenuChanger
         run: |
           wget https://github.com/homothetyhk/HollowKnight.MenuChanger/releases/latest/download/MenuChanger.zip -O MenuChanger.zip

@@ -34,12 +34,10 @@ namespace GodhomeRandomizer.Manager
             
             // Handle Nail Upgrade requirements for Nail-modifying mods
             if (ModHooks.GetMod("RandoPlus") is Mod)
-                RCData.RuntimeLogicOverride.Subscribe(51f, EditRandoPlus);
-            if (ModHooks.GetMod("CombatRandomizer") is Mod)
-                RCData.RuntimeLogicOverride.Subscribe(100f, EditCombatRando);
+                RCData.RuntimeLogicOverride.Subscribe(1400f, EditRandoPlus);
             
             // Pantheon logic and waypoints to be added after ExtraRando
-            RCData.RuntimeLogicOverride.Subscribe(2000f, AddWaypoints);
+            RCData.RuntimeLogicOverride.Subscribe(1250f, AddWaypoints);
             RCData.RuntimeLogicOverride.Subscribe(2048f, AddPantheonLogic);
             RCData.RuntimeLogicOverride.Subscribe(4096f, EditPantheonAccessLogic);
         }
@@ -400,19 +398,6 @@ namespace GodhomeRandomizer.Manager
                 lmb.DoLogicEdit(new("Nail_Upgradable_4", "NAILUPGRADE>3"));
             }
             catch (KeyNotFoundException) {} // Ignore if NAILUPGRADE isn't present
-        }
-
-        private static void EditCombatRando(GenerationSettings gs, LogicManagerBuilder lmb)
-        {
-            try
-            {
-                lmb.GetTerm("NAILDAMAGE");
-                lmb.DoLogicEdit(new("Nail_Upgradable_1", "NAILDAMAGE>8"));
-                lmb.DoLogicEdit(new("Nail_Upgradable_2", "NAILDAMAGE>12"));
-                lmb.DoLogicEdit(new("Nail_Upgradable_3", "NAILDAMAGE>16"));
-                lmb.DoLogicEdit(new("Nail_Upgradable_4", "NAILDAMAGE>20"));
-            }
-            catch (KeyNotFoundException) {} // Ignore if NAILDAMAGE isn't present
         }
     }
 }
