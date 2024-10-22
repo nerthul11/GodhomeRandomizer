@@ -53,10 +53,11 @@ All this can add up to a whopping total of __214__ new locations and items to th
 - Tolerance --> A range from 0 to 1, where 0 is no tolerance and 1 is 100% of the used maximum cost. If maximum cost + tolerance should be over the total 176 marks, the tolerance will automatically be capped. For reference, most mods have tolerance be a 10-25% of the maximum costs. In the case of using the Duplicate Marks setting, the duplicates will also be considered as part of the tolerance.
 
 ### Hall of Gods
-- Randomize access --> Defines if statue access is vanilla, randomized or if all of them are unlocked by default. This last option will likely force you to fight Godhome bosses earlier in the progression.
+- Randomize access --> Defines if statue access is vanilla, randomized or if all of them are unlocked by default. This last option will potentially force you to fight Godhome bosses earlier in the progression.
 - Limit --> Options: IncludeAll, ExcludeRadiant, ExcludeAscended, Vanilla. Defines which locations should be randomized and contain items and which should remain vanilla. Excluding Ascended also Excludes Radiant entries.
 - Randomize Ordeal --> This adds the Glorious Invincible Fearless Sensual Mysterious Enchanting Vigorous Diligent Overwhelming Gorgeous Passionate Terryfing Beautiful Powerful Life Ender Mighty Zote's ordeal to the pool.
-- Duplicate Marks --> This will add an extra copy of the Statue Mark items, while not affecting any logic behind them. Useful to complete HOG or unlock pantheons earlier in progression.
+- Include Unlock Locations --> Defines if interacting for the first time with a statue should grant an item or not.
+- Duplicate Marks --> This will add an extra copy of the Statue Mark items, while not affecting any logic behind them. Useful to complete HOG or unlock pantheons earlier in progression if access is randomized.
 
 ### Pantheons
 - Apply access to Pantheon --> Defines if the access rules provided to Hall of Gods should also apply to Pantheons or leave it vanilla.
@@ -73,7 +74,6 @@ All this can add up to a whopping total of __214__ new locations and items to th
 
 ## Dependencies:
 - ItemChanger
-- KorzUtils
 - MenuChanger
 - Randomizer 4
 - RandomizerCore
