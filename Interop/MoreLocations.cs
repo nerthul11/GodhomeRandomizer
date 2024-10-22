@@ -12,7 +12,7 @@ namespace GodhomeRandomizer.Interop
         {
             MoreLocations.Rando.ConnectionInterop.AddRandoCostProviderToJunkShop(CanProvideCosts, CostProvider);
         }
-        private static bool CanProvideCosts() => GodhomeManager.GlobalSettings.Enabled && GodhomeManager.GlobalSettings.GodhomeShop.IncludeInJunkShop;
+        private static bool CanProvideCosts() => GodhomeManager.GlobalSettings.Enabled && GodhomeManager.GlobalSettings.GodhomeShop.Enabled && GodhomeManager.GlobalSettings.GodhomeShop.IncludeInJunkShop;
         private static StatueCostProvider CostProvider() => new();
     }
 

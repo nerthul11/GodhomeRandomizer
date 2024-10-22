@@ -39,9 +39,7 @@ namespace GodhomeRandomizer.Modules
         public static StatueModule Instance => ItemChangerMod.Modules.GetOrAdd<StatueModule>();
         public override void Initialize() 
         {
-            if (ItemChangerMod.Modules?.Get<InventoryTracker>() is InventoryTracker it)
-                it.OnGenerateFocusDesc += AddStatueProgress;
-            Events.AddLanguageEdit(new LanguageKey("CP3", "INV_DESC_GODFINDER"), AddDetailedStatueProgress);
+            Events.AddLanguageEdit(new LanguageKey("CP3", "INV_DESC_GODFINDER"), AddStatueProgress);
             On.BossScene.IsUnlocked += UnlockCheck;
             On.BossSceneController.Awake += VanillaTracker;
             On.BossStatue.UpdateDetails += GetDetails;
@@ -50,25 +48,18 @@ namespace GodhomeRandomizer.Modules
 
         public override void Unload() 
         {
-            if (ItemChangerMod.Modules?.Get<InventoryTracker>() is InventoryTracker it)
-                it.OnGenerateFocusDesc -= AddStatueProgress;
-            Events.RemoveLanguageEdit(new LanguageKey("UI", "INV_DESC_GODFINDER"), AddDetailedStatueProgress);
+            Events.RemoveLanguageEdit(new LanguageKey("UI", "INV_DESC_GODFINDER"), AddStatueProgress);
             On.BossScene.IsUnlocked -= UnlockCheck;
             On.BossSceneController.Awake -= VanillaTracker;
             On.BossStatue.UpdateDetails -= GetDetails;
             On.BossChallengeUI.LoadBoss_int_bool -= StoreBossLevel;
         }
 
-        private void AddStatueProgress(StringBuilder builder)
-        {
-            builder.AppendLine($"Statue marks obtained: {TotalCount()}");
-        }
-
-        private void AddDetailedStatueProgress(ref string value)
+        private void AddStatueProgress(ref string value)
         {
             value = "Device that resonates with beings of great power.<br>Tracks activity at the Hall of Gods.";
             if (UnlockedCount() > 0)
-                value += $"<br>Unlocked marks obtained: {UnlockedCount()}";
+                value += $"<br>Unlocked statues: {UnlockedCount()}";
             if (AttunedCount() > 0)
                 value += $"<br>Attuned marks obtained: {AttunedCount()}";
             if (AscendedCount() > 0)

@@ -58,16 +58,24 @@ namespace GodhomeRandomizer.Settings
             // Define HOG Parameters
             topLevelElementFactory.ElementLookup["Enabled"].SelfChanged += EnableSwitch;
             MenuLabel hogLabel = new(ghPage, "Hall of Gods Randomizer");
-            VerticalItemPanel hogLeftSettingHolder = new(ghPage, Vector2.zero, 60, false, [
-                hogElementFactory.ElementLookup[nameof(HallOfGodsSettings.RandomizeTiers)],
-                hogElementFactory.ElementLookup[nameof(HallOfGodsSettings.RandomizeOrdeal)],
+            VerticalItemPanel hogLeftSettingHolder1 = new(ghPage, Vector2.zero, 60, false, [
+                hogElementFactory.ElementLookup[nameof(HallOfGodsSettings.RandomizeTiers)]
             ]);
-            VerticalItemPanel hogRightSettingHolder = new(ghPage, Vector2.zero, 60, false, [
-                hogElementFactory.ElementLookup[nameof(HallOfGodsSettings.RandomizeStatueAccess)],
-                hogElementFactory.ElementLookup[nameof(HallOfGodsSettings.DuplicateMarks)],
+            VerticalItemPanel hogRightSettingHolder1 = new(ghPage, Vector2.zero, 60, false, [
+                hogElementFactory.ElementLookup[nameof(HallOfGodsSettings.RandomizeStatueAccess)]
             ]);
-            GridItemPanel hogSettingHolder = new(ghPage, Vector2.zero, 2, 100, 800, false, [hogLeftSettingHolder, hogRightSettingHolder]);
-
+            VerticalItemPanel hogLeftSettingHolder2 = new(ghPage, Vector2.zero, 60, false, [
+                hogElementFactory.ElementLookup[nameof(HallOfGodsSettings.RandomizeOrdeal)]
+            ]);
+            VerticalItemPanel hogMiddleSettingHolder = new(ghPage, Vector2.zero, 60, false, [
+                hogElementFactory.ElementLookup[nameof(HallOfGodsSettings.IncludeUnlockLocations)]
+            ]);
+            VerticalItemPanel hogRightSettingHolder2 = new(ghPage, Vector2.zero, 60, false, [
+                hogElementFactory.ElementLookup[nameof(HallOfGodsSettings.DuplicateMarks)]
+            ]);
+            GridItemPanel hogSettingHolder1 = new(ghPage, Vector2.zero, 2, 0, 800, false, [hogLeftSettingHolder1, hogRightSettingHolder1]);
+            GridItemPanel hogSettingHolder2 = new(ghPage, Vector2.zero, 3, 0, 500, false, [hogLeftSettingHolder2, hogMiddleSettingHolder, hogRightSettingHolder2]);
+            VerticalItemPanel hogSettingHolder = new(ghPage, Vector2.zero, 60, false, [hogSettingHolder1, hogSettingHolder2]);
             // Define Pantheon Parameters
             MenuLabel panthLabel = new(ghPage, "Pantheon Randomizer");
             

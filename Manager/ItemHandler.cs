@@ -178,17 +178,17 @@ namespace GodhomeRandomizer.Manager {
             List<StatueLocation> filteredLocationList = locationList.Where(location => location.name.Contains("Mark")).ToList();
 
             // Filter Gold, Silver and Bronze marks if TierLimitMode excludes them.
-            if (settings.RandomizeTiers == TierLimitMode.ExcludeRadiant)
+            if (settings.RandomizeTiers <= TierLimitMode.ExcludeRadiant)
                 filteredLocationList = filteredLocationList.Where(location => !location.name.StartsWith("Gold")).ToList();
 
-            else if (settings.RandomizeTiers == TierLimitMode.ExcludeAscended)
-                filteredLocationList = filteredLocationList.Where(location => !location.name.StartsWith("Gold") && !location.name.StartsWith("Silver")).ToList();
+            if (settings.RandomizeTiers <= TierLimitMode.ExcludeAscended)
+                filteredLocationList = filteredLocationList.Where(location => !location.name.StartsWith("Silver")).ToList();
 
-            else if (settings.RandomizeTiers == TierLimitMode.Vanilla)
-                filteredLocationList = filteredLocationList.Where(location => location.name.StartsWith("Empty")).ToList();
+            if (settings.RandomizeTiers == TierLimitMode.Vanilla)
+                filteredLocationList = filteredLocationList.Where(location => !location.name.StartsWith("Bronze")).ToList();
 
-            // Remove statue access locations if StatueAccessMode isn't randomized
-            if (settings.RandomizeStatueAccess != AccessMode.Randomized)
+            // Remove statue access locations if the Unlock Locations aren't included
+            if (!settings.IncludeUnlockLocations)
                 filteredLocationList = filteredLocationList.Where(location => !location.name.StartsWith("Empty")).ToList();
 
             foreach (StatueLocation location in locationList)
@@ -343,7 +343,7 @@ namespace GodhomeRandomizer.Manager {
                 builder.AddToVanilla("Godhome_Lifeblood", "Godhome_Lifeblood");
         }
 
-        private static void DefineTransitions(RequestBuilder builder)
+        private static void DefineTransitions(RequestBuilder rb)
         {
             if (!GodhomeManager.GlobalSettings.Enabled)
                 return;
@@ -353,22 +353,24 @@ namespace GodhomeRandomizer.Manager {
             using Stream stream = assembly.GetManifestResourceStream("GodhomeRandomizer.Resources.Data.Transitions.json");
             StreamReader reader = new(stream);
             List<TransitionDef> list = jsonSerializer.Deserialize<List<TransitionDef>>(new JsonTextReader(reader));
-            
-            if (builder.gs.TransitionSettings.Mode != RandomizerMod.Settings.TransitionSettings.TransitionMode.None)
+            int group = 1;
+            foreach (TransitionDef def in list)
             {
-                int group = 1;
-                foreach (TransitionDef def in list)
+                bool shouldBeIncluded = def.IsMapAreaTransition && (rb.gs.TransitionSettings.Mode >= TransitionSettings.TransitionMode.MapAreaRandomizer);
+                shouldBeIncluded |= def.IsTitledAreaTransition && (rb.gs.TransitionSettings.Mode >= TransitionSettings.TransitionMode.FullAreaRandomizer);
+                shouldBeIncluded |= rb.gs.TransitionSettings.Mode >= TransitionSettings.TransitionMode.RoomRandomizer;
+                if (shouldBeIncluded)
                 {
-                    builder.EditTransitionRequest($"{def.SceneName}[{def.DoorName}]", info => info.getTransitionDef = () => def);
-                    bool uncoupled = builder.gs.TransitionSettings.TransitionMatching == RandomizerMod.Settings.TransitionSettings.TransitionMatchingSetting.NonmatchingDirections;
+                    rb.EditTransitionRequest($"{def.SceneName}[{def.DoorName}]", info => info.getTransitionDef = () => def);
+                    bool uncoupled = rb.gs.TransitionSettings.TransitionMatching == TransitionSettings.TransitionMatchingSetting.NonmatchingDirections;
                     if (uncoupled)
                     {
-                        SelfDualTransitionGroupBuilder tgb = builder.EnumerateTransitionGroups().First(x => x.label == RBConsts.TwoWayGroup) as SelfDualTransitionGroupBuilder;
+                        SelfDualTransitionGroupBuilder tgb = rb.EnumerateTransitionGroups().First(x => x.label == RBConsts.TwoWayGroup) as SelfDualTransitionGroupBuilder;
                         tgb.Transitions.Add($"{def.SceneName}[{def.DoorName}]");
                     }
                     else
                     {
-                        SymmetricTransitionGroupBuilder stgb = builder.EnumerateTransitionGroups().First(x => x.label == RBConsts.InLeftOutRightGroup) as SymmetricTransitionGroupBuilder;
+                        SymmetricTransitionGroupBuilder stgb = rb.EnumerateTransitionGroups().First(x => x.label == RBConsts.InLeftOutRightGroup) as SymmetricTransitionGroupBuilder;
                         if (group == 1)
                             stgb.Group1.Add($"{def.SceneName}[{def.DoorName}]");
                         else
@@ -376,17 +378,14 @@ namespace GodhomeRandomizer.Manager {
                     }
                     group = group == 1 ? 2 : 1;
                 }
-            }
-            else
-            {
-                foreach (TransitionDef def in list)
+                else
                 {
-                    builder.EditTransitionRequest($"{def.SceneName}[{def.DoorName}]", info => info.getTransitionDef = () => def);
-                    builder.EnsureVanillaSourceTransition($"{def.SceneName}[{def.DoorName}]");
+                    rb.EditTransitionRequest($"{def.SceneName}[{def.DoorName}]", info => info.getTransitionDef = () => def);
+                    rb.EnsureVanillaSourceTransition($"{def.SceneName}[{def.DoorName}]");
                 }
             }
         }
-
+        
         private static void AddTolerance(LogicManager lm, GenerationSettings settings, ProgressionInitializer initializer)
         {
             if (GodhomeManager.GlobalSettings.Enabled && GodhomeManager.GlobalSettings.GodhomeShop.Enabled)
