@@ -31,6 +31,26 @@
                   "Key": "Complete"
                 }
               }
+            },
+            {
+              "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+              "Properties": {
+                "CanMimic": {
+                  "$type": "ItemChanger.BoxedBool, ItemChanger",
+                  "Value": true
+                },
+                "MimicNames": {
+                  "$type": "System.String[], mscorlib",
+                  "$values": [
+                    "Pantheon of the Mustard - Completion",
+                    "Pantheon of the Monster - Completion",
+                    "Pantheon of the Mobster - Completion",
+                    "Partheon of the Master - Completion"
+                  ]
+                }
+              },
+              "Message": "CurseData",
+              "Loaded": true
             }
           ],
         "obtainState": "Unobtained"
@@ -283,6 +303,26 @@
               "Key": "Complete"
             }
           }
+        },
+        {
+          "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+          "Properties": {
+            "CanMimic": {
+              "$type": "ItemChanger.BoxedBool, ItemChanger",
+              "Value": true
+            },
+            "MimicNames": {
+              "$type": "System.String[], mscorlib",
+              "$values": [
+                "Pantheon of the Arrtist - Completion",
+                "Pantheon of the Art1st - Completion",
+                "Pantheon of the Dentist - Completion",
+                "Partheon of the Artist - Completion"
+              ]
+            }
+          },
+          "Message": "CurseData",
+          "Loaded": true
         }
       ],
       "obtainState": "Unobtained"
@@ -535,6 +575,26 @@
               "Key": "Complete"
             }
           }
+        },
+        {
+          "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+          "Properties": {
+            "CanMimic": {
+              "$type": "ItemChanger.BoxedBool, ItemChanger",
+              "Value": true
+            },
+            "MimicNames": {
+              "$type": "System.String[], mscorlib",
+              "$values": [
+                "Pantheon of the Sagge - Completion",
+                "Pantheon of the Saage - Completion",
+                "Pantheon of the Saint - Completion",
+                "Partheon of the Sage - Completion"
+              ]
+            }
+          },
+          "Message": "CurseData",
+          "Loaded": true
         }
       ],
       "obtainState": "Unobtained"
@@ -787,6 +847,26 @@
               "Key": "Complete"
             }
           }
+        },
+        {
+          "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+          "Properties": {
+            "CanMimic": {
+              "$type": "ItemChanger.BoxedBool, ItemChanger",
+              "Value": true
+            },
+            "MimicNames": {
+              "$type": "System.String[], mscorlib",
+              "$values": [
+                "Pantheon of the Night - Completion",
+                "Pantheon of the Knigth - Completion",
+                "Pantheon of the King - Completion",
+                "Partheon of the Knight - Completion"
+              ]
+            }
+          },
+          "Message": "CurseData",
+          "Loaded": true
         }
       ],
       "obtainState": "Unobtained"
@@ -1039,6 +1119,26 @@
               "Key": "Complete"
             }
           }
+        },
+        {
+          "$type": "ItemChanger.Tags.InteropTag, ItemChanger",
+          "Properties": {
+            "CanMimic": {
+              "$type": "ItemChanger.BoxedBool, ItemChanger",
+              "Value": true
+            },
+            "MimicNames": {
+              "$type": "System.String[], mscorlib",
+              "$values": [
+                "Pantheon of Halloween - Completion",
+                "Pantheon of Halolwnest - Completion",
+                "Pantheon of Hollownest - Completion",
+                "Partheon of Hallownest - Completion"
+              ]
+            }
+          },
+          "Message": "CurseData",
+          "Loaded": true
         }
       ],
       "obtainState": "Unobtained"

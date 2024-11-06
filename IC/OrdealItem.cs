@@ -15,7 +15,7 @@ namespace GodhomeRandomizer.IC
                 shopDesc = new BoxedString("Obey All Precepts!"),
                 sprite = new GodhomeSprite("Ordeal")
             };
-            tags = [OrdealTag()];
+            tags = [OrdealTag(), CurseTag()];
         }
 
         private static InteropTag OrdealTag()
@@ -25,6 +25,15 @@ namespace GodhomeRandomizer.IC
             tag.Properties["PinSprite"] = new GodhomeSprite("Ordeal");
             tag.Properties["PoolGroup"] = "Statue Marks";
             tag.Message = "RandoSupplementalMetadata";
+            return tag;
+        }
+
+        private InteropTag CurseTag()
+        {
+            InteropTag tag = new();
+            tag.Properties["CanMimic"] = new BoxedBool(true);
+            tag.Properties["MimicNames"] = new string[] {"Zoteeeeee"};
+            tag.Message = "CurseData";
             return tag;
         }
         
