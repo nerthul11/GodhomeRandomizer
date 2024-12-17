@@ -34,7 +34,10 @@ jobs:
 
       - name: Get Assembly version
         id: get_version
-        run: echo "::set-output name=version::$(cat < Version.txt)"
+        shell: pwsh
+        run: |
+          $version = Get-Content Version.txt
+          echo "version=$version" >> $env:GITHUB_OUTPUT
 
       - name: Create release
         id: create_release
