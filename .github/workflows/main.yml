@@ -30,7 +30,10 @@ jobs:
 
       - name: Get SHA256 of zipped mod
         id: get_hash
-        run: echo "hash=$(sha256sum Output/GodhomeRandomizer.zip | cut -d ' ' -f 1)" >> $GITHUB_OUTPUT
+        shell: pwsh
+        run: |
+          $hash = (Get-FileHash -Path "Output/GodhomeRandomizer.zip" -Algorithm SHA256).Hash
+          echo "hash=$hash" >> $env:GITHUB_OUTPUT
 
       - name: Get Assembly version
         id: get_version
