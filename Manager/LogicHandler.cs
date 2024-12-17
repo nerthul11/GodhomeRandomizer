@@ -12,7 +12,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Linq;
-using System;
 
 namespace GodhomeRandomizer.Manager
 {
@@ -319,7 +318,7 @@ namespace GodhomeRandomizer.Manager
             // Add HOG mark requirements to Void Idol logic.
             if (hogSettings.RandomizeTiers > TierLimitMode.Vanilla)
             {
-                string bossLogic = "GG_Workshop";
+                string bossLogic = "GG_Workshop[left1]";
                 foreach (StatueItem item in itemList)
                 {
                     string boss = item.name.Split('-').Last();
@@ -332,6 +331,7 @@ namespace GodhomeRandomizer.Manager
             
                 if (hogSettings.RandomizeTiers > TierLimitMode.ExcludeAscended)
                 {
+                    bossLogic = "GG_Workshop[left1]";
                     foreach (StatueItem item in itemList)
                     {
                         string boss = item.name.Split('-').Last();
@@ -341,9 +341,9 @@ namespace GodhomeRandomizer.Manager
                     lmb.DoLogicEdit(new("Journal_Entry-Void_Idol_2", "ASCENDED_IDOL"));
                     lmb.DoLogicEdit(new("Journal_Entry-Void_Idol_3", "ASCENDED_IDOL"));                
                 }
-                else
                 if (hogSettings.RandomizeTiers == TierLimitMode.IncludeAll)
                 {
+                    bossLogic = "GG_Workshop[left1]";
                     foreach (StatueItem item in itemList)
                     {
                         string boss = item.name.Split('-').Last();
@@ -376,7 +376,7 @@ namespace GodhomeRandomizer.Manager
 
             if (settings.RandomizeTiers > TierLimitMode.Vanilla)
             {
-                string logic = "GG_Workshop";
+                string logic = "GG_Workshop[left1]";
                 foreach (StatueItem item in itemList)
                 {
                     string boss = item.name.Split('-').Last();
