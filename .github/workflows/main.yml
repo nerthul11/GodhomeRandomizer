@@ -8,75 +8,22 @@ on:
 jobs:
   build:
     name: Build and create release
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       
-      - name: Fetch Unity Engine modules
-        run: |
-          wget https://files.catbox.moe/i4sdl6.zip -O UnityModules.zip
-          unzip UnityModules.zip -d References
+      - name: Setup MAPI
+        uses: BadMagic100/setup-hk@v2
+        with:
+          apiPath: API
+          dependencyFilePath: TheRealJournalRando/ModDependencies.txt
 
-      - name: Fetch API files
-        run: |
-          wget https://github.com/hk-modding/api/releases/latest/download/ModdingApiWin.zip -O API.zip
-          unzip -o API.zip -d References
-
-      - name: Fetch FStats
-        run: |
-          wget https://github.com/flibber-hk/HollowKnight.FStats/releases/latest/download/FStats.zip -O FStats.zip
-          unzip -o FStats.zip -d References
-
-      - name: Fetch ItemChanger
-        run: |
-          wget https://github.com/homothetyhk/HollowKnight.ItemChanger/releases/latest/download/ItemChanger.zip -O ItemChanger.zip
-          unzip -o ItemChanger.zip -d References
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
       
-      - name: Fetch MenuChanger
-        run: |
-          wget https://github.com/homothetyhk/HollowKnight.MenuChanger/releases/latest/download/MenuChanger.zip -O MenuChanger.zip
-          unzip -o MenuChanger.zip -d References
-      
-      - name: Fetch MoreLocations
-        run: |
-          wget https://github.com/BadMagic100/MoreLocations/releases/latest/download/MoreLocations.zip -O MoreLocations.zip
-          unzip -o MoreLocations.zip -d References     
-
-      - name: Fetch RandoSettingsManager
-        run: |
-          wget https://github.com/BadMagic100/RandoSettingsManager/releases/latest/download/RandoSettingsManager.zip -O RandoSettingsManager.zip
-          unzip -o RandoSettingsManager.zip -d References
-      
-      - name: Fetch RandomizerCore
-        run: |
-          wget https://github.com/homothetyhk/RandomizerCore/releases/latest/download/RandomizerCore.zip -O RandomizerCore.zip
-          unzip -o RandomizerCore.zip -d References
-      
-      - name: Fetch RandomizerCore.JSON
-        run: |
-          wget https://github.com/homothetyhk/RandomizerCore.Json/releases/latest/download/RandomizerCore.Json.zip -O RandomizerCore.Json.zip
-          unzip -o RandomizerCore.Json.zip -d References
-      
-      - name: Fetch RandomizerMod
-        run: |
-          wget https://github.com/homothetyhk/RandomizerMod/releases/latest/download/RandomizerMod.zip -O RandomizerMod.zip
-          unzip -o RandomizerMod.zip -d References
-
-      - name: Fetch Satchel
-        run: |
-          wget https://github.com/PrashantMohta/Satchel/releases/latest/download/Satchel.zip -O Satchel.zip
-          unzip -o Satchel.zip -d References
-          
-      - name: Setup MSBuild and NuGet
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y mono-devel mono-xbuild
-          wget https://dist.nuget.org/win-x86-commandline/latest/nuget.exe -O nuget.exe
-          alias nuget='mono nuget.exe'
-
-      - name: Restore packages
-        run: nuget restore GodhomeRandomizer.csproj
+      - name: Install dependencies
+        run: dotnet restore
 
       - name: Build project
         run: dotnet build --configuration Release

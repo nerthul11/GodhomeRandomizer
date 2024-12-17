@@ -1,0 +1,9 @@
+FStats
+ItemChanger
+MenuChanger
+MoreLocations
+RandoSettingsManager
+RandomizerCore
+RandomizerCore.JSON
+Randomizer 4
+Satchel
