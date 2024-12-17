@@ -68,8 +68,12 @@ jobs:
           wget https://github.com/PrashantMohta/Satchel/releases/latest/download/Satchel.zip -O Satchel.zip
           unzip -o Satchel.zip -d References
           
-      - name: Setup MSBuild
-        run: sudo apt-get install -y nuget mono-devel mono-xbuild
+      - name: Setup MSBuild and NuGet
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y mono-devel mono-xbuild
+          wget https://dist.nuget.org/win-x86-commandline/latest/nuget.exe -O nuget.exe
+          alias nuget='mono nuget.exe'
 
       - name: Restore packages
         run: nuget restore GodhomeRandomizer.csproj
@@ -79,7 +83,7 @@ jobs:
 
       - name: Get SHA256 of zipped mod
         id: get_hash
-        run: echo "::set-output name=hash::$(sha256sum Output/GodhomeRandomizer.zip | cut -d ' ' -f 1)"
+        run: echo "hash=$(sha256sum Output/GodhomeRandomizer.zip | cut -d ' ' -f 1)" >> $GITHUB_OUTPUT
 
       - name: Get Assembly version
         id: get_version
