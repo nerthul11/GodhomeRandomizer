@@ -4,6 +4,6 @@ MenuChanger
 MoreLocations
 RandoSettingsManager
 RandomizerCore
-RandomizerCore.JSON
+RandomizerCore.Json
 Randomizer 4
 Satchel
