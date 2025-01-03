@@ -4,11 +4,12 @@ using GlobalEnums;
 using GodhomeRandomizer.Manager;
 using GodhomeRandomizer.Settings;
 using ItemChanger;
+using ItemChanger.Modules;
 using UnityEngine;
 
 namespace GodhomeRandomizer.Modules
 {
-    public class PantheonModule : ItemChanger.Modules.Module
+    public class PantheonModule : Module
     {
         public override void Initialize()
         {

@@ -316,48 +316,37 @@ namespace GodhomeRandomizer.Manager
             }
 
             // Add HOG mark requirements to Void Idol logic.
-            if (hogSettings.RandomizeTiers > TierLimitMode.Vanilla)
+            string bossLogic = "GG_Workshop[left1]";
+            foreach (StatueItem item in itemList)
             {
-                string bossLogic = "GG_Workshop[left1]";
-                foreach (StatueItem item in itemList)
-                {
-                    string boss = item.name.Split('-').Last();
-                    bossLogic += $" + GG_{boss}>1";
-                }
-                lmb.DoMacroEdit(new("ATTUNED_IDOL", bossLogic));
-                lmb.DoLogicEdit(new("Journal_Entry-Void_Idol_1", "ATTUNED_IDOL"));
-                lmb.DoLogicEdit(new("Journal_Entry-Void_Idol_2", "ATTUNED_IDOL"));
-                lmb.DoLogicEdit(new("Journal_Entry-Void_Idol_3", "ATTUNED_IDOL"));     
-            
-                if (hogSettings.RandomizeTiers > TierLimitMode.ExcludeAscended)
-                {
-                    bossLogic = "GG_Workshop[left1]";
-                    foreach (StatueItem item in itemList)
-                    {
-                        string boss = item.name.Split('-').Last();
-                        bossLogic += $" + GG_{boss}>2";
-                    }
-                    lmb.DoMacroEdit(new("ASCENDED_IDOL", bossLogic));
-                    lmb.DoLogicEdit(new("Journal_Entry-Void_Idol_2", "ASCENDED_IDOL"));
-                    lmb.DoLogicEdit(new("Journal_Entry-Void_Idol_3", "ASCENDED_IDOL"));                
-                }
-                if (hogSettings.RandomizeTiers == TierLimitMode.IncludeAll)
-                {
-                    bossLogic = "GG_Workshop[left1]";
-                    foreach (StatueItem item in itemList)
-                    {
-                        string boss = item.name.Split('-').Last();
-                        bossLogic += $" + GG_{boss}>3";
-                    }
-                    lmb.DoMacroEdit(new("RADIANT_IDOL", bossLogic));
-                    lmb.DoLogicEdit(new("Journal_Entry-Void_Idol_3", "RADIANT_IDOL"));
-                }
+                string boss = item.name.Split('-').Last();
+                bossLogic += $" + GG_{boss}>1";
             }
+            lmb.DoMacroEdit(new("ATTUNED_IDOL", bossLogic));
+            lmb.DoLogicEdit(new("Journal_Entry-Void_Idol_1", "ATTUNED_IDOL"));    
+            
+            bossLogic = "GG_Workshop[left1]";
+            foreach (StatueItem item in itemList)
+            {
+                string boss = item.name.Split('-').Last();
+                bossLogic += $" + GG_{boss}>2";
+            }
+            lmb.DoMacroEdit(new("ASCENDED_IDOL", bossLogic));
+            lmb.DoLogicEdit(new("Journal_Entry-Void_Idol_2", "ASCENDED_IDOL"));
+            
+            bossLogic = "GG_Workshop[left1]";
+            foreach (StatueItem item in itemList)
+            {
+                string boss = item.name.Split('-').Last();
+                bossLogic += $" + GG_{boss}>3";
+            }
+            lmb.DoMacroEdit(new("RADIANT_IDOL", bossLogic));
+            lmb.DoLogicEdit(new("Journal_Entry-Void_Idol_3", "RADIANT_IDOL"));
 
             // Add bindings requirement to Weathered Mask entry
             bool weatheredMask = lmb.LogicLookup.TryGetValue("Journal_Entry-Weathered_Mask", out _);
             if (weatheredMask)
-                lmb.DoLogicEdit(new("Journal_Entry-Weathered_Mask", $"ORIG + Pantheon_Bindings>19"));
+                lmb.DoSubst(new("Journal_Entry-Weathered_Mask", "Defeated_Pantheon_5", "Pantheon_Bindings>19"));
         }
 
         private static void EditLostArtifacts(GenerationSettings gs, LogicManagerBuilder lmb)

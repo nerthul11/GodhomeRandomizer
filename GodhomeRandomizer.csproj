@@ -8,8 +8,8 @@
     <Product>GodhomeRandomizer</Product>
     <Description>A Randomizer add-on for Godhome checks.</Description>
     <Copyright>Copyright ©2024</Copyright>
-    <AssemblyVersion>2.2.4.8</AssemblyVersion>
-    <FileVersion>2.2.4.8</FileVersion>
+    <AssemblyVersion>2.2.4.9</AssemblyVersion>
+    <FileVersion>2.2.4.9</FileVersion>
     <OutputPath>bin\$(Configuration)\</OutputPath>
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
