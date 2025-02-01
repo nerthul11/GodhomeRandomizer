@@ -100,65 +100,31 @@ namespace GodhomeRandomizer.Manager
                 lmb.AddItem(new StringItemTemplate($"Statue_Mark-{boss}", $"STATUEMARKS++ >> GG_{boss}++"));
 
                 // Empty mark logic
-                lmb.AddLogicDef(new($"Empty_Mark-{boss}", $"{position}_STATUE + GG_{boss}>0"));
+                string logicDef = $"GG_Workshop[left1] + GG_{boss}>0";
                 if (dependency is not null)
-                    lmb.DoLogicEdit(new($"Empty_Mark-{boss}", $"ORIG + GG_{dependency}>0"));
+                    logicDef += $" + GG_{dependency}>0";
                 if (item.isDreamBoss)
-                    lmb.DoLogicEdit(new($"Empty_Mark-{boss}", $"ORIG + DREAMNAIL"));
-
-                // Bronze mark logic
-                lmb.AddLogicDef(new($"Bronze_Mark-{boss}", $"{position}_STATUE + Attuned_Combat + GG_{boss}>0 + COMBAT[{boss}]"));
-                if (dependency is not null)
-                    lmb.DoLogicEdit(new($"Bronze_Mark-{boss}", $"ORIG + GG_{dependency}>0"));
-                if (item.isDreamBoss)
-                    lmb.DoLogicEdit(new($"Bronze_Mark-{boss}", $"ORIG + DREAMNAIL"));
-                
+                    logicDef += " + DREAMNAIL";
+                if (item.position == "TOP")
+                    logicDef = logicDef.Replace("GG_Workshop[left1]", "(GG_Workshop[left1] + (ANYCLAW | $SHRIEKPOGO[6]) | Bench-Hall_of_Gods)");
                 if (settings.RandomizeStatueAccess == AccessMode.Vanilla)
                 {
-                    lmb.DoLogicEdit(new($"Bronze_Mark-{boss}", $"{position}_STATUE + Attuned_Combat + Defeated_{boss}"));
-                    if (dependency is not null)
-                        lmb.DoLogicEdit(new($"Bronze_Mark-{boss}", $"ORIG + Defeated_{dependency}"));
+                    logicDef = logicDef.Replace($"GG_{boss}>0", $"Defeated_{boss}");
+                    logicDef = logicDef.Replace($"GG_{dependency}>0", $"Defeated_{dependency}");
                 }
                 if (settings.RandomizeStatueAccess == AccessMode.AllUnlocked)
                 {
-                    lmb.DoLogicEdit(new($"Bronze_Mark-{boss}", $"{position}_STATUE + Attuned_Combat + COMBAT[{boss}]"));
-                    if (item.isDreamBoss)
-                        lmb.DoLogicEdit(new($"Bronze_Mark-{boss}", $"ORIG + DREAMNAIL"));
+                    logicDef = logicDef.Replace($"GG_{boss}>0", $"TRUE");
+                    logicDef = logicDef.Replace($"GG_{dependency}>0", $"TRUE");
                 }
+                lmb.AddLogicDef(new($"Empty_Mark-{boss}", logicDef));
 
-                // Silver mark logic
-                lmb.AddLogicDef(new($"Silver_Mark-{boss}", $"{position}_STATUE + Ascended_Combat + GG_{boss}>0 + COMBAT[{boss}]"));
-                if (dependency is not null)
-                    lmb.DoLogicEdit(new($"Silver_Mark-{boss}", $"ORIG + GG_{dependency}>0"));
-                if (item.isDreamBoss)
-                    lmb.DoLogicEdit(new($"Silver_Mark-{boss}", $"ORIG + DREAMNAIL"));
-                
-                if (settings.RandomizeStatueAccess == AccessMode.Vanilla)
-                {
-                    lmb.DoLogicEdit(new($"Silver_Mark-{boss}", $"{position}_STATUE + Ascended_Combat + Defeated_{boss}"));
-                    if (dependency is not null)
-                        lmb.DoLogicEdit(new($"Silver_Mark-{boss}", $"ORIG + Defeated_{dependency}"));                        
-                }
-                if (settings.RandomizeStatueAccess == AccessMode.AllUnlocked)
-                {
-                    lmb.DoLogicEdit(new($"Silver_Mark-{boss}", $"{position}_STATUE + Ascended_Combat + COMBAT[{boss}]"));
-                    if (item.isDreamBoss)
-                        lmb.DoLogicEdit(new($"Silver_Mark-{boss}", $"ORIG + DREAMNAIL"));
-                }
+                // Bronze/Silver/Gold logic
+                lmb.AddLogicDef(new($"Bronze_Mark-{boss}", $"{logicDef} + Attuned_Combat + COMBAT[{boss}]"));
+                lmb.AddLogicDef(new($"Silver_Mark-{boss}", $"{logicDef} + Ascended_Combat + COMBAT[{boss}]"));
 
-                // Gold mark logic
-                lmb.AddLogicDef(new($"Gold_Mark-{boss}", $"{position}_STATUE + Radiant_Combat + GG_{boss}>2 + COMBAT[{boss}]"));
-                if (dependency is not null && settings.RandomizeStatueAccess < AccessMode.AllUnlocked)
-                    lmb.DoLogicEdit(new($"Gold_Mark-{boss}", $"ORIG + GG_{dependency}>0"));
-                if (item.isDreamBoss)
-                    lmb.DoLogicEdit(new($"Gold_Mark-{boss}", $"ORIG + DREAMNAIL"));
-                
-                if (settings.RandomizeStatueAccess == AccessMode.Vanilla)
-                {
-                    lmb.DoLogicEdit(new($"Gold_Mark-{boss}", $"{position}_STATUE + Radiant_Combat + GG_{boss}>2 + Defeated_{boss}"));
-                    if (dependency is not null)
-                        lmb.DoLogicEdit(new($"Gold_Mark-{boss}", $"ORIG + Defeated_{dependency}"));
-                }
+                logicDef = logicDef.Replace($"GG_{boss}>0 + ", "");
+                lmb.AddLogicDef(new($"Gold_Mark-{boss}", $"{logicDef} + Radiant_Combat + GG_{boss}>2 + COMBAT[{boss}]"));
             }
 
             // Eternal Ordeal logic

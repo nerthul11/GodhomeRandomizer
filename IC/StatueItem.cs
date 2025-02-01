@@ -2,7 +2,6 @@ using GodhomeRandomizer.Modules;
 using GodhomeRandomizer.Settings;
 using ItemChanger;
 using ItemChanger.UIDefs;
-using RandomizerCore.Logic;
 using System;
 
 namespace GodhomeRandomizer.IC

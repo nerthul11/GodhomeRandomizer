@@ -209,8 +209,14 @@ namespace GodhomeRandomizer.Manager {
                 }
                 else
                 {
-                    builder.AddToVanilla($"Statue_Mark-{location.name.Split('-')[1]}", location.name);
+                    // If the location doesn't exist but the item does, we don't want a vanilla def for it as it's randomized.
+                    if (!(location.name.StartsWith("Empty") && settings.RandomizeStatueAccess == AccessMode.Randomized))
+                        builder.AddToVanilla($"Statue_Mark-{location.name.Split('-')[1]}", location.name);
                 }
+
+                // If the location exists but the item is not present in the pool, we need to add a vanilla def for logic to work.
+                if (location.name.StartsWith("Empty") && settings.IncludeUnlockLocations && settings.RandomizeStatueAccess != AccessMode.Randomized)
+                    builder.AddToVanilla($"Statue_Mark-{location.name.Split('-')[1]}", location.name);
             }
             
             // Add Eternal Ordeal if available

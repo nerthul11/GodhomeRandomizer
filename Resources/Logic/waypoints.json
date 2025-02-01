@@ -66,7 +66,7 @@
     },
     {
         "name": "Opened_Pantheon_5",
-        "logic": "GG_Atrium_Roof + WINGS + (ANYCLAW | $SHRIEKPOGO[7]) + VOIDHEART | PANTHEON_KEY_5 ? FALSE",
+        "logic": "GG_Atrium_Roof + (VOIDHEART + (Wall-Godhome_Roof ? FALSE + RIGHTCLAW) | (WINGS + (ANYCLAW | $SHRIEKPOGO[7])) | PANTHEON_KEY_5 ? FALSE)",
         "Stateless": true
     },
     {
