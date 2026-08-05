@@ -1,3 +1,4 @@
+ConnectionSettingsRando
 FStats
 ItemChanger
 MenuChanger

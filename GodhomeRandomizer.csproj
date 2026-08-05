@@ -8,8 +8,8 @@
     <Product>GodhomeRandomizer</Product>
     <Description>A Randomizer add-on for Godhome checks.</Description>
     <Copyright>Copyright ©2024</Copyright>
-    <AssemblyVersion>2.2.4.11</AssemblyVersion>
-    <FileVersion>2.2.4.11</FileVersion>
+    <AssemblyVersion>2.2.5.0</AssemblyVersion>
+    <FileVersion>2.2.5.0</FileVersion>
     <OutputPath>bin\$(Configuration)\</OutputPath>
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
@@ -72,6 +72,9 @@
     </Reference>
     <Reference Include="Assembly-CSharp-firstpass">
       <HintPath>$(LocalRefs)/Assembly-CSharp-firstpass.dll</HintPath>
+    </Reference>
+    <Reference Include="ConnectionSettingsRando">
+      <HintPath>$(LocalRefs)/Mods/ConnectionSettingsRando/ConnectionSettingsRando.dll</HintPath>
     </Reference>
     <Reference Include="FStats">
       <HintPath>$(LocalRefs)/Mods/FStats/FStats.dll</HintPath>

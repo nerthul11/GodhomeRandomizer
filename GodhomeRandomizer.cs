@@ -9,7 +9,7 @@ namespace GodhomeRandomizer
     public class GodhomeRandomizer : Mod, IGlobalSettings<GodhomeRandomizerSettings>
     {
         new public string GetName() => "GodhomeRandomizer";
-        public override string GetVersion() => "2.2.4.11";
+        public override string GetVersion() => "2.2.5.0";
 
         private static GodhomeRandomizer _instance;
         public GodhomeRandomizer() : base()
@@ -35,6 +35,10 @@ namespace GodhomeRandomizer
             {
                 Log("Initializing");
                 GodhomeManager.Hook();
+                if (ModHooks.GetMod("ConnectionSettingsRando") is Mod)
+                {
+                    CSR_Interop.Hook();
+                }
                 if (ModHooks.GetMod("FStatsMod") is Mod)
                 {
                     FStats_Interop.Hook();
